@@ -1,0 +1,1781 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "Image"
+  },
+  "+7PMGc": {
+    "defaultMessage": "Go to the previous driver of this page"
+  },
+  "+K7/E3": {
+    "defaultMessage": "Creattion Date"
+  },
+  "+Wrr0B": {
+    "defaultMessage": "Search by transfer number"
+  },
+  "+YGjLX": {
+    "defaultMessage": "Bus - 50"
+  },
+  "+cVEk8": {
+    "defaultMessage": "Price created successfully"
+  },
+  "+eTxf7": {
+    "defaultMessage": "Found rows: {totalCount}. Shown: {first}.{br}Push the button to change perpage value",
+    "description": "Tooltip of Perpage button with counter. Allowed variables: {first} - perpage current value; {totalCount} - total count rows; {br} - html <br />"
+  },
+  "/06iwc": {
+    "defaultMessage": "Large"
+  },
+  "/3ZJ37": {
+    "defaultMessage": "inn:"
+  },
+  "/3oRLz": {
+    "defaultMessage": "Additional price"
+  },
+  "/5bF5k": {
+    "defaultMessage": "Type to search city"
+  },
+  "/5n71f": {
+    "defaultMessage": "Type company INN or name here"
+  },
+  "/6vNd6": {
+    "defaultMessage": "Any document"
+  },
+  "/BgyNa": {
+    "defaultMessage": "Account number"
+  },
+  "/GCoTA": {
+    "defaultMessage": "Clear"
+  },
+  "/VnDMl": {
+    "defaultMessage": "Other"
+  },
+  "/YKFhI": {
+    "defaultMessage": "Notification bar are empty"
+  },
+  "/tahOY": {
+    "defaultMessage": "Common data"
+  },
+  "/v9ju1": {
+    "defaultMessage": "Invalid login or password"
+  },
+  "00ls8W": {
+    "defaultMessage": "The value is not a number or could not be cast to a number"
+  },
+  "01bNEC": {
+    "defaultMessage": "Append driver"
+  },
+  "05RTJQ": {
+    "defaultMessage": "Remove pasport"
+  },
+  "09IjQc": {
+    "defaultMessage": "Was copied into clipboard"
+  },
+  "0Bmo3q": {
+    "defaultMessage": "Are you sure to want to delete selected orders?"
+  },
+  "0FwuFW": {
+    "defaultMessage": "Should have a maximum length of '{#limit}'"
+  },
+  "0NzoOo": {
+    "defaultMessage": "Common data of a car"
+  },
+  "0Qaw/e": {
+    "defaultMessage": "Reset form"
+  },
+  "0nWAOY": {
+    "defaultMessage": "Go to home page"
+  },
+  "0uOJZC": {
+    "defaultMessage": "Canceled With Fine"
+  },
+  "0uTkxw": {
+    "defaultMessage": "Delete selected ({count}) cars"
+  },
+  "1+5343": {
+    "defaultMessage": "Short name"
+  },
+  "10fx1f": {
+    "defaultMessage": "Search by company name"
+  },
+  "186Ae7": {
+    "defaultMessage": "Driver not selected"
+  },
+  "1HFKa7": {
+    "defaultMessage": "Go to the previous car of this page"
+  },
+  "1Ia8qN": {
+    "defaultMessage": "Processing"
+  },
+  "1MnSfo": {
+    "defaultMessage": "Dismissed"
+  },
+  "1W4okO": {
+    "defaultMessage": "Green"
+  },
+  "1YbuL3": {
+    "defaultMessage": "Append service"
+  },
+  "1rW/Fl": {
+    "defaultMessage": "With Company"
+  },
+  "1uGi2o": {
+    "defaultMessage": "LV",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "1zmNDQ": {
+    "defaultMessage": "Cars list are empty"
+  },
+  "205JTs": {
+    "defaultMessage": "Services cannot be empty"
+  },
+  "2BC4lM": {
+    "defaultMessage": "Driver account"
+  },
+  "2fTHTp": {
+    "defaultMessage": "Legal entity director short name in nominative case"
+  },
+  "2jtjYh": {
+    "defaultMessage": "Are you sure to want to log out?"
+  },
+  "2mh0mO": {
+    "defaultMessage": "Search by Phone number"
+  },
+  "3A/Umd": {
+    "defaultMessage": "Legal entity KPP"
+  },
+  "3IInif": {
+    "defaultMessage": "Companies"
+  },
+  "3REolr": {
+    "defaultMessage": "Delete selected ({count}) users"
+  },
+  "3UuT0o": {
+    "defaultMessage": "Velours"
+  },
+  "3VDu8x": {
+    "defaultMessage": "Minivan - 18"
+  },
+  "3Y9Iix": {
+    "defaultMessage": "Download image"
+  },
+  "3a5wL8": {
+    "defaultMessage": "Active"
+  },
+  "3cc4Ct": {
+    "defaultMessage": "Light"
+  },
+  "3gHRrO": {
+    "defaultMessage": "Hidden comment"
+  },
+  "3qk19j": {
+    "defaultMessage": "Car externalId"
+  },
+  "3sqiWQ": {
+    "defaultMessage": "Is not a valid date"
+  },
+  "3v7tnQ": {
+    "defaultMessage": "Common data of driver"
+  },
+  "3wcN9k": {
+    "defaultMessage": "Transfer date",
+    "description": "Edit transfer form. Datetime picker. Date range icon"
+  },
+  "3wmuyF": {
+    "defaultMessage": "Administrator"
+  },
+  "47FYwb": {
+    "defaultMessage": "Cancel"
+  },
+  "4GVpLH": {
+    "defaultMessage": "Serie and number"
+  },
+  "4HMfX/": {
+    "defaultMessage": "Car outside color"
+  },
+  "4MAeRl": {
+    "defaultMessage": "You can add and delete a driver account"
+  },
+  "4MajJU": {
+    "defaultMessage": "Car external id"
+  },
+  "4PqUf+": {
+    "defaultMessage": "Try using a different device, such as a laptop"
+  },
+  "4Ru23M": {
+    "defaultMessage": "Type to search car"
+  },
+  "4VFC4M": {
+    "defaultMessage": "Should be a type of string"
+  },
+  "4b6x/o": {
+    "defaultMessage": "Owner not selected"
+  },
+  "4uIgDI": {
+    "defaultMessage": "Set timezone"
+  },
+  "4zbedN": {
+    "defaultMessage": "Remote district"
+  },
+  "54h1xY": {
+    "defaultMessage": "Price owner not selected"
+  },
+  "577R2r": {
+    "defaultMessage": "Invalid value"
+  },
+  "5ACzZR": {
+    "defaultMessage": "Car class"
+  },
+  "5UEdE7": {
+    "defaultMessage": "Trip type"
+  },
+  "5auUOC": {
+    "defaultMessage": "INN:"
+  },
+  "5jeq8P": {
+    "defaultMessage": "Unknown"
+  },
+  "5n8/z9": {
+    "defaultMessage": "Company not created"
+  },
+  "5q3qC0": {
+    "defaultMessage": "Download"
+  },
+  "5rpQst": {
+    "defaultMessage": "Append passenger",
+    "description": "Transfer edit form. Append new passenger button"
+  },
+  "5sg7KC": {
+    "defaultMessage": "Password"
+  },
+  "61Xs6O": {
+    "defaultMessage": "Customer name"
+  },
+  "65Jghr": {
+    "defaultMessage": "Driver phones"
+  },
+  "6D7u/C": {
+    "defaultMessage": "Works"
+  },
+  "6DiVLi": {
+    "defaultMessage": "Entity not selected"
+  },
+  "6Tps09": {
+    "defaultMessage": "Inactive"
+  },
+  "6quHIl": {
+    "defaultMessage": "KZ",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "6ubq2d": {
+    "defaultMessage": "Short name of elgal entity"
+  },
+  "7/6O7R": {
+    "defaultMessage": "Customer cost"
+  },
+  "7HlYgz": {
+    "defaultMessage": "Are you sure you want to unset driver?"
+  },
+  "7Ju0GJ": {
+    "defaultMessage": "Carpet"
+  },
+  "7NeYf8": {
+    "defaultMessage": "{prodYear}"
+  },
+  "7aJXIL": {
+    "defaultMessage": "Passenger bus with truck"
+  },
+  "7lEIto": {
+    "defaultMessage": "Search by Pricename"
+  },
+  "7ncHMk": {
+    "defaultMessage": "login:"
+  },
+  "7u9GOm": {
+    "defaultMessage": "Companies are empty"
+  },
+  "7uZdTg": {
+    "defaultMessage": "The date is under or equal to the '{{#limit}}'"
+  },
+  "7zHbpi": {
+    "defaultMessage": "Presentation"
+  },
+  "84807T": {
+    "defaultMessage": "No comments"
+  },
+  "84GJ4j": {
+    "defaultMessage": "Sms acces enabled"
+  },
+  "87/GeG": {
+    "defaultMessage": "Select one or more categories"
+  },
+  "89Fr/i": {
+    "defaultMessage": "Type the bank name or BIC number"
+  },
+  "8V3jmk": {
+    "defaultMessage": "You must add at least one phone number"
+  },
+  "8c37d3": {
+    "defaultMessage": "Edit this driver"
+  },
+  "9/eYM6": {
+    "defaultMessage": "Transfer additional info"
+  },
+  "95stPq": {
+    "defaultMessage": "Completed"
+  },
+  "96fYoX": {
+    "defaultMessage": "Add company"
+  },
+  "9C+lr2": {
+    "defaultMessage": "Company updated successfully"
+  },
+  "9Obw6C": {
+    "defaultMessage": "Filter"
+  },
+  "9YazHG": {
+    "defaultMessage": "Company"
+  },
+  "9a2lo8": {
+    "defaultMessage": "Birthplace"
+  },
+  "9bKdvG": {
+    "defaultMessage": "Parent companies title"
+  },
+  "9xQtmH": {
+    "defaultMessage": "Car files"
+  },
+  "AB3YPI": {
+    "defaultMessage": "Add route point"
+  },
+  "AJKar0": {
+    "defaultMessage": "Passenger info",
+    "description": "Transfers edit form. Passenger section. Passenger card header"
+  },
+  "AMLSAT": {
+    "defaultMessage": "Edit this account"
+  },
+  "AP9Noh": {
+    "defaultMessage": "Hide price from voucher"
+  },
+  "AYaUyc": {
+    "defaultMessage": "Additional info"
+  },
+  "AdgQ3V": {
+    "defaultMessage": "Saved successfully"
+  },
+  "AmB/zN": {
+    "defaultMessage": "The number is higher than the '{{#limit}}'"
+  },
+  "Aongcl": {
+    "defaultMessage": "JP",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "B4Lh+/": {
+    "defaultMessage": "GrayBrown"
+  },
+  "B4bcOu": {
+    "defaultMessage": "Cars info"
+  },
+  "BG66bP": {
+    "defaultMessage": "list of files for a current car"
+  },
+  "BPnT3T": {
+    "defaultMessage": "Small"
+  },
+  "BW3lT8": {
+    "defaultMessage": "Driver not updated"
+  },
+  "BWTptq": {
+    "defaultMessage": "With Driver"
+  },
+  "BWpuKl": {
+    "defaultMessage": "Update"
+  },
+  "BZpDPU": {
+    "defaultMessage": "User creation error"
+  },
+  "BhvKWz": {
+    "defaultMessage": "Legal entity director name in nominative case"
+  },
+  "BlMLw7": {
+    "defaultMessage": "Append car"
+  },
+  "BnlWCE": {
+    "defaultMessage": "Type to search"
+  },
+  "BptoW8": {
+    "defaultMessage": "Car salon type"
+  },
+  "BuMUIC": {
+    "defaultMessage": "{city} ({state})"
+  },
+  "CPv+oG": {
+    "defaultMessage": "Devision code"
+  },
+  "Cc20zQ": {
+    "defaultMessage": "Are you sure to want to delete selected drivers?"
+  },
+  "Cdzztg": {
+    "defaultMessage": "Trip status"
+  },
+  "CfOt3T": {
+    "defaultMessage": "Is doesnt only contain alphanumeric characters"
+  },
+  "ChgfMw": {
+    "defaultMessage": "Transfer start date in transfer local timezone"
+  },
+  "CqvdwS": {
+    "defaultMessage": "Reg number"
+  },
+  "D+ZFS/": {
+    "defaultMessage": "Red"
+  },
+  "D6pYQh": {
+    "defaultMessage": "Your file is done"
+  },
+  "DDLYUc": {
+    "defaultMessage": "Search by Username"
+  },
+  "DRLHQJ": {
+    "defaultMessage": "Whole world"
+  },
+  "Da3Qpm": {
+    "defaultMessage": "Location address"
+  },
+  "DbZKGd": {
+    "defaultMessage": "Are you sure to want to delete selected users?"
+  },
+  "DeI9nS": {
+    "defaultMessage": "UZ",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "DjSyGZ": {
+    "defaultMessage": "Notofocations"
+  },
+  "DknmNl": {
+    "defaultMessage": "Bank account number"
+  },
+  "Do1e2N": {
+    "defaultMessage": "Legal entity INN"
+  },
+  "Dr1Vkn": {
+    "defaultMessage": "Registration date {date}"
+  },
+  "DrMyHz": {
+    "defaultMessage": "snils:"
+  },
+  "DtYelJ": {
+    "defaultMessage": "Transfer"
+  },
+  "E2zmpD": {
+    "defaultMessage": "List of drivers"
+  },
+  "ECoKOY": {
+    "defaultMessage": "User company"
+  },
+  "ECqGPI": {
+    "defaultMessage": "Default city"
+  },
+  "EL0RGi": {
+    "defaultMessage": "Drivers info"
+  },
+  "ELsv+o": {
+    "defaultMessage": "Delete selected"
+  },
+  "EQpyb8": {
+    "defaultMessage": "Toggle theme"
+  },
+  "EV7BTp": {
+    "defaultMessage": "Beige"
+  },
+  "EfFNdI": {
+    "defaultMessage": "Remove payment"
+  },
+  "Efqxns": {
+    "defaultMessage": "Dark theme"
+  },
+  "EkbEES": {
+    "defaultMessage": "{externalId}"
+  },
+  "ElFsIf": {
+    "defaultMessage": "Companies list of this car"
+  },
+  "EudA18": {
+    "defaultMessage": "Invert selection at this page"
+  },
+  "F+ukuP": {
+    "defaultMessage": "Next image"
+  },
+  "F6OyfE": {
+    "defaultMessage": "Prices"
+  },
+  "FB8oyh": {
+    "defaultMessage": "With company"
+  },
+  "FUReEC": {
+    "defaultMessage": "Remove passenger"
+  },
+  "FXXpcN": {
+    "defaultMessage": "Passenger bus with truck > 750kg"
+  },
+  "FnV97C": {
+    "defaultMessage": "Release date"
+  },
+  "FpbxTI": {
+    "defaultMessage": "Transfers"
+  },
+  "FvanT6": {
+    "defaultMessage": "Accounts"
+  },
+  "G0f95g": {
+    "defaultMessage": "Passengers"
+  },
+  "G2Gfyk": {
+    "defaultMessage": "Download Driver contract"
+  },
+  "G5sM1P": {
+    "defaultMessage": "Bus - 44"
+  },
+  "GHBc3b": {
+    "defaultMessage": "{capacity}"
+  },
+  "GHlXG+": {
+    "defaultMessage": "Sort by start date"
+  },
+  "GM5740": {
+    "defaultMessage": "Go to the next driver of this page"
+  },
+  "GPOHcN": {
+    "defaultMessage": "Breakage"
+  },
+  "GPv2jX": {
+    "defaultMessage": "Price owner"
+  },
+  "GTlw9C": {
+    "defaultMessage": "External ID"
+  },
+  "Gk+NyP": {
+    "defaultMessage": "Add price"
+  },
+  "GwqiOt": {
+    "defaultMessage": "Gold"
+  },
+  "H2Eu1X": {
+    "defaultMessage": "Driver external id"
+  },
+  "H2qubc": {
+    "defaultMessage": "Addition data of a car"
+  },
+  "HAZu9V": {
+    "defaultMessage": "Add pasport"
+  },
+  "HEwn+j": {
+    "defaultMessage": "Customer phone"
+  },
+  "HILVsO": {
+    "defaultMessage": "Go to the previous order of this page"
+  },
+  "HTjCAU": {
+    "defaultMessage": "Login is required"
+  },
+  "HasHC0": {
+    "defaultMessage": "service amount"
+  },
+  "HqjQGn": {
+    "defaultMessage": "Cloth"
+  },
+  "Ht2tvW": {
+    "defaultMessage": "Prices list"
+  },
+  "IAqayC": {
+    "defaultMessage": "Viewer"
+  },
+  "IEf6Ra": {
+    "defaultMessage": "Car created successfully"
+  },
+  "IGjPWm": {
+    "defaultMessage": "Search by user name"
+  },
+  "IIBbIv": {
+    "defaultMessage": "Transfer time",
+    "description": "Edit transfer form. Datetime picker. Time icon"
+  },
+  "J+7jHR": {
+    "defaultMessage": "Prices of this transfer"
+  },
+  "J5vfS8": {
+    "defaultMessage": "Minivan - 24"
+  },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
+  "JDv7FS": {
+    "defaultMessage": "entityType"
+  },
+  "JHTwdB": {
+    "defaultMessage": "Show password"
+  },
+  "JJe17J": {
+    "defaultMessage": "TJ",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "JM4kr4": {
+    "defaultMessage": "Sms access for this price"
+  },
+  "JQbAXY": {
+    "defaultMessage": "Sort by Brand model"
+  },
+  "JWpXB1": {
+    "defaultMessage": "Additional data of price"
+  },
+  "JfG49w": {
+    "defaultMessage": "Open"
+  },
+  "JkS37H": {
+    "defaultMessage": "Undo"
+  },
+  "JkkQmi": {
+    "defaultMessage": "Register at {date}"
+  },
+  "JlcZw/": {
+    "defaultMessage": "Selected rows: {checkedCounter}.{br}Push the button to change select/unselect items",
+    "description": "Tooltip of Checked button with selected items. Allowed variables: {totalCount} - total count rows; {checkedCounter} - Count of checked rows; {br} - html <br />"
+  },
+  "JqiqNj": {
+    "defaultMessage": "Something went wrong"
+  },
+  "Jy0PiW": {
+    "defaultMessage": "Car updated successfully"
+  },
+  "K3fWTv": {
+    "defaultMessage": "Hide password"
+  },
+  "KBfLFZ": {
+    "defaultMessage": "File will be downloaded"
+  },
+  "KLk6l9": {
+    "defaultMessage": "Is a required field"
+  },
+  "KOE/fM": {
+    "defaultMessage": "Fill from default contract"
+  },
+  "KQzcqr": {
+    "defaultMessage": "Manager"
+  },
+  "Kc+YlL": {
+    "defaultMessage": "Delete selected ({count}) transfers"
+  },
+  "KeTnPe": {
+    "defaultMessage": "Toggle Filter"
+  },
+  "KgYtMv": {
+    "defaultMessage": "Liquidating"
+  },
+  "KjesvN": {
+    "defaultMessage": "Legal entity address"
+  },
+  "KxwAYy": {
+    "defaultMessage": "Add payments"
+  },
+  "Kzd9s8": {
+    "defaultMessage": "Minivan - 5"
+  },
+  "L+LV0E": {
+    "defaultMessage": "Transfer logs"
+  },
+  "LBWqda": {
+    "defaultMessage": "BY",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "LQxPj3": {
+    "defaultMessage": "Broken"
+  },
+  "LYkfBK": {
+    "defaultMessage": "Driver not created"
+  },
+  "LamFSq": {
+    "defaultMessage": "Voucher price is hidden"
+  },
+  "LgbKvU": {
+    "defaultMessage": "Comment"
+  },
+  "M+BnJb": {
+    "defaultMessage": "You can add one or more routes for this transfer",
+    "description": "Transfers edit form. Routes section. Card subheader"
+  },
+  "M/1Zd/": {
+    "defaultMessage": "Price is default"
+  },
+  "M58p5t": {
+    "defaultMessage": "Cars"
+  },
+  "M7w7ce": {
+    "defaultMessage": "MS Excel document"
+  },
+  "MGqw5f": {
+    "defaultMessage": "Orders list"
+  },
+  "MGwq7S": {
+    "defaultMessage": "Search by price name"
+  },
+  "MHCnoQ": {
+    "defaultMessage": "Default entity type"
+  },
+  "MOIPnG": {
+    "defaultMessage": "File «{filename}...» more than {maxFileSizeNum} {maxFileSizeLetter}"
+  },
+  "MW7qyE": {
+    "defaultMessage": "Go to the next order of this page"
+  },
+  "MbbFzn": {
+    "defaultMessage": "Driver"
+  },
+  "MdgtXM": {
+    "defaultMessage": "Delete selected ({count}) orders"
+  },
+  "N2IrpM": {
+    "defaultMessage": "Confirm"
+  },
+  "N5nT+z": {
+    "defaultMessage": "The number was negative"
+  },
+  "NDh0Tz": {
+    "defaultMessage": "Company created successfully"
+  },
+  "NSyGEz": {
+    "defaultMessage": "Accounts info"
+  },
+  "NYKxKy": {
+    "defaultMessage": "Pasport RF"
+  },
+  "NhaU7s": {
+    "defaultMessage": "Type company name here"
+  },
+  "NmOXT7": {
+    "defaultMessage": "Transfer from airport"
+  },
+  "O95R3Z": {
+    "defaultMessage": "Phone"
+  },
+  "OAG+sQ": {
+    "defaultMessage": "White"
+  },
+  "OK/vJ3": {
+    "defaultMessage": "Delete Driver contract"
+  },
+  "ORsElU": {
+    "defaultMessage": "Application ver: {version}"
+  },
+  "OXFYMu": {
+    "defaultMessage": "Passenger does not have phone number. You can append phone number",
+    "description": "Edit transfer. Passenger does not have phone number message"
+  },
+  "P0pauD": {
+    "defaultMessage": "List of child companies description"
+  },
+  "P6QqWp": {
+    "defaultMessage": "The number is lower or equal to the '{{#limit}}'"
+  },
+  "PB7eQc": {
+    "defaultMessage": "Common data of price"
+  },
+  "PEO52l": {
+    "defaultMessage": "Trip"
+  },
+  "PFtMy9": {
+    "defaultMessage": "Canceled"
+  },
+  "PMjBny": {
+    "defaultMessage": "Minivan - 16"
+  },
+  "PU1FMJ": {
+    "defaultMessage": "Car capacity"
+  },
+  "Pa4K0s": {
+    "defaultMessage": "Order number was copied into clipboard"
+  },
+  "PlBReU": {
+    "defaultMessage": "Log out"
+  },
+  "PnFJ/A": {
+    "defaultMessage": "LT",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "Q51meA": {
+    "defaultMessage": "Is customer"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
+  },
+  "QG4EVj": {
+    "defaultMessage": "User password"
+  },
+  "QOLh4y": {
+    "defaultMessage": "Bank name"
+  },
+  "QRccCM": {
+    "defaultMessage": "Page not found"
+  },
+  "QirE3M": {
+    "defaultMessage": "Start Date"
+  },
+  "RH11rv": {
+    "defaultMessage": "Passenger car < 3.5T"
+  },
+  "RNRpjD": {
+    "defaultMessage": "Crop"
+  },
+  "ROlji7": {
+    "defaultMessage": "Start date range"
+  },
+  "RQwvtp": {
+    "defaultMessage": "Sort by Name"
+  },
+  "RffXsT": {
+    "defaultMessage": "Holiday"
+  },
+  "RkfkI6": {
+    "defaultMessage": "Search by driver name"
+  },
+  "S+UHVt": {
+    "defaultMessage": "Crossover"
+  },
+  "S/MI8/": {
+    "defaultMessage": "Are you sure to want to delete selected transfers?"
+  },
+  "S27fDp": {
+    "defaultMessage": "Residence"
+  },
+  "S5erb/": {
+    "defaultMessage": "Companies list of this driver"
+  },
+  "S7cYn0": {
+    "defaultMessage": "list of files for a current driver"
+  },
+  "SDB4o3": {
+    "defaultMessage": "Failed to make driver profile"
+  },
+  "SNuQo7": {
+    "defaultMessage": "Logs"
+  },
+  "SQJto2": {
+    "defaultMessage": "Sign in"
+  },
+  "SbPx08": {
+    "defaultMessage": "CN",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "Sp8eZJ": {
+    "defaultMessage": "Set font size"
+  },
+  "Stj7eC": {
+    "defaultMessage": "Driver license"
+  },
+  "Sy/mDc": {
+    "defaultMessage": "RU",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "T/DIYL": {
+    "defaultMessage": "Giant"
+  },
+  "T1/en5": {
+    "defaultMessage": "ID: {id}"
+  },
+  "T4IY+t": {
+    "defaultMessage": "The number is higher or equal to the '{{#limit}}'"
+  },
+  "T97Gy5": {
+    "defaultMessage": "Additional data of a transfer"
+  },
+  "TDaF6J": {
+    "defaultMessage": "Dismiss"
+  },
+  "TE4fIS": {
+    "defaultMessage": "City"
+  },
+  "TJgZqK": {
+    "defaultMessage": "Search by order number"
+  },
+  "TZJDir": {
+    "defaultMessage": "Driver login"
+  },
+  "TaYPWW": {
+    "defaultMessage": "Director name initials in Nominative case. For example: Ivanov B. O."
+  },
+  "TfUiIq": {
+    "defaultMessage": "Passengers list are empty. You can append passengers, just push the button{br}{button}",
+    "description": "Edit transfer form. Passengers list are empty label"
+  },
+  "TiR/Hq": {
+    "defaultMessage": "Saving..."
+  },
+  "TwyMau": {
+    "defaultMessage": "Account"
+  },
+  "TxlewI": {
+    "defaultMessage": "Personal info"
+  },
+  "U+x4HX": {
+    "defaultMessage": "If you do not want to change the password, then leave this field empty"
+  },
+  "U27oZn": {
+    "defaultMessage": "Sorry, but this device is not supported"
+  },
+  "U8otFN": {
+    "defaultMessage": "Audio"
+  },
+  "UFvNBB": {
+    "defaultMessage": "Email for notifications"
+  },
+  "ULkpCT": {
+    "defaultMessage": "Nothing is selected.{br}Push the button to change select/unselect items",
+    "description": "Tooltip of Checked button without selected items. Allowed variables: {totalCount} - total count rows; {br} - html <br />"
+  },
+  "UfO190": {
+    "defaultMessage": "Entity"
+  },
+  "UtX61R": {
+    "defaultMessage": "Chose company legal entity"
+  },
+  "V3zw7m": {
+    "defaultMessage": "Select file"
+  },
+  "VEch8n": {
+    "defaultMessage": "Are you sure to want to delete selected companies?"
+  },
+  "VL9jD6": {
+    "defaultMessage": "Driver files"
+  },
+  "VLK0WW": {
+    "defaultMessage": "Forbidden"
+  },
+  "VMnCnl": {
+    "defaultMessage": "Created at {createdAt}"
+  },
+  "VX4Q5g": {
+    "defaultMessage": "404 Not found"
+  },
+  "VizYr3": {
+    "defaultMessage": "Director name in Nominative case. For example: Ivanov Boris Olegovich"
+  },
+  "VnXp8Z": {
+    "defaultMessage": "Avatar"
+  },
+  "VnxRWB": {
+    "defaultMessage": "password is required"
+  },
+  "Vu/agz": {
+    "defaultMessage": "Transfers list"
+  },
+  "VugS6Q": {
+    "defaultMessage": "With driver"
+  },
+  "W/bAfE": {
+    "defaultMessage": "Director name in Genitive case. For example: Ivanova Borisa Olegovicha"
+  },
+  "W1c4nP": {
+    "defaultMessage": "You can change account avatar image"
+  },
+  "WLugpi": {
+    "defaultMessage": "Company is customer"
+  },
+  "WM7/p7": {
+    "defaultMessage": "Phones"
+  },
+  "WkPFtU": {
+    "defaultMessage": "Drivers list"
+  },
+  "X7jl6w": {
+    "defaultMessage": "Orders"
+  },
+  "XU+xUV": {
+    "defaultMessage": "Cancel hours"
+  },
+  "XftF+N": {
+    "defaultMessage": "BIC"
+  },
+  "XjGbuY": {
+    "defaultMessage": "Black"
+  },
+  "XnSyoz": {
+    "defaultMessage": "Liquidated"
+  },
+  "YDJMyi": {
+    "defaultMessage": "UA",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "YDMrKK": {
+    "defaultMessage": "Users"
+  },
+  "YFdXym": {
+    "defaultMessage": "Delete selected ({count}) prices"
+  },
+  "YIjyhi": {
+    "defaultMessage": "Bus - 35"
+  },
+  "YKIK/s": {
+    "defaultMessage": "Transfer number"
+  },
+  "YPlYyM": {
+    "defaultMessage": "Passenger bus"
+  },
+  "YRwda6": {
+    "defaultMessage": "List of cars"
+  },
+  "YvfvFY": {
+    "defaultMessage": "Select all at this page"
+  },
+  "ZFriOx": {
+    "defaultMessage": "Price name"
+  },
+  "ZY+Z0B": {
+    "defaultMessage": "Dermantin"
+  },
+  "ZifbBW": {
+    "defaultMessage": "Unselect all"
+  },
+  "Zrd4zk": {
+    "defaultMessage": "Edit driver"
+  },
+  "ZvjEN9": {
+    "defaultMessage": "SUV"
+  },
+  "aFyFm0": {
+    "defaultMessage": "Accepted"
+  },
+  "aJhpBN": {
+    "defaultMessage": "Bankrupt"
+  },
+  "aN0goG": {
+    "defaultMessage": "Passenger car 9-15 seats"
+  },
+  "aQcl70": {
+    "defaultMessage": "Transfer start date in your timezone"
+  },
+  "as/lQ+": {
+    "defaultMessage": "Date should not be after maximum date"
+  },
+  "b1zuN9": {
+    "defaultMessage": "Price"
+  },
+  "bFEBov": {
+    "defaultMessage": "Routes list are empty",
+    "description": "Transfers edit form. Routes list are empty label"
+  },
+  "bJ8iMi": {
+    "defaultMessage": "Drivers list are empty"
+  },
+  "bXj/ED": {
+    "defaultMessage": "Text file"
+  },
+  "bcb6qX": {
+    "defaultMessage": "Child companies are empty"
+  },
+  "blEcj9": {
+    "defaultMessage": "Any documents"
+  },
+  "bqHfXP": {
+    "defaultMessage": "The version of your app is out of date. Click «Update» to get the most up-to-date version"
+  },
+  "by/oGK": {
+    "defaultMessage": "phone:"
+  },
+  "c4TGLG": {
+    "defaultMessage": "Passender name"
+  },
+  "cEiQad": {
+    "defaultMessage": "Busy"
+  },
+  "cNNVYG": {
+    "defaultMessage": "Cars data of a car"
+  },
+  "cnQAfa": {
+    "defaultMessage": "Transfer info"
+  },
+  "d2X1sA": {
+    "defaultMessage": "Common info"
+  },
+  "d6Yc8y": {
+    "defaultMessage": "Preparing..."
+  },
+  "dD8AuV": {
+    "defaultMessage": "User updated successfully"
+  },
+  "dGlLbf": {
+    "defaultMessage": "Price not created"
+  },
+  "dJE83i": {
+    "defaultMessage": "Legal entity director name in genitive case"
+  },
+  "dM+p3/": {
+    "defaultMessage": "From"
+  },
+  "dNxppX": {
+    "defaultMessage": "List of prices"
+  },
+  "dX7+Rv": {
+    "defaultMessage": "Confirmed"
+  },
+  "dkcaN/": {
+    "defaultMessage": "Prices title"
+  },
+  "dlO8pU": {
+    "defaultMessage": "Hometown"
+  },
+  "dn/kGN": {
+    "defaultMessage": "Are you sure to want to delete selected prices?"
+  },
+  "eM/4ho": {
+    "defaultMessage": "Brown"
+  },
+  "eOzbWB": {
+    "defaultMessage": "Prices from this contract will be applied to all by default"
+  },
+  "eZXPOb": {
+    "defaultMessage": "Is not a valid e-mail."
+  },
+  "ee1Wp5": {
+    "defaultMessage": "Light theme"
+  },
+  "egliph": {
+    "defaultMessage": "Edit this order"
+  },
+  "emig7A": {
+    "defaultMessage": "City not assigne to order",
+    "description": "Message displayed when order does not have a city data"
+  },
+  "eyx5By": {
+    "defaultMessage": "Routes"
+  },
+  "ezkHr+": {
+    "defaultMessage": "Driver company"
+  },
+  "f3YMee": {
+    "defaultMessage": "Edit transfer"
+  },
+  "fBG/Ge": {
+    "defaultMessage": "Cost"
+  },
+  "fMpQAC": {
+    "defaultMessage": "Account is active"
+  },
+  "fSX/fK": {
+    "defaultMessage": "Comfort"
+  },
+  "fTlL2P": {
+    "defaultMessage": "Remark"
+  },
+  "fYLfJj": {
+    "defaultMessage": "Standart"
+  },
+  "fZfsUP": {
+    "defaultMessage": "Device is not supported"
+  },
+  "fb1a/o": {
+    "defaultMessage": "Previous image"
+  },
+  "gQs3br": {
+    "defaultMessage": "The data contaned here is related only to the pasport of the Russian Federation"
+  },
+  "gVCrJB": {
+    "defaultMessage": "New link has been added"
+  },
+  "gd6Uoy": {
+    "defaultMessage": "Companies list of this user"
+  },
+  "guPWK2": {
+    "defaultMessage": "Is not allowed to be empty"
+  },
+  "h2lceh": {
+    "defaultMessage": "Registration Date"
+  },
+  "h8K6tA": {
+    "defaultMessage": "Copy into clipboard"
+  },
+  "hA+PL2": {
+    "defaultMessage": "License Category"
+  },
+  "hNVnrj": {
+    "defaultMessage": "Updated Date"
+  },
+  "hW+TmU": {
+    "defaultMessage": "Companies list"
+  },
+  "hX5PAb": {
+    "defaultMessage": "No results found"
+  },
+  "he+aWE": {
+    "defaultMessage": "{first} of {totalCount}",
+    "description": "Perpage button with counter. Allowed variables: {first} - perpage current value; {totalCount} - total count rows"
+  },
+  "hhi0zL": {
+    "defaultMessage": "Legal entity"
+  },
+  "hqStmc": {
+    "defaultMessage": "Allowed categories"
+  },
+  "hrgo+E": {
+    "defaultMessage": "Archive"
+  },
+  "i5y3/g": {
+    "defaultMessage": "Unprocessed"
+  },
+  "iApnyO": {
+    "defaultMessage": "Car not created"
+  },
+  "iFsDVR": {
+    "defaultMessage": "Loading"
+  },
+  "iGtC5H": {
+    "defaultMessage": "Date should not be before minimal date"
+  },
+  "iIFCw8": {
+    "defaultMessage": "Reorganizing"
+  },
+  "iPU3HJ": {
+    "defaultMessage": "Vinyl"
+  },
+  "iQJon2": {
+    "defaultMessage": "Edit car"
+  },
+  "iXZbDx": {
+    "defaultMessage": "HTML document"
+  },
+  "iYc3Ld": {
+    "defaultMessage": "Payments"
+  },
+  "iYtMiZ": {
+    "defaultMessage": "Car with trailer"
+  },
+  "idFx5Z": {
+    "defaultMessage": "English US"
+  },
+  "iuVsAH": {
+    "defaultMessage": "Search by car name"
+  },
+  "j+zP0m": {
+    "defaultMessage": "Drivers"
+  },
+  "jBDbt/": {
+    "defaultMessage": "Enter your city"
+  },
+  "jK2xlJ": {
+    "defaultMessage": "Minivan - 10"
+  },
+  "jN7WCE": {
+    "defaultMessage": "Common data of company"
+  },
+  "jbuOT0": {
+    "defaultMessage": "SNILS"
+  },
+  "jcfqbd": {
+    "defaultMessage": "User not updated"
+  },
+  "jdJhOL": {
+    "defaultMessage": "Phone number"
+  },
+  "jid2uv": {
+    "defaultMessage": "Companies map"
+  },
+  "jm/spn": {
+    "defaultMessage": "Reset"
+  },
+  "js3+bo": {
+    "defaultMessage": "Export selected ({count}) records to MS Excel"
+  },
+  "jtAB6H": {
+    "defaultMessage": "Sort by created At"
+  },
+  "k++mGb": {
+    "defaultMessage": "Car inside color"
+  },
+  "k/QJZB": {
+    "defaultMessage": "Companies which linked with this company"
+  },
+  "k2tJ9k": {
+    "defaultMessage": "Blue"
+  },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
+  "kAxBTM": {
+    "defaultMessage": "Drivers export"
+  },
+  "kBJUtE": {
+    "defaultMessage": "Video"
+  },
+  "kDgmRn": {
+    "defaultMessage": "Routes info",
+    "description": "Transfers edit form. Routes section. Card header"
+  },
+  "kStnRi": {
+    "defaultMessage": "Driver payment account data"
+  },
+  "kTt/ND": {
+    "defaultMessage": "Russian"
+  },
+  "kn5XV8": {
+    "defaultMessage": "Copy inro clipboard"
+  },
+  "krNDaM": {
+    "defaultMessage": "Type to search company"
+  },
+  "kx2OxD": {
+    "defaultMessage": "Add legal entity"
+  },
+  "kyCLGJ": {
+    "defaultMessage": "Registration date"
+  },
+  "kzesFT": {
+    "defaultMessage": "Company phones are empty"
+  },
+  "l95VkX": {
+    "defaultMessage": "Parent companies are empty"
+  },
+  "lCq+Uo": {
+    "defaultMessage": "Is default"
+  },
+  "lGB133": {
+    "defaultMessage": "Text tablet"
+  },
+  "lH3se4": {
+    "defaultMessage": "Car production year"
+  },
+  "lKv8ex": {
+    "defaultMessage": "Default"
+  },
+  "lL+/2g": {
+    "defaultMessage": "The number is lower than the '{{#limit}}'"
+  },
+  "leLNGX": {
+    "defaultMessage": "List of services"
+  },
+  "lmsW3p": {
+    "defaultMessage": "Driver password"
+  },
+  "locale.carClass.empty": {
+    "defaultMessage": "Not chosen"
+  },
+  "lp7wqA": {
+    "defaultMessage": "Edit this car"
+  },
+  "m4vqJl": {
+    "defaultMessage": "Files"
+  },
+  "m8vTDd": {
+    "defaultMessage": "Save failed"
+  },
+  "mBQ8Se": {
+    "defaultMessage": "Profile complete"
+  },
+  "mKFwtW": {
+    "defaultMessage": "User email"
+  },
+  "mRhnWf": {
+    "defaultMessage": "Full name of elgal entity"
+  },
+  "mTGTjT": {
+    "defaultMessage": "Price not updated"
+  },
+  "mTa3dE": {
+    "defaultMessage": "number:"
+  },
+  "mZorfv": {
+    "defaultMessage": "Should have a minimum length of '{#limit}'"
+  },
+  "mlbXp+": {
+    "defaultMessage": "Chose drivers cars"
+  },
+  "mlwJwh": {
+    "defaultMessage": "Minivan - 6"
+  },
+  "mt35co": {
+    "defaultMessage": "Legal entity OGRN"
+  },
+  "myq2ZL": {
+    "defaultMessage": "Normal"
+  },
+  "n3m1xt": {
+    "defaultMessage": "Orange"
+  },
+  "n5QvJy": {
+    "defaultMessage": "Start date"
+  },
+  "n96a21": {
+    "defaultMessage": "Common"
+  },
+  "nCE8G1": {
+    "defaultMessage": "Unset driver"
+  },
+  "nPpljr": {
+    "defaultMessage": "US",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "nY0P01": {
+    "defaultMessage": "User created successfully"
+  },
+  "nYVRy2": {
+    "defaultMessage": "Repairing"
+  },
+  "nYdntz": {
+    "defaultMessage": "Edit owner"
+  },
+  "nYjMxc": {
+    "defaultMessage": "Delete selected ({count}) drivers"
+  },
+  "nyjd9i": {
+    "defaultMessage": "Users list"
+  },
+  "o+nfLw": {
+    "defaultMessage": "{name}"
+  },
+  "o7nzDs": {
+    "defaultMessage": "User name"
+  },
+  "oC0EBb": {
+    "defaultMessage": "User phones"
+  },
+  "oG8spO": {
+    "defaultMessage": "The number was positive"
+  },
+  "oLVyck": {
+    "defaultMessage": "Combined"
+  },
+  "oNUY7x": {
+    "defaultMessage": "Location city"
+  },
+  "oUHKlN": {
+    "defaultMessage": "Price entity"
+  },
+  "oWc8vJ": {
+    "defaultMessage": "Silver"
+  },
+  "oWmtNX": {
+    "defaultMessage": "Are you sure to want to delete selected cars?"
+  },
+  "omUSVw": {
+    "defaultMessage": "InPlace"
+  },
+  "otwc0T": {
+    "defaultMessage": "The string isnt all upper-cased"
+  },
+  "ovJ26C": {
+    "defaultMessage": "Medium"
+  },
+  "oy5I/l": {
+    "defaultMessage": "Drivers data of a car"
+  },
+  "p5LNtB": {
+    "defaultMessage": "Not set"
+  },
+  "p9P2Nk": {
+    "defaultMessage": "Cars list"
+  },
+  "pC0eaU": {
+    "defaultMessage": "Unselect all at this page"
+  },
+  "pOPQ1M": {
+    "defaultMessage": "Car company"
+  },
+  "pcOmaJ": {
+    "defaultMessage": "Does not have a phone number"
+  },
+  "pzX3DP": {
+    "defaultMessage": "Bank list"
+  },
+  "q1wIOs": {
+    "defaultMessage": "Delete selected ({count}) companies"
+  },
+  "q3DXGy": {
+    "defaultMessage": "Driver created successfully"
+  },
+  "q5aQ5I": {
+    "defaultMessage": "Sort by creation date"
+  },
+  "qBST+n": {
+    "defaultMessage": "Card number"
+  },
+  "qBePk/": {
+    "defaultMessage": "Payment info"
+  },
+  "qJ683f": {
+    "defaultMessage": "License: {number}"
+  },
+  "qJcduu": {
+    "defaultMessage": "Add account"
+  },
+  "qMePPG": {
+    "defaultMessage": "Note"
+  },
+  "qRyYsv": {
+    "defaultMessage": "Logistics"
+  },
+  "qUJTsT": {
+    "defaultMessage": "Blocked"
+  },
+  "qWhiRA": {
+    "defaultMessage": "INN {inn}"
+  },
+  "qXWlJZ": {
+    "defaultMessage": "MS Word document"
+  },
+  "qYNKnP": {
+    "defaultMessage": "The string isnt all lower-cased"
+  },
+  "qj71j1": {
+    "defaultMessage": "Query"
+  },
+  "qr3D6K": {
+    "defaultMessage": "Driver updated successfully"
+  },
+  "quA1FY": {
+    "defaultMessage": "License number"
+  },
+  "qv7ied": {
+    "defaultMessage": "Registration"
+  },
+  "qyss6j": {
+    "defaultMessage": "NotSet"
+  },
+  "r5I7iQ": {
+    "defaultMessage": "Company legal entities are empty"
+  },
+  "r6zf4H": {
+    "defaultMessage": "Remove account"
+  },
+  "rELDbB": {
+    "defaultMessage": "Refresh"
+  },
+  "rTLrNM": {
+    "defaultMessage": "Production year"
+  },
+  "rbrahO": {
+    "defaultMessage": "Close"
+  },
+  "rdi6JX": {
+    "defaultMessage": "INN"
+  },
+  "rqKQiy": {
+    "defaultMessage": "Go to the next car of this page"
+  },
+  "rvirM2": {
+    "defaultMessage": "Location"
+  },
+  "s8s39T": {
+    "defaultMessage": "Edit user"
+  },
+  "sEB4CD": {
+    "defaultMessage": "Edit company"
+  },
+  "sKrPGD": {
+    "defaultMessage": "Brand Model"
+  },
+  "sQmnUu": {
+    "defaultMessage": "Manager comment"
+  },
+  "sSz3gm": {
+    "defaultMessage": "Type account name here"
+  },
+  "sYGMhe": {
+    "defaultMessage": "Sick"
+  },
+  "sZFybj": {
+    "defaultMessage": "Services"
+  },
+  "sZPcEF": {
+    "defaultMessage": "(primary)"
+  },
+  "sjMf3I": {
+    "defaultMessage": "Child companies title"
+  },
+  "spPxbr": {
+    "defaultMessage": "Leather"
+  },
+  "sq7asH": {
+    "defaultMessage": "Crop your image"
+  },
+  "svfsbS": {
+    "defaultMessage": "AM",
+    "description": "Phone input. Country label (iso2)"
+  },
+  "sy72aD": {
+    "defaultMessage": "Edit price"
+  },
+  "t+3/Tz": {
+    "defaultMessage": "Invalid date"
+  },
+  "t2Wr8I": {
+    "defaultMessage": "Primary"
+  },
+  "t4TDNv": {
+    "defaultMessage": "Something went wrong. Try again later"
+  },
+  "t7EJv8": {
+    "defaultMessage": "Cant submit. Your data has errors"
+  },
+  "tB3Mvt": {
+    "defaultMessage": "Transfer to airport"
+  },
+  "tESRqb": {
+    "defaultMessage": "PDF document"
+  },
+  "tOdNiY": {
+    "defaultMessage": "Dark"
+  },
+  "tOf/Ev": {
+    "defaultMessage": "Car not updated"
+  },
+  "tWwGWI": {
+    "defaultMessage": "Set Locale"
+  },
+  "tihmF3": {
+    "defaultMessage": "Purple"
+  },
+  "tmmKme": {
+    "defaultMessage": "Rent"
+  },
+  "tq9xt/": {
+    "defaultMessage": "Transfer train station"
+  },
+  "trObFh": {
+    "defaultMessage": "Type driver name here"
+  },
+  "tuh9w0": {
+    "defaultMessage": "Rental time"
+  },
+  "tzMNF3": {
+    "defaultMessage": "Status"
+  },
+  "u6Cqgp": {
+    "defaultMessage": "Representative"
+  },
+  "uPYeEq": {
+    "defaultMessage": "Driver price"
+  },
+  "uUkJHF": {
+    "defaultMessage": "You can select more than one categories"
+  },
+  "uWbg32": {
+    "defaultMessage": "Transfer № {number}",
+    "description": "Transfer modal badge. Header"
+  },
+  "unCXNr": {
+    "defaultMessage": "Account korresponding number"
+  },
+  "uq7PRa": {
+    "defaultMessage": "Prices list are empty"
+  },
+  "uww/vz": {
+    "defaultMessage": "Transfer number was copied into clipboard"
+  },
+  "v6kj2A": {
+    "defaultMessage": "Director name initials in Genitive case. For example: Ivanova B. O."
+  },
+  "vA8vVM": {
+    "defaultMessage": "Allowed roles"
+  },
+  "vGbQ5l": {
+    "defaultMessage": "The date is over or equal to the '{{#limit}}'"
+  },
+  "vH8Ez9": {
+    "defaultMessage": "{country}, {city}"
+  },
+  "vX3cMB": {
+    "defaultMessage": "List of accounts"
+  },
+  "vcyh8A": {
+    "defaultMessage": "Search by Company inn"
+  },
+  "w1Fanr": {
+    "defaultMessage": "Business"
+  },
+  "wSZR47": {
+    "defaultMessage": "Submit"
+  },
+  "wiJea3": {
+    "defaultMessage": "Additional data of a car"
+  },
+  "wiVOJw": {
+    "defaultMessage": "Company phones"
+  },
+  "wittYy": {
+    "defaultMessage": "Created At"
+  },
+  "wjkWsw": {
+    "defaultMessage": "Default cancel hours"
+  },
+  "xJqCFV": {
+    "defaultMessage": "Price entity not selected"
+  },
+  "xZ9oii": {
+    "defaultMessage": "name:"
+  },
+  "xpLS2v": {
+    "defaultMessage": "Results are empty"
+  },
+  "xyBLU/": {
+    "defaultMessage": "Download profile"
+  },
+  "yANFQ3": {
+    "defaultMessage": "Company not updated"
+  },
+  "yXU4EU": {
+    "defaultMessage": "Minivan - 14"
+  },
+  "yZJxVS": {
+    "defaultMessage": "Developer"
+  },
+  "yk4PT9": {
+    "defaultMessage": "Full name"
+  },
+  "yngd9x": {
+    "defaultMessage": "Birthday"
+  },
+  "yo2itc": {
+    "defaultMessage": "Price updated successfully"
+  },
+  "yqefuN": {
+    "defaultMessage": "Minivan - 8"
+  },
+  "yv+Y3U": {
+    "defaultMessage": "Entities list"
+  },
+  "yvwKeS": {
+    "defaultMessage": "Add phone"
+  },
+  "ywiC8K": {
+    "defaultMessage": "Please try again later or contact your system administrator"
+  },
+  "z0Ax/2": {
+    "defaultMessage": "List of companies"
+  },
+  "z369g1": {
+    "defaultMessage": "Grey"
+  },
+  "z49xTw": {
+    "defaultMessage": "Transfer city"
+  },
+  "zFRAht": {
+    "defaultMessage": "Search by number of the SNILS"
+  },
+  "zINlao": {
+    "defaultMessage": "Owner"
+  },
+  "zKvURH": {
+    "defaultMessage": "All Drivers"
+  },
+  "zLOXpv": {
+    "defaultMessage": "Select one or more suggestion and type a query after them"
+  },
+  "zRAo8b": {
+    "defaultMessage": "Actions of selected records"
+  },
+  "zg0hCN": {
+    "defaultMessage": "Search by number of INN"
+  },
+  "zvO43R": {
+    "defaultMessage": "Allowed"
+  },
+  "zzoVtw": {
+    "defaultMessage": "Submit form"
+  }
+}
