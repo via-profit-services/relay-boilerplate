@@ -9,7 +9,7 @@ const createReducer = (initialState: ReduxState) => {
           ...state,
           theme: action.payload,
         };
-        Cookies.set('@Theme', newState.theme);
+        Cookies.set('theme', newState.theme);
 
         return newState;
       }
@@ -18,7 +18,7 @@ const createReducer = (initialState: ReduxState) => {
           ...state,
           locale: action.payload,
         };
-        Cookies.set('@locale', newState.locale);
+        Cookies.set('locale', newState.locale);
 
         return newState;
       }

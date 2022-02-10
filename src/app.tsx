@@ -1,17 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
+import loadable, { loadableReady } from '@loadable/component';
+import Cookies from 'js-cookie';
 
 import type { ServerToClientTransfer } from 'common';
-import App from '~/containers/App';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
 import environmentFactory from '~/environment';
 
+const App = loadable(() => import('~/containers/App/index'));
+
 const bootstrap = async () => {
-  let reduxState = { ...reduxDefaultState };
+  const reduxState: ReduxState = { ...reduxDefaultState };
   let environmentVariables = {
     GRAPHQL_ENDPOINT: '',
     SUBSCRIPTION_ENDPOINT: '',
@@ -30,30 +33,21 @@ const bootstrap = async () => {
         ...preloadedStates.ENVIRONMENT,
       };
 
-      reduxState = {
-        ...reduxState,
-        ...preloadedStates.REDUX,
-      };
+      const isValidThemeName = (value: any): value is ThemeVariants =>
+        ['standardLight', 'standardDark'].includes(value);
+      const isValidLocaleName = (value: any): value is LocaleVariants =>
+        ['ru', 'en'].includes(value);
+      const theme = Cookies.get('theme');
+      const locale = Cookies.get('locale');
+
+      reduxState.theme = isValidThemeName(theme) ? theme : reduxState.theme;
+      reduxState.locale = isValidLocaleName(locale) ? locale : reduxState.locale;
     } catch (err) {
       console.error('Failed to parse environment data', err);
     }
   }
 
-  // merge local storage data
-  if (typeof window !== 'undefined') {
-    try {
-      const localDefaultState = JSON.parse(localStorage.getItem('@ReduxState') || '');
-      reduxState = {
-        ...reduxState,
-        ...localDefaultState,
-      };
-    } catch (err) {
-      // do nothing
-    }
-  }
-
   const { GRAPHQL_ENDPOINT, SUBSCRIPTION_ENDPOINT } = environmentVariables;
-
   const reduxStore = createReduxStore(reduxState);
   const rootElement = document.getElementById('app');
   const environment = environmentFactory({
@@ -70,7 +64,15 @@ const bootstrap = async () => {
     </BrowserRouter>
   );
 
-  ReactDOM.render(AppData, rootElement);
+  await loadableReady();
+
+  if (process.env.NODE_ENV === 'development') {
+    ReactDOM.render(AppData, rootElement);
+  }
+
+  if (process.env.NODE_ENV !== 'development') {
+    ReactDOM.hydrate(AppData, rootElement);
+  }
 };
 
 bootstrap();

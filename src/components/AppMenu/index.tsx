@@ -2,11 +2,13 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import ThemeSwitcherButton from './ThemeSwitcherButton';
+import LocaleSwitcherButton from './LocaleSwitcherButton';
+
 const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  background-color: #dbdbdb;
 `;
 
 const StyledLink = styled(Link)`
@@ -18,6 +20,9 @@ const AppMenu: React.FC = () => (
     <StyledLink to="/dashboard">Dashboard</StyledLink>
     <StyledLink to="/deals">Deals</StyledLink>
     <StyledLink to="/users">Users</StyledLink>
+
+    <ThemeSwitcherButton />
+    <LocaleSwitcherButton />
   </Container>
 );
 

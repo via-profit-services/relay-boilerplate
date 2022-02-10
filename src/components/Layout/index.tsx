@@ -7,6 +7,8 @@ import AppMenu from '~/components/AppMenu';
 const Container = styled.div`
   display: flex;
   flex-flow: column;
+  background-color: ${({ theme }) => theme.colors.defaultBackground};
+  color: ${({ theme }) => theme.colors.defaultText};
 `;
 
 const Content = styled.div`

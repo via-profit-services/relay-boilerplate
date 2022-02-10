@@ -4,7 +4,7 @@ export {};
 
 declare global {
   export type ThemeVariants = 'standardLight' | 'standardDark';
-  export type LocaleVariants = 'ru';
+  export type LocaleVariants = 'ru' | 'en';
 
   export type ReduxState = {
     theme: ThemeVariants;

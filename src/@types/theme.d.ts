@@ -9,5 +9,9 @@ declare module 'styled-components' {
       modal: number;
       terms: number;
     };
+    colors: {
+      defaultBackground: string;
+      defaultText: string;
+    };
   }
 }

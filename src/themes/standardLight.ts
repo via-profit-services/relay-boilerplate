@@ -8,6 +8,10 @@ const standardLight: DefaultTheme = {
     modal: 10,
     terms: 20,
   },
+  colors: {
+    defaultBackground: '#f1f1f1',
+    defaultText: '#212121',
+  },
 };
 
 export default standardLight;

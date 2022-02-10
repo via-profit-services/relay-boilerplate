@@ -1,23 +1,24 @@
-import path from 'path';
+import path from 'node:path';
 import { Configuration, DefinePlugin } from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 import packageInfo from '../package.json';
-
-const srcDir = path.resolve(__dirname, '../src');
-const assetsDir = path.resolve(__dirname, '../assets');
 
 const webpackBaseConfig: Configuration = {
   target: 'web',
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|js|jsx)$/,
-        include: srcDir,
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              plugins: process.env.NODE_ENV === 'development' ? ['react-refresh/babel'] : [],
+              plugins: [process.env.NODE_ENV === 'development' && 'react-refresh/babel'].filter(
+                Boolean,
+              ),
             },
           },
           'shebang-loader',
@@ -25,44 +26,49 @@ const webpackBaseConfig: Configuration = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'fonts/[name].[contenthash].[ext]',
+              name: 'public/fonts/[contenthash].[ext]',
             },
           },
         ],
       },
       {
-        test: /\.svg$/,
-        include: [srcDir, assetsDir],
+        test: /\.(svg|gif)$/,
+        exclude: /node_modules/,
         use: [
           {
-            loader: 'svg-url-loader',
+            loader: 'file-loader',
             options: {
-              // Inline files smaller than 10 kB
-              limit: 10 * 1024,
-              noquotes: true,
-              name: 'svg/[name].[contenthash].[ext]',
+              name: 'public/images/[contenthash].[ext]',
             },
           },
         ],
       },
       {
-        test: /\.(jpg|png|gif)$/,
-        include: [srcDir, assetsDir],
+        test: /\.(png|jpg|jpeg|webp)$/,
+        exclude: /node_modules/,
         use: [
           {
-            loader: 'url-loader',
+            loader: ImageMinimizerPlugin.loader,
             options: {
-              // Inline files smaller than 10 kB
-              limit: 10 * 1024,
-              name: 'images/assets/[name].[contenthash].[ext]',
+              minimizer: {
+                implementation: ImageMinimizerPlugin.imageminMinify,
+                options: {
+                  plugins: [
+                    ['imagemin-webp', { quality: 25 }],
+                    ['imagemin-mozjpeg', { quality: 25 }],
+                    ['imagemin-pngquant', { quality: [0.6, 0.8] }],
+                  ],
+                },
+              },
             },
           },
         ],
@@ -70,30 +76,18 @@ const webpackBaseConfig: Configuration = {
       {
         test: /\.html$/,
         use: 'html-loader',
-        include: [srcDir, assetsDir],
+        exclude: /node_modules/,
       },
       {
         test: /\.(mp4|webm)$/,
-        include: [srcDir, assetsDir],
+        exclude: /node_modules/,
         use: {
           loader: 'url-loader',
           options: {
-            limit: 10000,
-            name: 'video/[name].[contenthash].[ext]',
+            limit: 0,
+            name: 'public/video/[contenthash].[ext]',
           },
         },
-      },
-      {
-        test: /\.md$/,
-        include: [srcDir, assetsDir],
-        use: [
-          {
-            loader: 'raw-loader',
-            options: {
-              name: 'markdown/[name].[chunkhash].[ext]',
-            },
-          },
-        ],
       },
     ],
   },
@@ -106,8 +100,9 @@ const webpackBaseConfig: Configuration = {
       'process.env.WEBPACK_INJECT_APP_VERSION': JSON.stringify(packageInfo.version),
     }),
   ],
+
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
     mainFields: ['browser', 'jsnext:main', 'main'],
     alias: {
       '~': path.resolve(__dirname, '..', 'src'),
