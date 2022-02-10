@@ -82,7 +82,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
 
   sheet.seal();
 
-  const templateFilename = path.resolve(__dirname, './server/templates/index.mustache');
+  const templateFilename = path.resolve(__dirname, './server/index.mustache');
   const templateContent = fs.readFileSync(templateFilename, {
     encoding: 'utf8',
   });

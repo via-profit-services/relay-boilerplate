@@ -3,14 +3,10 @@ A GraphQL `FileUpload` scalar as specified GraphQL multipart request specificati
 """
 scalar FileUpload
 
-"""
-Analogue of Date object
-"""
+"""Analogue of Date object"""
 scalar Date
 
-"""
-Analogue of Date object
-"""
+"""Analogue of Date object"""
 scalar DateTime
 
 """
@@ -21,14 +17,10 @@ scalar EmailAddress
 "Money type.\nThe value is stored in the smallest monetary unit (kopecks, cents, etc.)\nReal type - Int\ne.g. For 250 USD this record returns value as 250000 (250$ * 100¢)\n"
 scalar Money
 
-"""
-Time string
-"""
+"""Time string"""
 scalar Time
 
-"""
-Represents NULL values
-"""
+"""Represents NULL values"""
 scalar Void
 
 """
@@ -71,33 +63,23 @@ input BetweenTime {
   end: Time!
 }
 
-"""
-GraphQL Connection spec. interface
-"""
+"""GraphQL Connection spec. interface"""
 interface Connection {
   totalCount: Int!
   pageInfo: PageInfo!
   edges: [Edge]!
 }
 
-"""
-Standart ordering options
-"""
+"""Standart ordering options"""
 enum OrderDirection {
-  """
-  Sort the query results in a top to bottom style (e.g.: A->Z)
-  """
+  """Sort the query results in a top to bottom style (e.g.: A->Z)"""
   ASC
 
-  """
-  Sort the query results in a bottom to top style (e.g.: Z->A)
-  """
+  """Sort the query results in a bottom to top style (e.g.: Z->A)"""
   DESC
 }
 
-"""
-Information about pagination in a connection.
-"""
+"""Information about pagination in a connection."""
 type PageInfo {
   hasPreviousPage: Boolean!
   hasNextPage: Boolean!
@@ -105,29 +87,21 @@ type PageInfo {
   endCursor: String
 }
 
-"""
-GraphQL Edge spec. interface
-"""
+"""GraphQL Edge spec. interface"""
 interface Edge {
   node: Node!
   cursor: String!
 }
 
 interface Error {
-  """
-  Error name. Can be short error message
-  """
+  """Error name. Can be short error message"""
   name: String!
 
-  """
-  Error detail message string
-  """
+  """Error detail message string"""
   msg: String!
 }
 
-"""
-GraphQL Node spec. interface
-"""
+"""GraphQL Node spec. interface"""
 interface Node {
   id: ID!
 }
@@ -142,13 +116,9 @@ type Query {
 }
 
 type AuthentificationQuery {
-  """
-  Verify your Access token
-  """
+  """Verify your Access token"""
   verifyToken(
-    """
-    Access token
-    """
+    """Access token"""
     accessToken: String!
   ): TokenVerificationResponse!
 }
@@ -159,9 +129,7 @@ type TokenVerificationSuccess {
   payload: AccessTokenPayload!
 }
 
-"""
-Access token payload
-"""
+"""Access token payload"""
 type AccessTokenPayload {
   id: ID!
   uuid: ID!
@@ -172,14 +140,10 @@ type AccessTokenPayload {
 }
 
 enum TokenType {
-  """
-  Access token type
-  """
+  """Access token type"""
   ACCESS
 
-  """
-  Refresh token type
-  """
+  """Refresh token type"""
   REFRESH
 }
 
@@ -190,15 +154,7 @@ type TokenVerificationError implements Error {
 
 type ClientsQuery {
   client(id: ID!): Client
-  list(
-    first: Int
-    last: Int
-    after: String
-    before: String
-    orderBy: [ClientsOrderBy!]
-    search: [ClientsFilterSearch!]
-    filter: ClientsFilter
-  ): ClientsConnection!
+  list(first: Int, last: Int, after: String, before: String, orderBy: [ClientsOrderBy!], search: [ClientsFilterSearch!], filter: ClientsFilter): ClientsConnection!
 }
 
 type Client implements Node {
@@ -262,15 +218,7 @@ input ClientsFilter {
 
 type DealsQuery {
   deal(id: ID!): Deal
-  list(
-    first: Int
-    last: Int
-    after: String
-    before: String
-    orderBy: [DealsOrderBy!]
-    search: [DealsFilterSearch!]
-    filter: DealsFilter
-  ): DealsConnection!
+  list(first: Int, last: Int, after: String, before: String, orderBy: [DealsOrderBy!], search: [DealsFilterSearch!], filter: DealsFilter): DealsConnection!
 }
 
 type Deal implements Node {
@@ -310,15 +258,7 @@ type Funnel implements Node {
   updatedAt: DateTime!
   label: String!
   comment: String
-  steps(
-    first: Int
-    last: Int
-    after: String
-    before: String
-    filter: FunnelStepsFilter
-    search: [FunnelStepsFilterSearch!]
-    orderBy: [FunnelStepsOrderBy!]
-  ): FunnelStepsConnection!
+  steps(first: Int, last: Int, after: String, before: String, filter: FunnelStepsFilter, search: [FunnelStepsFilterSearch!], orderBy: [FunnelStepsOrderBy!]): FunnelStepsConnection!
   deals(first: Int, last: Int, after: String, before: String): DealsConnection!
 }
 
@@ -393,15 +333,7 @@ input DealsFilter {
 
 type FunnelsQuery {
   funnel(id: ID!): Funnel
-  list(
-    first: Int
-    last: Int
-    after: String
-    before: String
-    orderBy: [FunnelsOrderBy!]
-    search: [FunnelsFilterSearch!]
-    filter: FunnelsFilter
-  ): FunnelsConnection!
+  list(first: Int, last: Int, after: String, before: String, orderBy: [FunnelsOrderBy!], search: [FunnelsFilterSearch!], filter: FunnelsFilter): FunnelsConnection!
 }
 
 type FunnelsConnection implements Connection {
@@ -473,14 +405,10 @@ type Mutation {
 }
 
 type AuthentificationMutation {
-  """
-  Create «Access» and «Refresh» tokens pair
-  """
+  """Create «Access» and «Refresh» tokens pair"""
   create(login: String!, password: String!): TokenRegistrationResponse!
 
-  """
-  Exchange a «Refresh» token to new «Access» and «Refresh» tokens pair
-  """
+  """Exchange a «Refresh» token to new «Access» and «Refresh» tokens pair"""
   refresh(refreshToken: String!): TokenRegistrationResponse!
   revoke(tokenID: ID!): Void
 }
@@ -492,33 +420,25 @@ type TokenRegistrationSuccess {
   query: Query!
 }
 
-"""
-Tokens pair (Access and Refresh)
-"""
+"""Tokens pair (Access and Refresh)"""
 type TokenBag {
   accessToken: AccessToken!
   refreshToken: RefreshToken!
 }
 
-"""
-Access token package
-"""
+"""Access token package"""
 type AccessToken {
   token: String!
   payload: AccessTokenPayload!
 }
 
-"""
-Refresh token package
-"""
+"""Refresh token package"""
 type RefreshToken {
   token: String!
   payload: RefreshTokenPayload!
 }
 
-"""
-Refresh token payload
-"""
+"""Refresh token payload"""
 type RefreshTokenPayload {
   id: ID!
   uuid: ID!

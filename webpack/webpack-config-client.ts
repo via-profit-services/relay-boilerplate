@@ -78,7 +78,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
           new ReactRefreshWebpackPlugin(),
           new HtmlWebpackPlugin({
             templateContent: Mustache.render(
-              fs.readFileSync(path.resolve(__dirname, '../assets/templates/index.mustache'), {
+              fs.readFileSync(path.resolve(__dirname, '../assets/index.mustache'), {
                 encoding: 'utf8',
               }),
               {},
@@ -91,11 +91,10 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
         [
           new HtmlWebpackPlugin({
             excludeChunks: ['app'], // exclude main entypoint
-            templateContent: fs.readFileSync(
-              path.resolve(__dirname, '../assets/templates/index.mustache'),
-              { encoding: 'utf8' },
-            ),
-            filename: path.resolve(__dirname, '../dist/server/templates/index.mustache'),
+            templateContent: fs.readFileSync(path.resolve(__dirname, '../assets/index.mustache'), {
+              encoding: 'utf8',
+            }),
+            filename: path.resolve(__dirname, '../dist/server/index.mustache'),
             minify: {
               caseSensitive: true,
               collapseWhitespace: true,
