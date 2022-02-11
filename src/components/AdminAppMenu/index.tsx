@@ -9,21 +9,28 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  background: #1a0202;
+  padding: 20px;
+  box-shadow: 0 2px 13px #00000040;
+  position: sticky;
+  top: 0;
 `;
 
 const StyledLink = styled(Link)`
   padding: 4px 2px;
+  color: #fff;
 `;
 
-const AppMenu: React.FC = () => (
+const AdminAppMenu: React.FC = () => (
   <Container>
-    <StyledLink to="/dashboard">Dashboard</StyledLink>
-    <StyledLink to="/deals">Deals</StyledLink>
-    <StyledLink to="/users">Users</StyledLink>
+    <StyledLink to="/">Home page</StyledLink>
+    <StyledLink to="/admin/dashboard">Dashboard</StyledLink>
+    <StyledLink to="/admin/deals">Deals</StyledLink>
+    <StyledLink to="/admin/users">Users</StyledLink>
 
     <ThemeSwitcherButton />
     <LocaleSwitcherButton />
   </Container>
 );
 
-export default AppMenu;
+export default AdminAppMenu;

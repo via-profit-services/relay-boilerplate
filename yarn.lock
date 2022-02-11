@@ -1358,7 +1358,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.17.2
   resolution: "@babel/runtime@npm:7.17.2"
   dependencies:
@@ -2040,13 +2040,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/history@npm:^4.7.11":
-  version: 4.7.11
-  resolution: "@types/history@npm:4.7.11"
-  checksum: c92e2ba407dcab0581a9afdf98f533aa41b61a71133420a6d92b1ca9839f741ab1f9395b17454ba5b88cb86020b70b22d74a1950ccfbdfd9beeaa5459fdc3464
-  languageName: node
-  linkType: hard
-
 "@types/hoist-non-react-statics@npm:*, @types/hoist-non-react-statics@npm:^3.3.0, @types/hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.1
   resolution: "@types/hoist-non-react-statics@npm:3.3.1"
@@ -2264,27 +2257,6 @@ __metadata:
     "@types/react": "*"
     "@types/relay-runtime": "*"
   checksum: c607c64d647212de1175e5e0630cfa4bb14a6bfe4393551bd34b521cf2ce7adce1bf38c9cac5191af5937074ee39f384f12e405bc3a0712237b5e9d5172f61c1
-  languageName: node
-  linkType: hard
-
-"@types/react-router-dom@npm:^5.3.3":
-  version: 5.3.3
-  resolution: "@types/react-router-dom@npm:5.3.3"
-  dependencies:
-    "@types/history": ^4.7.11
-    "@types/react": "*"
-    "@types/react-router": "*"
-  checksum: 28c4ea48909803c414bf5a08502acbb8ba414669b4b43bb51297c05fe5addc4df0b8fd00e0a9d1e3535ec4073ef38aaafac2c4a2b95b787167d113bc059beff3
-  languageName: node
-  linkType: hard
-
-"@types/react-router@npm:*, @types/react-router@npm:^5.1.18":
-  version: 5.1.18
-  resolution: "@types/react-router@npm:5.1.18"
-  dependencies:
-    "@types/history": ^4.7.11
-    "@types/react": "*"
-  checksum: f08b37ee822f9f9ff904ffd0778fe2bb7c717ed3ee311610382ee024d02a35169bd3301ecde863cac21aae8fdee919501e8ea22bad0260c02c10cfbdba5c71be
   languageName: node
   linkType: hard
 
@@ -6960,10 +6932,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"libphonenumber-js@npm:^1.9.48":
-  version: 1.9.48
-  resolution: "libphonenumber-js@npm:1.9.48"
-  checksum: dcfb10fa2acdde8f8a71e69bc373057b237511dcb8f0aaa012c3d7e4017ee92aba74a73fdc5599220960a41b4c8f7c224d77cd370aa9615e398b8bfd1a20f9a7
+"libphonenumber-js@npm:^1.9.49":
+  version: 1.9.49
+  resolution: "libphonenumber-js@npm:1.9.49"
+  checksum: 5c9ba82e69a985716dea722a28509eef77b4b0f96159ccd50089fa2d0cde8b778c77526d26104ca25ec40b148b7a0a588a998e1014ebedc353ff214b7f7e918f
   languageName: node
   linkType: hard
 
@@ -8634,18 +8606,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"react-router-config@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "react-router-config@npm:5.1.1"
-  dependencies:
-    "@babel/runtime": ^7.1.2
-  peerDependencies:
-    react: ">=15"
-    react-router: ">=5"
-  checksum: bde7ee79444454bf7c3737fd9c5c268021012c8cc37bc19116b2e7daa28c4231598c275816c7f32c16f9f974dc707b91de279291a5e39efce2e1b1569355b87a
-  languageName: node
-  linkType: hard
-
 "react-router-dom@npm:^6.2.1":
   version: 6.2.1
   resolution: "react-router-dom@npm:6.2.1"
@@ -8659,7 +8619,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"react-router@npm:6.2.1, react-router@npm:^6.2.1":
+"react-router@npm:6.2.1":
   version: 6.2.1
   resolution: "react-router@npm:6.2.1"
   dependencies:
@@ -8959,8 +8919,6 @@ fsevents@~2.3.2:
     "@types/react-input-mask": ^3.0.1
     "@types/react-redux": ^7.1.22
     "@types/react-relay": ^13.0.1
-    "@types/react-router": ^5.1.18
-    "@types/react-router-dom": ^5.3.3
     "@types/react-text-mask": ^5.4.11
     "@types/react-window": ^1.8.5
     "@types/react-window-infinite-loader": ^1.0.6
@@ -9009,7 +8967,7 @@ fsevents@~2.3.2:
     image-minimizer-webpack-plugin: ^3.2.3
     js-cookie: ^3.0.1
     jsonwebtoken: ^8.5.1
-    libphonenumber-js: ^1.9.48
+    libphonenumber-js: ^1.9.49
     mdi-react: ^8.2.0
     mini-css-extract-plugin: ^2.5.3
     mustache: ^4.2.0
@@ -9028,8 +8986,6 @@ fsevents@~2.3.2:
     react-redux: ^7.2.6
     react-refresh: ^0.11.0
     react-relay: ^13.1.1
-    react-router: ^6.2.1
-    react-router-config: ^5.1.1
     react-router-dom: ^6.2.1
     react-test-renderer: ^17.0.2
     react-text-mask: ^5.4.3

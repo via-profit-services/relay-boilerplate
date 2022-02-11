@@ -14,8 +14,8 @@ const StyledLink = styled(Link)`
 
 const DealsMenu: React.FC = () => (
   <Container>
-    <StyledLink to="/deals/pipeline">Pipeline</StyledLink>
-    <StyledLink to="/deals/list">List</StyledLink>
+    <StyledLink to="/admin/deals/pipeline">Pipeline</StyledLink>
+    <StyledLink to="/admin/deals/list">List</StyledLink>
   </Container>
 );
 export default DealsMenu;

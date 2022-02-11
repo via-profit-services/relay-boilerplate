@@ -7,14 +7,13 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${({ theme }) => theme.colors.defaultText};
-  color: ${({ theme }) => theme.colors.defaultText};
+  color: #fff;
   background: none;
   outline: none;
 `;
 
 const Icon = styled(SunIcon)`
-  color: ${({ theme }) => theme.colors.defaultText};
+  color: #fff;
   font-size: 1em;
 `;
 

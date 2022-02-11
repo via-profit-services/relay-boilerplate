@@ -113,6 +113,7 @@ type Query {
   funnels: FunnelsQuery!
   me: Me!
   version: String!
+  webpages: WebPagesQuery!
 }
 
 type AuthentificationQuery {
@@ -398,6 +399,104 @@ enum AccountRole {
   DEVELOPER
   ADMINISTRATOR
   VIEWER
+}
+
+type WebPagesQuery {
+  resolvePage(path: String!): WebPage!
+}
+
+type WebPage implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
+  """Page address. Not to be confused with the URL"""
+  path: String!
+
+  """The page name is not shown anywhere except the admin panel"""
+  name: String!
+  meta: WebPageMeta!
+  statusCode: Int!
+  availability: WebPageAvailability!
+  template: WebTemplate!
+}
+
+"""Web page meta data"""
+type WebPageMeta {
+  id: ID!
+
+  """Meta tag <title>...</title>"""
+  title: String!
+
+  """Meta tag <meta name="description" content="...">"""
+  description: String!
+
+  """Meta tag <meta name="keywords" content="...">"""
+  keywords: String! @deprecated(reason: "Google and other search engines no longer consider the keywords meta tag")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  page: WebPage!
+}
+
+"""Page UNAVAILABLE eq 404 error status"""
+enum WebPageAvailability {
+  AVAILABLE
+  UNAVAILABLE
+}
+
+union WebTemplate = WebTemplateHome | WebTemplateFallback | WebTemplateSecond | WebTemplateContact
+
+type WebTemplateHome implements Node {
+  """
+  Is not a real template ID. Template ID - is a concatenated value of template name and page ID
+  """
+  id: ID!
+  h1: String!
+  content: JSON!
+  slider: WebPageSlider!
+  page: WebPage!
+}
+
+type WebPageSlider {
+  slides: [HomePageSliderSlide!]!
+  autoplay: Boolean!
+  delay: Int!
+}
+
+type HomePageSliderSlide {
+  id: ID!
+  image: URL!
+}
+
+type WebTemplateFallback implements Node {
+  """
+  Is not a real template ID. Template ID - is a concatenated value of template name and page ID
+  """
+  id: ID!
+  content: JSON!
+  page: WebPage!
+}
+
+type WebTemplateSecond implements Node {
+  h1: String!
+  content: JSON!
+
+  """
+  Is not a real template ID. Template ID - is a concatenated value of template name and page ID
+  """
+  id: ID!
+  page: WebPage!
+}
+
+type WebTemplateContact implements Node {
+  h1: String!
+  address: String!
+
+  """
+  Is not a real template ID. Template ID - is a concatenated value of template name and page ID
+  """
+  id: ID!
+  page: WebPage!
 }
 
 type Mutation {
