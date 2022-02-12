@@ -119,7 +119,12 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
             },
           }),
           new CompressionPlugin({
+            filename: '[path][base].br',
+            algorithm: 'brotliCompress',
             exclude: [/\.mustache$/, /loadable-stats\.json$/],
+            threshold: 10240,
+            minRatio: 0.8,
+            deleteOriginalAssets: false,
           }),
         ]),
   ],

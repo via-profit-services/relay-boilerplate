@@ -101,9 +101,9 @@ server.on('request', async (req, res) => {
       res.statusCode = 200;
 
       switch (true) {
-        case acceptEncoding.includes('gzip') && fs.existsSync(filename + '.gz'):
-          res.setHeader('content-encoding', 'gzip');
-          fs.createReadStream(filename + '.gz').pipe(res);
+        case acceptEncoding.includes('br') && fs.existsSync(filename + '.br'):
+          res.setHeader('content-encoding', 'br');
+          fs.createReadStream(filename + '.br').pipe(res);
 
           return;
 
@@ -157,9 +157,9 @@ server.on('request', async (req, res) => {
       res.setHeader('content-type', 'text/html');
 
       switch (true) {
-        case acceptEncoding.includes('gzip'):
-          res.setHeader('content-encoding', 'gzip');
-          stream.pipe(zlib.createGzip()).pipe(res);
+        case acceptEncoding.includes('br'):
+          res.setHeader('content-encoding', 'br');
+          stream.pipe(zlib.createBrotliCompress()).pipe(res);
 
           return;
 
