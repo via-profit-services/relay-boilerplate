@@ -96,7 +96,8 @@ server.on('request', async (req, res) => {
         data.includes(ext),
       )?.[0];
 
-      res.setHeader('Content-Type', mimeType || 'plain/text');
+      res.setHeader('content-type', mimeType || 'plain/text');
+      res.setHeader('cache-control', 'max-age=86400'); // 1 day
       res.statusCode = 200;
 
       switch (true) {
@@ -138,7 +139,7 @@ server.on('request', async (req, res) => {
    */
   if (method === 'GET' && String(url).match(/^robots\.txt$/)) {
     res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader('content-type', 'text/plain');
     res.write('User-agent: *\nDisallow: /\n');
     res.end();
 
@@ -153,7 +154,7 @@ server.on('request', async (req, res) => {
     try {
       const { stream, statusCode } = await renderHTML({ req, res, ...appConfig });
       res.statusCode = statusCode;
-      res.setHeader('Content-Type', 'text/html');
+      res.setHeader('content-type', 'text/html');
 
       switch (true) {
         case acceptEncoding.includes('gzip'):
