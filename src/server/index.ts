@@ -97,7 +97,7 @@ server.on('request', async (req, res) => {
       )?.[0];
 
       res.setHeader('content-type', mimeType || 'plain/text');
-      res.setHeader('cache-control', 'max-age=86400'); // 1 day
+      res.setHeader('cache-control', `max-age=${86400 * 30}`); // 30 days
       res.statusCode = 200;
 
       switch (true) {
