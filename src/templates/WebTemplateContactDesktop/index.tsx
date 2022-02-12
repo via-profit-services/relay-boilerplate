@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
-import { useSelector } from 'react-redux';
 
 import WebAppMenu from '~/components/WebAppMenu';
 import H1 from '~/components/both/Typography/H1';
@@ -22,6 +21,7 @@ graphql`
     address
     page {
       meta {
+        locale
         title
         description
       }
@@ -50,7 +50,6 @@ const GlobalStyles = createGlobalStyle`
 
 const WebTemplateContactDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
-  const locale = useSelector<ReduxState, ReduxSelectedLocale>(state => state.locale);
   const { h1, address, page } = useFragment<WebTemplateContactDesktopFragment$key>(
     fragment,
     fragmentRef,
@@ -58,7 +57,7 @@ const WebTemplateContactDesktop: React.FC<Props> = props => {
 
   return (
     <>
-      <Helmet htmlAttributes={{ lang: locale }}>
+      <Helmet htmlAttributes={{ lang: page.meta.locale }}>
         <title>{page.meta.title}</title>
         <meta name="description" content={page.meta.description} />
       </Helmet>

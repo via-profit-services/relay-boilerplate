@@ -9,7 +9,7 @@ const Users = loadable(() => import('~/containers/Users/index'));
 const DealsIndex = loadable(() => import('~/containers/Deals/index'));
 const DealsPipeLine = loadable(() => import('~/containers/Deals/Pipeline/index'));
 const DealsList = loadable(() => import('~/containers/Deals/DealsList/index'));
-const TemplateResolver = loadable(() => import('~/containers/TemplateResolver'));
+const WebPage = loadable(() => import('~/containers/WebPage'));
 
 export const RootRouter: React.FC = () => (
   <Routes>
@@ -30,7 +30,7 @@ export const RootRouter: React.FC = () => (
       />
     </Route>
 
-    <Route path="/*" element={<TemplateResolver />} />
+    <Route path="/*" element={<WebPage />} />
   </Routes>
 );
 

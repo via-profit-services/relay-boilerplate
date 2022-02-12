@@ -3,8 +3,9 @@ import dotenv from 'dotenv';
 import http from 'node:http';
 import path from 'node:path';
 import fs from 'node:fs';
+import zlib from 'node:zlib';
 
-import renderHTML from './renderHTML';
+import renderHTML from '~/server/render-html';
 
 const envConfigFilename = path.resolve(process.cwd(), '.env');
 
@@ -40,15 +41,18 @@ const server = http.createServer();
 
 server.on('request', async (req, res) => {
   const { url, method } = req;
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  const acceptEncoding = String(req.headers?.['accept-encoding'] || '')
+    .split(',')
+    .map(value => value.trim());
+  res.setHeader('access-control-allow-origin', '*');
+  res.setHeader('access-control-allow-methods', 'GET, POST, OPTIONS');
   res.setHeader(
-    'Access-Control-Allow-Headers',
+    'access-control-allow-headers',
     'Authorization, Content-Type, Accept, Content-Length',
   );
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('access-control-allow-credentials', 'true');
   res.setHeader(
-    'Content-Security-Policy',
+    'content-security-policy',
     "default-src 'self' 'unsafe-inline' ws: wss: http: https: data: blob:",
   );
 
@@ -87,19 +91,26 @@ server.on('request', async (req, res) => {
     }
 
     if (fileExists && relative && !relative.startsWith('..') && !path.isAbsolute(relative)) {
-      const stat = fs.statSync(filename);
-      const stream = fs.createReadStream(filename);
-
       // get mimetype
       const mimeType = Object.entries(mimeTypes).find(([_mimeType, data]) =>
         data.includes(ext),
       )?.[0];
 
-      res.setHeader('Content-Length', stat.size);
       res.setHeader('Content-Type', mimeType || 'plain/text');
       res.statusCode = 200;
 
-      stream.pipe(res);
+      switch (true) {
+        case acceptEncoding.includes('gzip') && fs.existsSync(filename + '.gz'):
+          res.setHeader('content-encoding', 'gzip');
+          fs.createReadStream(filename + '.gz').pipe(res);
+
+          return;
+
+        default:
+          fs.createReadStream(filename).pipe(res);
+
+          return;
+      }
 
       return;
     }
@@ -140,11 +151,22 @@ server.on('request', async (req, res) => {
    */
   if (method === 'GET') {
     try {
-      const { html, statusCode } = await renderHTML({ req, res, ...appConfig });
+      const { stream, statusCode } = await renderHTML({ req, res, ...appConfig });
       res.statusCode = statusCode;
       res.setHeader('Content-Type', 'text/html');
-      res.write(html);
-      res.end();
+
+      switch (true) {
+        case acceptEncoding.includes('gzip'):
+          res.setHeader('content-encoding', 'gzip');
+          stream.pipe(zlib.createGzip()).pipe(res);
+
+          return;
+
+        default:
+          stream.pipe(res);
+
+          return;
+      }
     } catch (err) {
       console.error(err);
       res.statusCode = 500;

@@ -87,7 +87,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
                  */
                 preloadedStatesBase64: Buffer.from(
                   JSON.stringify({
-                    REDUX: {
+                    RELAY: {
                       graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
                       graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
                     },
@@ -119,7 +119,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
             },
           }),
           new CompressionPlugin({
-            test: /\.(js|css|jpeg|png|svg|html)$/,
+            exclude: [/\.mustache$/, /loadable-stats\.json$/],
           }),
         ]),
   ],

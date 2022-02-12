@@ -12,7 +12,7 @@ const RootRouter = loadable(() => import('~/routes/RootRouter'), {
 
 const App: React.FC = () => (
   <>
-    <Helmet>
+    <Helmet defaultTitle=" ">
       <meta charSet="utf-8" />
     </Helmet>
     <LocaleProvider>

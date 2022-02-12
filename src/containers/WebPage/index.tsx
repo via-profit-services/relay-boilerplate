@@ -7,11 +7,11 @@ import ErrorBoundary from '~/components/both/ErrorBoundary';
 import LoadingIndicator from '~/components/both/LoadingIndicator';
 import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 
-const TemplateRender = loadable(() => import('~/containers/TemplateResolver/TemplateRender'), {
+const TemplateRender = loadable(() => import('~/containers/WebPage/TemplateRender'), {
   fallback: <LoadingIndicator />,
 });
 
-const TemplateResolver: React.FC = () => {
+const WebPage: React.FC = () => {
   const [preloadedQuery, loadQuery] = useQueryLoader<TemplateRenderQuery>(query);
   const { pathname } = useLocation();
 
@@ -40,4 +40,4 @@ const TemplateResolver: React.FC = () => {
   );
 };
 
-export default TemplateResolver;
+export default WebPage;

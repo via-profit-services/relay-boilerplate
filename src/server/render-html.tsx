@@ -1,5 +1,6 @@
 /* eslint-disable import/max-dependencies */
 import path from 'node:path';
+import { Readable } from 'node:stream';
 import fs from 'node:fs';
 import http from 'node:http';
 import Mustache from 'mustache';
@@ -11,9 +12,13 @@ import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import { Provider as ReduxProvider } from 'react-redux';
 import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
+import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import dotenv from 'dotenv';
 
-import environmentFactory from '~/server/environment';
+// import store from '~/server/environment/store';
+// import networkFactory from '~/server/environment/network';
+// import environmentFactory from '~/server/environment';
+import relayFetch from '~/server/relay-fetch';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
 import App from '~/containers/App';
@@ -27,7 +32,7 @@ interface Props {
 }
 
 type RenderHTMLPayload = {
-  html: string;
+  stream: Readable;
   statusCode: number;
 };
 
@@ -36,21 +41,30 @@ dotenv.config();
 const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const { req, graphqlEndpoint, graphqlSubscriptions } = props;
   const { url, headers } = req;
+  const relayNework = Network.create(relayFetch({ graphqlEndpoint, graphqlSubscriptions }));
+  const relayStore = new Store(new RecordSource());
+  const environment = new Environment({
+    network: relayNework,
+    store: relayStore,
+    isServer: true,
+  });
 
-  if (String(url).match(/^\/admin\//)) {
-    return { html: '', statusCode: 403 };
-  }
-
-  const environment = environmentFactory({ graphqlEndpoint, graphqlSubscriptions });
+  let statusCode = 404;
   await fetchQuery<TemplateRenderQuery>(environment, query, {
-    path: url || '/',
+    path: String(url),
   })
     .toPromise()
+    .then(resp => {
+      if (resp) {
+        statusCode = resp?.webpages.resolvePage.statusCode;
+      }
+    })
     .catch(err => {
       console.error(err);
     });
 
   const relayStoreRecords = environment.getStore().getSource().toJSON();
+
   // Parsing cookies
   const cookies: Record<string, any> = {};
   String(headers.cookie)
@@ -69,16 +83,18 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     });
 
   const allowedThemes: ThemeVariants[] = ['standardDark', 'standardLight'];
-  const allowedLocales: LocaleVariants[] = ['ru-RU', 'en-US'];
+  const allowedLocales: LocaleVariants[] = ['ru-RU'];
 
   // Fill the redux store
   const preloadedStates: PreloadedStates = {
-    RELAY: relayStoreRecords,
+    RELAY: {
+      store: relayStoreRecords,
+      graphqlEndpoint,
+      graphqlSubscriptions,
+    },
     REDUX: {
       theme: allowedThemes.includes(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
       locale: allowedLocales.includes(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
-      graphqlEndpoint,
-      graphqlSubscriptions,
     },
   };
   const preloadedStatesBase64 = Buffer.from(JSON.stringify(preloadedStates)).toString('base64');
@@ -133,10 +149,10 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     htmlContent,
   });
 
-  const statusCode = 200;
-  const payload = { html, statusCode };
-
-  return payload;
+  return {
+    stream: Readable.from([html]),
+    statusCode,
+  };
 };
 
 export default renderHTML;

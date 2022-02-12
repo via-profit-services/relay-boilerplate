@@ -1,9 +1,9 @@
 import { URL } from 'node:url';
 import http from 'node:http';
-import { FetchFunction, Network } from 'relay-runtime';
+import { FetchFunction } from 'relay-runtime';
 
 type Props = { graphqlEndpoint: string; graphqlSubscriptions: string };
-type NetworkFactory = (props: Props) => any;
+
 type FetchFunctionFactory = (props: Props) => FetchFunction;
 
 const fetchFunctionFactory: FetchFunctionFactory = props => {
@@ -50,10 +50,4 @@ const fetchFunctionFactory: FetchFunctionFactory = props => {
   return fetchFunction;
 };
 
-const relayNetwork: NetworkFactory = props => {
-  const network = Network.create(fetchFunctionFactory(props));
-
-  return network;
-};
-
-export default relayNetwork;
+export default fetchFunctionFactory;

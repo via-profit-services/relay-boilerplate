@@ -425,6 +425,9 @@ type WebPage implements Node {
 type WebPageMeta {
   id: ID!
 
+  """Web page locale and the HTML attribute <html lang="...">"""
+  locale: String!
+
   """Meta tag <title>...</title>"""
   title: String!
 
@@ -433,8 +436,6 @@ type WebPageMeta {
 
   """Meta tag <meta name="keywords" content="...">"""
   keywords: String! @deprecated(reason: "Google and other search engines no longer consider the keywords meta tag")
-  createdAt: DateTime!
-  updatedAt: DateTime!
   page: WebPage!
 }
 
