@@ -9,16 +9,21 @@ import { renderToString } from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-import dotenv from 'dotenv';
 import { Provider as ReduxProvider } from 'react-redux';
+import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
+import dotenv from 'dotenv';
 
+import environmentFactory from '~/server/environment';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
 import App from '~/containers/App';
+import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 
 interface Props {
-  req: http.IncomingMessage;
-  res: http.ServerResponse;
+  readonly req: http.IncomingMessage;
+  readonly res: http.ServerResponse;
+  readonly graphqlEndpoint: string;
+  readonly graphqlSubscriptions: string;
 }
 
 type RenderHTMLPayload = {
@@ -29,9 +34,23 @@ type RenderHTMLPayload = {
 dotenv.config();
 
 const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
-  const { req } = props;
+  const { req, graphqlEndpoint, graphqlSubscriptions } = props;
   const { url, headers } = req;
 
+  if (String(url).match(/^\/admin\//)) {
+    return { html: '', statusCode: 403 };
+  }
+
+  const environment = environmentFactory({ graphqlEndpoint, graphqlSubscriptions });
+  await fetchQuery<TemplateRenderQuery>(environment, query, {
+    path: url || '/',
+  })
+    .toPromise()
+    .catch(err => {
+      console.error(err);
+    });
+
+  const relayStoreRecords = environment.getStore().getSource().toJSON();
   // Parsing cookies
   const cookies: Record<string, any> = {};
   String(headers.cookie)
@@ -50,17 +69,20 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     });
 
   const allowedThemes: ThemeVariants[] = ['standardDark', 'standardLight'];
-  const allowedLocales: LocaleVariants[] = ['ru', 'en'];
+  const allowedLocales: LocaleVariants[] = ['ru-RU', 'en-US'];
 
   // Fill the redux store
-  const reduxState: ReduxState = {
-    theme: allowedThemes.includes(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
-    locale: allowedLocales.includes(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
+  const preloadedStates: PreloadedStates = {
+    RELAY: relayStoreRecords,
+    REDUX: {
+      theme: allowedThemes.includes(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
+      locale: allowedLocales.includes(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
+      graphqlEndpoint,
+      graphqlSubscriptions,
+    },
   };
-
-  const reduxStore = createReduxStore(reduxState);
-  const reduxStoreBase64 = Buffer.from(JSON.stringify(reduxState)).toString('base64');
-
+  const preloadedStatesBase64 = Buffer.from(JSON.stringify(preloadedStates)).toString('base64');
+  const reduxStore = createReduxStore(preloadedStates.REDUX);
   const webExtractor = new ChunkExtractor({
     statsFile: path.resolve(__dirname, './public/loadable-stats.json'),
     entrypoints: ['app'],
@@ -71,7 +93,9 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       <StyleSheetManager sheet={sheet.instance}>
         <StaticRouter location={url || '/'}>
           <ReduxProvider store={reduxStore}>
-            <App />
+            <RelayEnvironmentProvider environment={environment}>
+              <App />
+            </RelayEnvironmentProvider>
           </ReduxProvider>
         </StaticRouter>
       </StyleSheetManager>,
@@ -99,7 +123,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       htmlAttributes: helmet.htmlAttributes.toString(),
       bodyAttributes: helmet.bodyAttributes.toString(),
     },
-    reduxStoreBase64,
+    preloadedStatesBase64,
     styleTags,
     extractor: {
       scriptTags: webExtractor.getScriptTags(),

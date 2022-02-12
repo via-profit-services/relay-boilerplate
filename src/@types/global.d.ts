@@ -24,3 +24,15 @@ declare module '*.json' {
 }
 
 declare type Mutable<T> = { -readonly [P in keyof T]: T[P] };
+
+declare interface AppConfigProduction {
+  graphqlEndpoint: string;
+  graphqlSubscriptions: string;
+  serverHostname: string;
+  serverPort: number;
+}
+
+declare interface PreloadedStates {
+  REDUX: ReduxState;
+  RELAY: Record<string, any>
+}

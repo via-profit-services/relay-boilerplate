@@ -4,7 +4,6 @@ import http from 'node:http';
 import path from 'node:path';
 import fs from 'node:fs';
 
-import { AppConfigProduction } from 'common';
 import renderHTML from './renderHTML';
 
 const envConfigFilename = path.resolve(process.cwd(), '.env');
@@ -32,14 +31,10 @@ envNames.map(envName => {
 });
 
 const appConfig: AppConfigProduction = {
-  graphql: {
-    endpoint: process.env.GRAPHQL_ENDPOINT || '',
-    subscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT || '',
-  },
-  server: {
-    hostname: process.env.SERVER_HOSTNAME || '',
-    port: Number(process.env.SERVER_PORT),
-  },
+  graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || '',
+  graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT || '',
+  serverHostname: process.env.SERVER_HOSTNAME || '',
+  serverPort: Number(process.env.SERVER_PORT),
 };
 const server = http.createServer();
 
@@ -145,7 +140,7 @@ server.on('request', async (req, res) => {
    */
   if (method === 'GET') {
     try {
-      const { html, statusCode } = await renderHTML({ req, res });
+      const { html, statusCode } = await renderHTML({ req, res, ...appConfig });
       res.statusCode = statusCode;
       res.setHeader('Content-Type', 'text/html');
       res.write(html);
@@ -161,11 +156,11 @@ server.on('request', async (req, res) => {
 });
 
 // Start the http server to serve HTML page
-server.listen(appConfig.server.port, appConfig.server.hostname, () => {
+server.listen(appConfig.serverPort, appConfig.serverHostname, () => {
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
     console.log(
-      `\nServer was started at http://${appConfig.server.hostname}:${appConfig.server.port}`,
+      `\nServer was started at http://${appConfig.serverHostname}:${appConfig.serverPort}`,
     );
   }
 });

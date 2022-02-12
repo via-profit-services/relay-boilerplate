@@ -81,7 +81,19 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
               fs.readFileSync(path.resolve(__dirname, '../assets/index.mustache'), {
                 encoding: 'utf8',
               }),
-              {},
+              {
+                /**
+                 * Compile preloadedState data as Base64 string
+                 */
+                preloadedStatesBase64: Buffer.from(
+                  JSON.stringify({
+                    REDUX: {
+                      graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
+                      graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
+                    },
+                  }),
+                ).toString('base64'),
+              },
             ),
           }),
         ]

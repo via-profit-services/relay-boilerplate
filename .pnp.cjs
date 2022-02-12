@@ -143,6 +143,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-text-mask", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.4.3"],
             ["react-window", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.6"],
             ["react-window-infinite-loader", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.0.7"],
+            ["redraft", "npm:0.10.2"],
             ["redux", "npm:4.1.2"],
             ["relay-compiler", "npm:13.1.1"],
             ["relay-compiler-language-typescript", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:15.0.1"],
@@ -11825,6 +11826,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["redraft", [
+        ["npm:0.10.2", {
+          "packageLocation": "./.yarn/cache/redraft-npm-0.10.2-122f009c89-bf52c2e42f.zip/node_modules/redraft/",
+          "packageDependencies": [
+            ["redraft", "npm:0.10.2"],
+            ["punycode", "npm:2.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["redux", [
         ["npm:4.1.2", {
           "packageLocation": "./.yarn/cache/redux-npm-4.1.2-04cdbe7a08-6a839cee5b.zip/node_modules/redux/",
@@ -12069,6 +12080,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-text-mask", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.4.3"],
             ["react-window", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.6"],
             ["react-window-infinite-loader", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.0.7"],
+            ["redraft", "npm:0.10.2"],
             ["redux", "npm:4.1.2"],
             ["relay-compiler", "npm:13.1.1"],
             ["relay-compiler-language-typescript", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:15.0.1"],

@@ -22,6 +22,22 @@ const createReducer = (initialState: ReduxState) => {
 
         return newState;
       }
+      case 'graphqlEndpoint': {
+        const newState: ReduxState = {
+          ...state,
+          graphqlEndpoint: action.payload,
+        };
+
+        return newState;
+      }
+      case 'graphqlSubscriptions': {
+        const newState: ReduxState = {
+          ...state,
+          graphqlSubscriptions: action.payload,
+        };
+
+        return newState;
+      }
 
       default:
         return state;

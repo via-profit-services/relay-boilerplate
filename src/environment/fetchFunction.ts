@@ -3,12 +3,8 @@ import { FetchFunction } from 'relay-runtime';
 
 type FetchFunctionFactory = (graphqlEndpoint: string) => FetchFunction;
 
-const fetchFunction: FetchFunctionFactory =
-  graphqlEndpoint => async (operation, variables, _cacheConfig, uploadables) => {
-    if (graphqlEndpoint === '') {
-      throw new Error(`Invalid GraphQL endpoint. Got «${graphqlEndpoint}»`);
-    }
-
+const fetchFunctionFactory: FetchFunctionFactory = graphqlEndpoint => {
+  const fetchFunction: FetchFunction = async (operation, variables, _cacheConfig, uploadables) => {
     const request: RequestInit = {
       method: 'POST',
     };
@@ -46,8 +42,7 @@ const fetchFunction: FetchFunctionFactory =
       );
       formData.append('map', JSON.stringify(map));
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      Object.entries(uploadables).forEach(([key, fileData], index) => {
+      Object.entries(uploadables).forEach(([_key, fileData], index) => {
         formData.append(String(index), fileData);
       });
 
@@ -65,17 +60,26 @@ const fetchFunction: FetchFunctionFactory =
       });
     }
 
-    try {
-      console.log(`fetch to ${graphqlEndpoint}`);
-      const response = await fetch(graphqlEndpoint, request);
-      const body = await response.json();
-      // if (process.env.NODE_ENV === 'development') {
+    const body = await fetch(graphqlEndpoint, request)
+      .then(response => response.json())
+      .catch(err => {
+        console.error(err);
+
+        return {
+          data: null,
+          errors: [
+            {
+              message: `GraphQL fetch error`,
+            },
+          ],
+        };
+      });
+
+    if (process.env.NODE_ENV === 'development') {
       const color = body.data && !body.errors ? '#009627' : '#f44336';
       console.groupCollapsed(
-        '%c%s%c%s',
+        '%c%s',
         `color:${color};`,
-        '• ',
-        'color: orange;',
         'GraphQL',
         `${operation.operationKind} ${operation.name}`,
       );
@@ -120,22 +124,12 @@ const fetchFunction: FetchFunctionFactory =
         console.groupEnd();
       }
       console.groupEnd();
-      // }
-
-      return body;
-    } catch (err) {
-      // console.error(err);
-
-      return {
-        data: null,
-        errors: [
-          {
-            message: 'Failed to get GraphQL response',
-          },
-        ],
-      };
-      // throw new Error('Failed to get GraphQL response');
     }
+
+    return body;
   };
 
-export default fetchFunction;
+  return fetchFunction;
+};
+
+export default fetchFunctionFactory;

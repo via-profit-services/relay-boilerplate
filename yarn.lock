@@ -8764,6 +8764,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"redraft@npm:^0.10.2":
+  version: 0.10.2
+  resolution: "redraft@npm:0.10.2"
+  dependencies:
+    punycode: ^2.1.0
+  checksum: bf52c2e42f9c427a3f537eda03c2a6d378be37d37b93a72f28b840c35550efcfc8b37427c2082730d59b441924eb028f9f4ce830b3a48f659386123337bb2ecc
+  languageName: node
+  linkType: hard
+
 "redux@npm:^4.0.0, redux@npm:^4.1.2":
   version: 4.1.2
   resolution: "redux@npm:4.1.2"
@@ -8991,6 +9000,7 @@ fsevents@~2.3.2:
     react-text-mask: ^5.4.3
     react-window: ^1.8.6
     react-window-infinite-loader: ^1.0.7
+    redraft: ^0.10.2
     redux: ^4.1.2
     relay-compiler: ^13.1.1
     relay-compiler-language-typescript: ^15.0.1

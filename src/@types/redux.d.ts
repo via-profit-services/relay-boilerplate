@@ -1,31 +1,42 @@
-import { Dispatch } from 'redux';
+declare type ThemeVariants = 'standardLight' | 'standardDark';
+declare type LocaleVariants = 'ru-RU' | 'en-US';
 
-export {};
+declare type ReduxState = {
+  readonly theme: ThemeVariants;
+  readonly locale: LocaleVariants;
+  readonly graphqlEndpoint: string;
+  readonly graphqlSubscriptions: string;
+};
 
-declare global {
-  export type ThemeVariants = 'standardLight' | 'standardDark';
-  export type LocaleVariants = 'ru' | 'en';
+declare type ReduxSetThemeAction = {
+  readonly type: 'theme';
+  readonly payload: ThemeVariants;
+};
 
-  export type ReduxState = {
-    theme: ThemeVariants;
-    locale: LocaleVariants;
-  };
+declare type ReduxSetLocaleAction = {
+  readonly type: 'locale';
+  readonly payload: LocaleVariants;
+};
 
-  export type ReduxSetThemeAction = {
-    readonly type: 'theme';
-    readonly payload: ThemeVariants;
-  };
+declare type ReduxSetGraphqlEndpointAction = {
+  readonly type: 'graphqlEndpoint';
+  readonly payload: string;
+};
 
-  export type ReduxSetLocaleAction = {
-    readonly type: 'locale';
-    readonly payload: LocaleVariants;
-  };
+declare type ReduxSetGraphqlSubscriptionsAction = {
+  readonly type: 'graphqlSubscriptions';
+  readonly payload: string;
+};
 
-  export type ReduxActions = ReduxSetThemeAction | ReduxSetLocaleAction;
+declare type ReduxActions =
+  | ReduxSetThemeAction
+  | ReduxSetLocaleAction
+  | ReduxSetGraphqlEndpointAction
+  | ReduxSetGraphqlSubscriptionsAction;
 
-  export type ReduxSelectedTheme = ReduxState['theme'];
-  export type ReduxSelectedLocale = ReduxState['locale'];
-  export type ReduxSelectedUI = Pick<ReduxState, 'locale' | 'theme'>;
+declare type ReduxSelectedTheme = ReduxState['theme'];
+declare type ReduxSelectedLocale = ReduxState['locale'];
+declare type ReduxSelectedUI = Pick<ReduxState, 'locale' | 'theme'>;
+declare type ReduxSelectedGraphql = Pick<ReduxState, 'graphqlEndpoint' | 'graphqlSubscriptions'>;
 
-  export type ReduxDispatch = Dispatch<ReduxActions>;
-}
+declare type ReduxDispatch = import('redux').Dispatch<ReduxActions>;

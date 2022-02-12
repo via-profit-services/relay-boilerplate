@@ -1,7 +1,7 @@
 import { Environment } from 'relay-runtime';
 
-import store from '~/environment/store';
-import networkFactory from '~/environment/network';
+import store from '~/server/environment/store';
+import networkFactory from '~/server/environment/network';
 
 type EnvironmentFactory = (props: {
   graphqlEndpoint: string;
@@ -12,7 +12,7 @@ const environmentFactory: EnvironmentFactory = props => {
   const environment = new Environment({
     network: networkFactory(props),
     store,
-    isServer: typeof window === 'undefined',
+    isServer: true,
   });
 
   return environment;
