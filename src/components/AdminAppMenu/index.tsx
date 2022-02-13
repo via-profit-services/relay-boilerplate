@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ThemeSwitcherButton from './ThemeSwitcherButton';
-import LocaleSwitcherButton from './LocaleSwitcherButton';
 
 const Container = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ const AdminAppMenu: React.FC = () => (
     <StyledLink to="/admin/users">Users</StyledLink>
 
     <ThemeSwitcherButton />
-    <LocaleSwitcherButton />
   </Container>
 );
 

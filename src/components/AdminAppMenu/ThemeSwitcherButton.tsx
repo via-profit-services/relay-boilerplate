@@ -10,11 +10,17 @@ const Button = styled.button`
   color: #fff;
   background: none;
   outline: none;
+  border: 1px solid #fff;
+  width: 3em;
+  height: 3em;
+  border-radius: 100%;
+  padding: 0.4em;
+  font-size: 0.5em;
+  cursor: pointer;
 `;
 
 const Icon = styled(SunIcon)`
   color: #fff;
-  font-size: 1em;
 `;
 
 const ThemeSwitcherButton: React.FC = () => {
