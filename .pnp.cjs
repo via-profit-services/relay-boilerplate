@@ -57,6 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.4"],
             ["@types/compression", "npm:1.7.2"],
             ["@types/draft-js", "npm:0.11.9"],
+            ["@types/ioredis", "npm:4.28.8"],
             ["@types/js-cookie", "npm:3.0.1"],
             ["@types/jsonwebtoken", "npm:8.5.8"],
             ["@types/loadable__component", "npm:5.13.4"],
@@ -116,6 +117,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["html-loader", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.1.0"],
             ["html-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.5.0"],
             ["image-minimizer-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.2.3"],
+            ["ioredis", "npm:4.28.5"],
             ["js-cookie", "npm:3.0.1"],
             ["jsonwebtoken", "npm:8.5.1"],
             ["libphonenumber-js", "npm:1.9.49"],
@@ -3404,6 +3406,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/ioredis", [
+        ["npm:4.28.8", {
+          "packageLocation": "./.yarn/cache/@types-ioredis-npm-4.28.8-de6aa5f2d3-6082208a2a.zip/node_modules/@types/ioredis/",
+          "packageDependencies": [
+            ["@types/ioredis", "npm:4.28.8"],
+            ["@types/node", "npm:17.0.16"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/js-cookie", [
         ["npm:3.0.1", {
           "packageLocation": "./.yarn/cache/@types-js-cookie-npm-3.0.1-3af556022f-134abb4a3f.zip/node_modules/@types/js-cookie/",
@@ -5715,6 +5727,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["cluster-key-slot", [
+        ["npm:1.1.0", {
+          "packageLocation": "./.yarn/cache/cluster-key-slot-npm-1.1.0-c895b3234e-fc953c7520.zip/node_modules/cluster-key-slot/",
+          "packageDependencies": [
+            ["cluster-key-slot", "npm:1.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["color-convert", [
         ["npm:1.9.3", {
           "packageLocation": "./.yarn/cache/color-convert-npm-1.9.3-1fe690075e-fd7a64a17c.zip/node_modules/color-convert/",
@@ -6398,6 +6419,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/delegates-npm-1.0.0-9b1942d75f-a51744d9b5.zip/node_modules/delegates/",
           "packageDependencies": [
             ["delegates", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["denque", [
+        ["npm:1.5.1", {
+          "packageLocation": "./.yarn/cache/denque-npm-1.5.1-2dd42d2dcb-4375ad19d5.zip/node_modules/denque/",
+          "packageDependencies": [
+            ["denque", "npm:1.5.1"]
           ],
           "linkType": "HARD",
         }]
@@ -8830,6 +8860,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["ioredis", [
+        ["npm:4.28.5", {
+          "packageLocation": "./.yarn/cache/ioredis-npm-4.28.5-74671f2fa3-a8793c3324.zip/node_modules/ioredis/",
+          "packageDependencies": [
+            ["ioredis", "npm:4.28.5"],
+            ["cluster-key-slot", "npm:1.1.0"],
+            ["debug", "virtual:2ad756de169bf72aafda43d1e2327e0cf7bcb204e0a9798d149f3f82af2946c06104e76120b9f2fefe79c9a7f4dc97edc7d3dde4b1a890339a9f2f672bc5b209#npm:4.3.3"],
+            ["denque", "npm:1.5.1"],
+            ["lodash.defaults", "npm:4.2.0"],
+            ["lodash.flatten", "npm:4.4.0"],
+            ["lodash.isarguments", "npm:3.1.0"],
+            ["p-map", "npm:2.1.0"],
+            ["redis-commands", "npm:1.7.0"],
+            ["redis-errors", "npm:1.2.0"],
+            ["redis-parser", "npm:3.0.0"],
+            ["standard-as-callback", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["ip", [
         ["npm:1.1.5", {
           "packageLocation": "./.yarn/cache/ip-npm-1.1.5-af36318aa6-30133981f0.zip/node_modules/ip/",
@@ -9619,11 +9669,38 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["lodash.defaults", [
+        ["npm:4.2.0", {
+          "packageLocation": "./.yarn/cache/lodash.defaults-npm-4.2.0-c5dea025ab-8492325823.zip/node_modules/lodash.defaults/",
+          "packageDependencies": [
+            ["lodash.defaults", "npm:4.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["lodash.flatten", [
+        ["npm:4.4.0", {
+          "packageLocation": "./.yarn/cache/lodash.flatten-npm-4.4.0-495935e617-0ac34a393d.zip/node_modules/lodash.flatten/",
+          "packageDependencies": [
+            ["lodash.flatten", "npm:4.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["lodash.includes", [
         ["npm:4.3.0", {
           "packageLocation": "./.yarn/cache/lodash.includes-npm-4.3.0-3a2f6fa22c-71092c1305.zip/node_modules/lodash.includes/",
           "packageDependencies": [
             ["lodash.includes", "npm:4.3.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["lodash.isarguments", [
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/lodash.isarguments-npm-3.1.0-9e74d350b8-ae1526f3eb.zip/node_modules/lodash.isarguments/",
+          "packageDependencies": [
+            ["lodash.isarguments", "npm:3.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -10716,6 +10793,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["p-map", [
+        ["npm:2.1.0", {
+          "packageLocation": "./.yarn/cache/p-map-npm-2.1.0-d9e865dc7c-9e3ad3c9f6.zip/node_modules/p-map/",
+          "packageDependencies": [
+            ["p-map", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:4.0.0", {
           "packageLocation": "./.yarn/cache/p-map-npm-4.0.0-4677ae07c7-cb0ab21ec0.zip/node_modules/p-map/",
           "packageDependencies": [
@@ -11825,6 +11909,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["redis-commands", [
+        ["npm:1.7.0", {
+          "packageLocation": "./.yarn/cache/redis-commands-npm-1.7.0-528f61f9d8-d1ff7fbcb5.zip/node_modules/redis-commands/",
+          "packageDependencies": [
+            ["redis-commands", "npm:1.7.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["redis-errors", [
+        ["npm:1.2.0", {
+          "packageLocation": "./.yarn/cache/redis-errors-npm-1.2.0-a81fd9b0f1-f28ac26921.zip/node_modules/redis-errors/",
+          "packageDependencies": [
+            ["redis-errors", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["redis-parser", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/redis-parser-npm-3.0.0-7ebe40abcb-89290ae530.zip/node_modules/redis-parser/",
+          "packageDependencies": [
+            ["redis-parser", "npm:3.0.0"],
+            ["redis-errors", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["redraft", [
         ["npm:0.10.2", {
           "packageLocation": "./.yarn/cache/redraft-npm-0.10.2-122f009c89-bf52c2e42f.zip/node_modules/redraft/",
@@ -11993,6 +12105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.4"],
             ["@types/compression", "npm:1.7.2"],
             ["@types/draft-js", "npm:0.11.9"],
+            ["@types/ioredis", "npm:4.28.8"],
             ["@types/js-cookie", "npm:3.0.1"],
             ["@types/jsonwebtoken", "npm:8.5.8"],
             ["@types/loadable__component", "npm:5.13.4"],
@@ -12052,6 +12165,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["html-loader", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.1.0"],
             ["html-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.5.0"],
             ["image-minimizer-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.2.3"],
+            ["ioredis", "npm:4.28.5"],
             ["js-cookie", "npm:3.0.1"],
             ["jsonwebtoken", "npm:8.5.1"],
             ["libphonenumber-js", "npm:1.9.49"],
@@ -12852,6 +12966,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/stackframe-npm-1.2.0-89ca050ce4-37d659bdd5.zip/node_modules/stackframe/",
           "packageDependencies": [
             ["stackframe", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["standard-as-callback", [
+        ["npm:2.1.0", {
+          "packageLocation": "./.yarn/cache/standard-as-callback-npm-2.1.0-8e47620bd4-88bec83ee2.zip/node_modules/standard-as-callback/",
+          "packageDependencies": [
+            ["standard-as-callback", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]

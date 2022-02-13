@@ -30,6 +30,11 @@ declare interface AppConfigProduction {
   graphqlSubscriptions: string;
   serverHostname: string;
   serverPort: number;
+  htmlCacheExp: number;
+  redisHost: string;
+  redisPort: number;
+  redisPassword: string;
+  redisDatabase: number;
 }
 
 declare interface PreloadedStates {

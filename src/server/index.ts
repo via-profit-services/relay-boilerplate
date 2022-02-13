@@ -4,6 +4,7 @@ import http from 'node:http';
 import path from 'node:path';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
+import IORedis from 'ioredis';
 
 import renderHTML from '~/server/render-html';
 
@@ -14,6 +15,11 @@ const envNames = [
   'GRAPHQL_ENDPOINT',
   'SERVER_PORT',
   'SERVER_HOSTNAME',
+  'HTML_CACHE_EXP',
+  'REDIS_HOST',
+  'REDIS_PORT',
+  'REDIS_PASSWORD',
+  'REDIS_DB',
 ];
 
 dotenv.config({ path: envConfigFilename });
@@ -36,8 +42,19 @@ const appConfig: AppConfigProduction = {
   graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT || '',
   serverHostname: process.env.SERVER_HOSTNAME || '',
   serverPort: Number(process.env.SERVER_PORT),
+  htmlCacheExp: Number(process.env.HTML_CACHE_EXP),
+  redisHost: process.env.REDIS_HOST || '',
+  redisPassword: process.env.REDIS_PASSWORD || '',
+  redisPort: Number(process.env.REDIS_PORT),
+  redisDatabase: Number(process.env.REDIS_DB),
 };
 const server = http.createServer();
+const redis = new IORedis({
+  host: appConfig.redisHost,
+  port: appConfig.redisPort,
+  password: appConfig.redisPassword,
+  db: appConfig.redisDatabase,
+});
 
 server.on('request', async (req, res) => {
   const { url, method } = req;
@@ -152,7 +169,12 @@ server.on('request', async (req, res) => {
    */
   if (method === 'GET') {
     try {
-      const { stream, statusCode } = await renderHTML({ req, res, ...appConfig });
+      const { stream, statusCode } = await renderHTML({
+        req,
+        res,
+        redis,
+        ...appConfig,
+      });
       res.statusCode = statusCode;
       res.setHeader('content-type', 'text/html');
 

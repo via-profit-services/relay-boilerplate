@@ -1,5 +1,6 @@
 /* eslint-disable import/max-dependencies */
 import path from 'node:path';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import http from 'node:http';
 import stream from 'node:stream';
@@ -14,6 +15,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
 import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import dotenv from 'dotenv';
+import type { Redis } from 'ioredis';
 
 import App from '~/containers/App';
 import Fallback from '~/components/both/ErrorBoundary/Fallback';
@@ -22,11 +24,10 @@ import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
 import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 
-interface Props {
+interface Props extends AppConfigProduction {
   readonly req: http.IncomingMessage;
   readonly res: http.ServerResponse;
-  readonly graphqlEndpoint: string;
-  readonly graphqlSubscriptions: string;
+  readonly redis: Redis;
 }
 
 type RenderHTMLPayload = {
@@ -37,8 +38,39 @@ type RenderHTMLPayload = {
 dotenv.config();
 
 const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
-  const { req, graphqlEndpoint, graphqlSubscriptions } = props;
+  const { req, graphqlEndpoint, graphqlSubscriptions, htmlCacheExp, redis } = props;
   const { url, headers } = req;
+
+  // Generate uniqu cache key
+  // Key contain URL and the cookies
+  const cacheKey = crypto
+    .createHash('sha256')
+    .update(
+      JSON.stringify({
+        cookie: headers.cookie,
+        path: url,
+      }),
+    )
+    .digest('hex');
+
+  if (htmlCacheExp > 0) {
+    // Try to get cache from Redis by user cache key
+    const cachedHTMLData = await redis.get(`cache:${cacheKey}`);
+    if (cachedHTMLData) {
+      try {
+        const { statusCode, html } = JSON.parse(cachedHTMLData);
+
+        return {
+          stream: stream.Readable.from([html]),
+          statusCode,
+        };
+      } catch (err) {
+        // do nothing
+      }
+    }
+  }
+
+  // Configure Relay
   const relayNework = Network.create(relayFetch({ graphqlEndpoint, graphqlSubscriptions }));
   const relayStore = new Store(new RecordSource());
   const environment = new Environment({
@@ -48,6 +80,8 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   });
 
   let statusCode = 404;
+
+  // Fill Relay store by fetching request
   await fetchQuery<TemplateRenderQuery>(environment, query, {
     path: String(url),
   })
@@ -62,6 +96,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       statusCode = 500;
     });
 
+  // Extract relay store as JSON to inject this data in HTML page
   const relayStoreRecords = environment.getStore().getSource().toJSON();
 
   // Parsing cookies
@@ -96,6 +131,8 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       locale: allowedLocales.includes(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
     },
   };
+
+  // Preloaded store will be injected in HTML
   const preloadedStatesBase64 = Buffer.from(JSON.stringify(preloadedStates)).toString('base64');
   const reduxStore = createReduxStore(preloadedStates.REDUX);
   const webExtractor = new ChunkExtractor({
@@ -147,6 +184,15 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     },
     htmlContent,
   });
+
+  // Save already renderer HTML into the Redis cache
+  if (htmlCacheExp > 0) {
+    const cacheData = JSON.stringify({
+      statusCode,
+      html,
+    });
+    await redis.set(`cache:${cacheKey}`, cacheData, 'EX', htmlCacheExp);
+  }
 
   return {
     stream: stream.Readable.from([html]),

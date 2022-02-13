@@ -5,5 +5,10 @@ declare namespace NodeJS {
     GRAPHQL_SUBSCRIPTION_ENDPOINT?: string;
     SERVER_PORT?: string;
     SERVER_HOSTNAME?: string;
+    HTML_CACHE_EXP?: string;
+    REDIS_HOST?: string;
+    REDIS_PORT?: string;
+    REDIS_PASSWORD?: string;
+    REDIS_DB?: string;
   }
 }
