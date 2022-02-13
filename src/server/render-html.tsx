@@ -16,7 +16,7 @@ import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import dotenv from 'dotenv';
 
 import App from '~/containers/App';
-import Fallback from '~/containers/Fallback';
+import Fallback from '~/components/both/ErrorBoundary/Fallback';
 import relayFetch from '~/server/relay-fetch';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';

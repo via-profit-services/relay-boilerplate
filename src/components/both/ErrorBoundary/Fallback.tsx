@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle } from 'styled-components';
 
 const Container = styled.div`
