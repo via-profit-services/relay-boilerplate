@@ -22,6 +22,7 @@ const WebAppMenu: React.FC = () => (
   <Container>
     <StyledLink to="/">Home page</StyledLink>
     <StyledLink to="/about">About</StyledLink>
+    <StyledLink to="/info">Information</StyledLink>
     <StyledLink to="/contact">Contact</StyledLink>
     <StyledLink to="/not-found">Not found</StyledLink>
   </Container>

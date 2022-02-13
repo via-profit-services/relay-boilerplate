@@ -1,5 +1,7 @@
-import { URL } from 'node:url';
+import zlib from 'node:zlib';
+import stream from 'node:stream';
 import http from 'node:http';
+import { URL } from 'node:url';
 import { FetchFunction } from 'relay-runtime';
 
 type Props = { graphqlEndpoint: string; graphqlSubscriptions: string };
@@ -25,16 +27,33 @@ const fetchFunctionFactory: FetchFunctionFactory = props => {
           path: pathname,
           headers: {
             'Content-Type': 'application/json',
+            'Accept-Encoding': 'br',
           },
         },
         response => {
-          let data = '';
-          response.on('data', d => {
-            data += d;
-          });
-          response.on('end', () => {
-            resolve(JSON.parse(data) as any);
-          });
+          const contentEncoding = String(response.headers?.['content-encoding']);
+          const buffers: Buffer[] = [];
+          let resp: stream.Transform | http.IncomingMessage;
+          switch (contentEncoding) {
+            case 'br':
+              resp = response.pipe(zlib.createBrotliDecompress());
+              break;
+            case 'gzip':
+              resp = response.pipe(zlib.createGunzip());
+              break;
+            default:
+              resp = response;
+              break;
+          }
+
+          resp
+            .on('data', data => {
+              buffers.push(data);
+            })
+            .on('end', () => {
+              const buffer = Buffer.concat(buffers);
+              resolve(JSON.parse(buffer.toString()));
+            });
         },
       );
       request.write(

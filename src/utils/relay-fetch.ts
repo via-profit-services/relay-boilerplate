@@ -7,6 +7,9 @@ const fetchFunctionFactory: FetchFunctionFactory = graphqlEndpoint => {
   const fetchFunction: FetchFunction = async (operation, variables, _cacheConfig, uploadables) => {
     const request: RequestInit = {
       method: 'POST',
+      headers: {
+        'accept-encoding': 'br, gzip',
+      },
     };
 
     if (uploadables) {
@@ -50,7 +53,7 @@ const fetchFunctionFactory: FetchFunctionFactory = graphqlEndpoint => {
     } else {
       request.headers = {
         ...request.headers,
-        'Content-Type': 'application/json',
+        'content-type': 'application/json',
       };
 
       request.body = JSON.stringify({
