@@ -11,6 +11,7 @@ import relayFetch from '~/utils/relay-fetch';
 import relaySubscribe from '~/utils/relay-subscribe';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
+import ErrorBoundary from '~/components/both/ErrorBoundary';
 
 const App = loadable(() => import('~/containers/App/index'));
 
@@ -61,7 +62,9 @@ const bootstrap = async () => {
     <BrowserRouter>
       <ReduxProvider store={reduxStore}>
         <RelayEnvironmentProvider environment={environment}>
-          <App />
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
         </RelayEnvironmentProvider>
       </ReduxProvider>
     </BrowserRouter>

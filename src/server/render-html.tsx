@@ -1,8 +1,8 @@
 /* eslint-disable import/max-dependencies */
 import path from 'node:path';
-import { Readable } from 'node:stream';
 import fs from 'node:fs';
 import http from 'node:http';
+import stream from 'node:stream';
 import Mustache from 'mustache';
 import React from 'react';
 import { ChunkExtractor } from '@loadable/server';
@@ -15,13 +15,11 @@ import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
 import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import dotenv from 'dotenv';
 
-// import store from '~/server/environment/store';
-// import networkFactory from '~/server/environment/network';
-// import environmentFactory from '~/server/environment';
+import App from '~/containers/App';
+import Fallback from '~/containers/Fallback';
 import relayFetch from '~/server/relay-fetch';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
-import App from '~/containers/App';
 import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 
 interface Props {
@@ -32,7 +30,7 @@ interface Props {
 }
 
 type RenderHTMLPayload = {
-  stream: Readable;
+  stream: stream.Readable;
   statusCode: number;
 };
 
@@ -61,6 +59,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     })
     .catch(err => {
       console.error(err);
+      statusCode = 500;
     });
 
   const relayStoreRecords = environment.getStore().getSource().toJSON();
@@ -107,10 +106,10 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const htmlContent = renderToString(
     webExtractor.collectChunks(
       <StyleSheetManager sheet={sheet.instance}>
-        <StaticRouter location={url || '/'}>
+        <StaticRouter location={String(url)}>
           <ReduxProvider store={reduxStore}>
             <RelayEnvironmentProvider environment={environment}>
-              <App />
+              {statusCode === 500 ? <Fallback /> : <App />}
             </RelayEnvironmentProvider>
           </ReduxProvider>
         </StaticRouter>
@@ -150,7 +149,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   });
 
   return {
-    stream: Readable.from([html]),
+    stream: stream.Readable.from([html]),
     statusCode,
   };
 };

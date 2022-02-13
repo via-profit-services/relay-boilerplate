@@ -17,7 +17,7 @@ const fetchFunctionFactory: FetchFunctionFactory = props => {
   const { protocol, hostname, port, pathname } = new URL(graphqlEndpoint);
 
   const fetchFunction: FetchFunction = (operation, variables) =>
-    new Promise(resolve => {
+    new Promise((resolve, reject) => {
       const request = http.request(
         {
           method: 'POST',
@@ -56,6 +56,11 @@ const fetchFunctionFactory: FetchFunctionFactory = props => {
             });
         },
       );
+      request.on('error', err => {
+        reject({
+          errors: [{ message: err.message }],
+        });
+      });
       request.write(
         JSON.stringify({
           documentId: operation.id,
