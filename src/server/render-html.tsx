@@ -139,6 +139,12 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     statsFile: path.resolve(__dirname, './public/loadable-stats.json'),
     entrypoints: ['app'],
   });
+
+  // If «fetchQuery» was executed successfully, then we can render the
+  // application without worrying about <Suspense />.
+  // But if the request, for some reason, failed with an error (statusCode = 500),
+  // we will have to render the <Fallback /> component, since in
+  // this case «React» will fail with an error
   const htmlContent = renderToString(
     webExtractor.collectChunks(
       <StyleSheetManager sheet={sheet.instance}>
