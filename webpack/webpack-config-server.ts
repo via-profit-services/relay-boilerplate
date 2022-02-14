@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { Configuration, ProgressPlugin } from 'webpack';
 import { merge } from 'webpack-merge';
 import nodeExternals from 'webpack-node-externals';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import webpackBaseConfig from './webpack-config-base';
 
@@ -29,7 +30,13 @@ const webpackServerConfig: Configuration = merge(webpackBaseConfig, {
     chunkFilename: 'server/js/[name].chunk.[chunkhash].js',
   },
   externals: isDev ? [nodeExternals()] : [],
-  plugins: [new ProgressPlugin()],
+  plugins: [
+    new ProgressPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'public/css/[contenthash].css',
+      chunkFilename: 'public/css/[contenthash].css',
+    }),
+  ],
 });
 
 export default webpackServerConfig;

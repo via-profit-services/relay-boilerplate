@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Outlet } from 'react-router-dom';
 
-import AdminAppMenu from '~/components/AdminAppMenu';
+import AdminAppMenu from '~/components/both/AdminAppMenu';
 
 const Container = styled.div`
   display: flex;

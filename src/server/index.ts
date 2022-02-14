@@ -81,6 +81,7 @@ server.on('request', async (req, res) => {
     const mimeTypes: Record<string, string[]> = {
       'application/json': ['.json'],
       'application/javascript': ['.js'],
+      'text/css': ['.css'],
       'text/html': ['.html'],
       'image/png': ['.png'],
       'image/jpeg': ['.jpg', '.jpeg'],

@@ -72,6 +72,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-input-mask", "npm:3.0.1"],
             ["@types/react-redux", "npm:7.1.22"],
             ["@types/react-relay", "npm:13.0.1"],
+            ["@types/react-slick", "npm:0.23.8"],
             ["@types/react-text-mask", "npm:5.4.11"],
             ["@types/react-window", "npm:1.8.5"],
             ["@types/react-window-infinite-loader", "npm:1.0.6"],
@@ -140,6 +141,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.11.0"],
             ["react-relay", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:13.1.1"],
             ["react-router-dom", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:6.2.1"],
+            ["react-slick", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.28.1"],
             ["react-test-renderer", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:17.0.2"],
             ["react-text-mask", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.4.3"],
             ["react-window", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.6"],
@@ -151,6 +153,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["relay-runtime", "npm:13.1.1"],
             ["reselect", "npm:4.1.5"],
             ["shebang-loader", "npm:0.0.1"],
+            ["slick-carousel", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.1"],
             ["style-loader", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.3.1"],
             ["styled-components", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.3.3"],
             ["subscriptions-transport-ws", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.11.0"],
@@ -3655,6 +3658,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/react-slick", [
+        ["npm:0.23.8", {
+          "packageLocation": "./.yarn/cache/@types-react-slick-npm-0.23.8-1fd5949a0d-df71ab6b0f.zip/node_modules/@types/react-slick/",
+          "packageDependencies": [
+            ["@types/react-slick", "npm:0.23.8"],
+            ["@types/react", "npm:17.0.39"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/react-text-mask", [
         ["npm:5.4.11", {
           "packageLocation": "./.yarn/cache/@types-react-text-mask-npm-5.4.11-501fd023ae-4defba1467.zip/node_modules/@types/react-text-mask/",
@@ -5649,6 +5662,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["classnames", [
+        ["npm:2.3.1", {
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.1-f2ae0a8d3c-14db8889d5.zip/node_modules/classnames/",
+          "packageDependencies": [
+            ["classnames", "npm:2.3.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["clean-css", [
         ["npm:5.2.4", {
           "packageLocation": "./.yarn/cache/clean-css-npm-5.2.4-1adfa4d5a8-16f4e9de63.zip/node_modules/clean-css/",
@@ -6789,6 +6811,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["enhanced-resolve", "npm:5.9.0"],
             ["graceful-fs", "npm:4.2.9"],
             ["tapable", "npm:2.2.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["enquire.js", [
+        ["npm:2.1.6", {
+          "packageLocation": "./.yarn/cache/enquire.js-npm-2.1.6-fc4ea2e583-bb094054ee.zip/node_modules/enquire.js/",
+          "packageDependencies": [
+            ["enquire.js", "npm:2.1.6"]
           ],
           "linkType": "HARD",
         }]
@@ -9412,6 +9443,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["json2mq", [
+        ["npm:0.2.0", {
+          "packageLocation": "./.yarn/cache/json2mq-npm-0.2.0-aa8a6516b9-5672c3abdd.zip/node_modules/json2mq/",
+          "packageDependencies": [
+            ["json2mq", "npm:0.2.0"],
+            ["string-convert", "npm:0.2.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["json5", [
         ["npm:1.0.1", {
           "packageLocation": "./.yarn/cache/json5-npm-1.0.1-647fc8794b-e76ea23dbb.zip/node_modules/json5/",
@@ -11748,6 +11789,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["react-slick", [
+        ["npm:0.28.1", {
+          "packageLocation": "./.yarn/cache/react-slick-npm-0.28.1-c38d7b328a-399ad43b9e.zip/node_modules/react-slick/",
+          "packageDependencies": [
+            ["react-slick", "npm:0.28.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.28.1", {
+          "packageLocation": "./.yarn/__virtual__/react-slick-virtual-f9d1811c6e/0/cache/react-slick-npm-0.28.1-c38d7b328a-399ad43b9e.zip/node_modules/react-slick/",
+          "packageDependencies": [
+            ["react-slick", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.28.1"],
+            ["@types/react", "npm:17.0.39"],
+            ["@types/react-dom", "npm:17.0.11"],
+            ["classnames", "npm:2.3.1"],
+            ["enquire.js", "npm:2.1.6"],
+            ["json2mq", "npm:0.2.0"],
+            ["lodash.debounce", "npm:4.0.8"],
+            ["react", "npm:17.0.2"],
+            ["react-dom", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:17.0.2"],
+            ["resize-observer-polyfill", "npm:1.5.1"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react",
+            "react-dom",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react-test-renderer", [
         ["npm:17.0.2", {
           "packageLocation": "./.yarn/cache/react-test-renderer-npm-17.0.2-1086717127-e6b5c6ed2a.zip/node_modules/react-test-renderer/",
@@ -12120,6 +12192,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-input-mask", "npm:3.0.1"],
             ["@types/react-redux", "npm:7.1.22"],
             ["@types/react-relay", "npm:13.0.1"],
+            ["@types/react-slick", "npm:0.23.8"],
             ["@types/react-text-mask", "npm:5.4.11"],
             ["@types/react-window", "npm:1.8.5"],
             ["@types/react-window-infinite-loader", "npm:1.0.6"],
@@ -12188,6 +12261,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.11.0"],
             ["react-relay", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:13.1.1"],
             ["react-router-dom", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:6.2.1"],
+            ["react-slick", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.28.1"],
             ["react-test-renderer", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:17.0.2"],
             ["react-text-mask", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.4.3"],
             ["react-window", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.6"],
@@ -12199,6 +12273,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["relay-runtime", "npm:13.1.1"],
             ["reselect", "npm:4.1.5"],
             ["shebang-loader", "npm:0.0.1"],
+            ["slick-carousel", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.1"],
             ["style-loader", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.3.1"],
             ["styled-components", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.3.3"],
             ["subscriptions-transport-ws", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.11.0"],
@@ -12309,6 +12384,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/reselect-npm-4.1.5-bc046e41ae-54c13c1e79.zip/node_modules/reselect/",
           "packageDependencies": [
             ["reselect", "npm:4.1.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["resize-observer-polyfill", [
+        ["npm:1.5.1", {
+          "packageLocation": "./.yarn/cache/resize-observer-polyfill-npm-1.5.1-603120e8a0-57e7f79489.zip/node_modules/resize-observer-polyfill/",
+          "packageDependencies": [
+            ["resize-observer-polyfill", "npm:1.5.1"]
           ],
           "linkType": "HARD",
         }]
@@ -12777,6 +12861,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["slick-carousel", [
+        ["npm:1.8.1", {
+          "packageLocation": "./.yarn/cache/slick-carousel-npm-1.8.1-8382d373c2-acaad391e4.zip/node_modules/slick-carousel/",
+          "packageDependencies": [
+            ["slick-carousel", "npm:1.8.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.1", {
+          "packageLocation": "./.yarn/__virtual__/slick-carousel-virtual-6a0e5901e7/0/cache/slick-carousel-npm-1.8.1-8382d373c2-acaad391e4.zip/node_modules/slick-carousel/",
+          "packageDependencies": [
+            ["slick-carousel", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:1.8.1"],
+            ["@types/jquery", null],
+            ["jquery", null]
+          ],
+          "packagePeers": [
+            "@types/jquery",
+            "jquery"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["smart-buffer", [
         ["npm:4.2.0", {
           "packageLocation": "./.yarn/cache/smart-buffer-npm-4.2.0-5ac3f668bb-b5167a7142.zip/node_modules/smart-buffer/",
@@ -12984,6 +13090,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/statuses-npm-1.5.0-f88f91b2e9-c469b9519d.zip/node_modules/statuses/",
           "packageDependencies": [
             ["statuses", "npm:1.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["string-convert", [
+        ["npm:0.2.1", {
+          "packageLocation": "./.yarn/cache/string-convert-npm-0.2.1-f1a42cb9ea-1098b1d8e3.zip/node_modules/string-convert/",
+          "packageDependencies": [
+            ["string-convert", "npm:0.2.1"]
           ],
           "linkType": "HARD",
         }]

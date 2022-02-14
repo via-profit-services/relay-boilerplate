@@ -3,7 +3,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
-import WebAppMenu from '~/components/WebAppMenu';
+import WebAppMenu from '~/components/both/WebAppMenu';
+import Slider from '~/components/desktop/Slider';
 import H1 from '~/components/both/Typography/H1';
 import RenderDraftjs from '~/components/both/RenderDraftjs';
 import fragment, {
@@ -20,6 +21,12 @@ graphql`
     id
     h1
     content
+    slider {
+      slides {
+        id
+        image
+      }
+    }
     page {
       meta {
         locale
@@ -51,7 +58,7 @@ const GlobalStyles = createGlobalStyle`
 
 const WebTemplateHomeDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
-  const { h1, content, page } = useFragment<WebTemplateHomeDesktopFragment$key>(
+  const { h1, content, page, slider } = useFragment<WebTemplateHomeDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
@@ -67,6 +74,7 @@ const WebTemplateHomeDesktop: React.FC<Props> = props => {
         <WebAppMenu />
         <Content>
           <H1>{h1}</H1>
+          <Slider slides={slider.slides} />
           <RenderDraftjs {...content} />
         </Content>
       </Container>

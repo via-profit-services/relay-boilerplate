@@ -26,8 +26,8 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
   output: {
     path: isDev ? path.join(__dirname, '../build') : path.join(__dirname, '../dist'),
     publicPath: '/',
-    filename: 'public/js/[name].js',
-    chunkFilename: 'public/js/chunk.[chunkhash].js',
+    filename: 'public/js/[contenthash].js',
+    chunkFilename: 'public/js/[chunkhash].js',
   },
   optimization: {
     minimize: !isDev,
@@ -61,10 +61,9 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
     new DefinePlugin({
       SC_DISABLE_SPEEDY: process.env.SC_DISABLE_SPEEDY === 'true', // Set as true to disable CSSOM for Yandex Webvisor
     }),
-
     new MiniCssExtractPlugin({
-      filename: 'public/css/[name].css',
-      chunkFilename: 'public/css/[name].css',
+      filename: 'public/css/[contenthash].css',
+      chunkFilename: 'public/css/[contenthash].css',
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.ANALYZE ? 'server' : 'disabled',
