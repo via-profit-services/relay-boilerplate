@@ -7,8 +7,8 @@ import { RelayEnvironmentProvider } from 'react-relay';
 import { Environment, Network, Store, RecordSource } from 'relay-runtime';
 import Cookies from 'js-cookie';
 
-import relayFetch from '~/utils/relay-fetch';
-import relaySubscribe from '~/utils/relay-subscribe';
+import relayFetch from '~/relay/relay-fetch';
+import relaySubscribe from '~/relay/relay-subscribe';
 import createReduxStore from '~/redux/store';
 import reduxDefaultState from '~/redux/defaultState';
 import ErrorBoundary from '~/components/both/ErrorBoundary';
