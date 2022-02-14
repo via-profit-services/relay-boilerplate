@@ -176,7 +176,7 @@ server.on('request', async (req, res) => {
         ...appConfig,
       });
       res.statusCode = statusCode;
-      res.setHeader('content-type', 'text/html');
+      res.setHeader('content-type', 'text/html; charset=UTF-8');
 
       switch (true) {
         case acceptEncoding.includes('br'):
