@@ -132,14 +132,13 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     },
   };
 
-  // Preloaded store will be injected in HTML
+  const sheet = new ServerStyleSheet();
   const preloadedStatesBase64 = Buffer.from(JSON.stringify(preloadedStates)).toString('base64');
   const reduxStore = createReduxStore(preloadedStates.REDUX);
   const webExtractor = new ChunkExtractor({
     statsFile: path.resolve(__dirname, './public/loadable-stats.json'),
     entrypoints: ['app'],
   });
-  const sheet = new ServerStyleSheet();
   const htmlContent = renderToString(
     webExtractor.collectChunks(
       <StyleSheetManager sheet={sheet.instance}>
