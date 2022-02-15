@@ -13,5 +13,11 @@ declare module 'styled-components' {
       defaultBackground: string;
       defaultText: string;
     };
+    grid: {
+      desktop: {
+        safeFrame: number;
+        gutter: number;
+      };
+    };
   }
 }

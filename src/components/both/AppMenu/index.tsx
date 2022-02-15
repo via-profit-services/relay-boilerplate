@@ -18,7 +18,7 @@ const StyledLink = styled(Link)`
   color: #000;
 `;
 
-const WebAppMenu: React.FC = () => (
+const AppMenu: React.FC = () => (
   <Container>
     <StyledLink to="/">Home page</StyledLink>
     <StyledLink to="/about">About</StyledLink>
@@ -28,4 +28,4 @@ const WebAppMenu: React.FC = () => (
   </Container>
 );
 
-export default WebAppMenu;
+export default AppMenu;

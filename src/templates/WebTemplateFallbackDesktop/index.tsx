@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
-import WebAppMenu from '~/components/both/WebAppMenu';
+import AppMenu from '~/components/both/AppMenu';
 import RenderDraftjs from '~/components/both/RenderDraftjs';
 import fragment, {
   WebTemplateFallbackDesktopFragment$key,
@@ -62,7 +62,7 @@ const WebTemplateFallbackDesktop: React.FC<Props> = props => {
       </Helmet>
       <GlobalStyles />
       <Container>
-        <WebAppMenu />
+        <AppMenu />
         <Content>
           <RenderDraftjs {...content} />
         </Content>

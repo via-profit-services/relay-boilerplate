@@ -12,6 +12,12 @@ const standardLight: DefaultTheme = {
     defaultBackground: '#f1f1f1',
     defaultText: '#212121',
   },
+  grid: {
+    desktop: {
+      safeFrame: 1200,
+      gutter: 16,
+    },
+  },
 };
 
 export default standardLight;

@@ -247,10 +247,10 @@ type FunnelStep implements Node {
 }
 
 enum FunnelStepType {
-  standard
-  unprocessed
-  canceled
-  finished
+  STANDARD
+  UNPROCESSED
+  CANCELED
+  FINISHED
 }
 
 type Funnel implements Node {
