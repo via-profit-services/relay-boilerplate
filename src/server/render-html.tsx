@@ -30,6 +30,11 @@ interface Props extends AppConfigProduction {
   readonly redis: Redis;
 }
 
+interface Cookies {
+  theme?: ThemeVariants;
+  locale?: LocaleVariants;
+}
+
 type RenderHTMLPayload = {
   stream: stream.Readable;
   statusCode: number;
@@ -41,14 +46,33 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const { req, graphqlEndpoint, graphqlSubscriptions, htmlCacheExp, redis } = props;
   const { url, headers } = req;
 
+  // Parsing cookies
+  const cookies: Cookies = {};
+  String(headers.cookie)
+    .split(';')
+    .forEach(pair => {
+      const index = pair.indexOf('=');
+      if (index > -1) {
+        const key = pair.substring(0, index).trim();
+
+        let value = pair.substring(index + 1, pair.length).trim();
+        if (value[0] === '"') {
+          value = value.slice(1, -1);
+        }
+        cookies[key] = decodeURIComponent(value);
+      }
+    });
+
   // Generate uniqu cache key
   // Key contain URL and the cookies
+  // Do not use all cookies. Only needable
   const cacheKey = crypto
     .createHash('sha256')
     .update(
       JSON.stringify({
-        cookie: headers.cookie,
         path: url,
+        theme: cookies.theme,
+        locale: cookies.locale,
       }),
     )
     .digest('hex');
@@ -98,24 +122,6 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
 
   // Extract relay store as JSON to inject this data in HTML page
   const relayStoreRecords = environment.getStore().getSource().toJSON();
-
-  // Parsing cookies
-  const cookies: Record<string, any> = {};
-  String(headers.cookie)
-    .split(';')
-    .forEach(pair => {
-      const index = pair.indexOf('=');
-      if (index > -1) {
-        const key = pair.substring(0, index).trim();
-
-        let value = pair.substring(index + 1, pair.length).trim();
-        if (value[0] === '"') {
-          value = value.slice(1, -1);
-        }
-        cookies[key] = decodeURIComponent(value);
-      }
-    });
-
   const allowedThemes: ThemeVariants[] = ['standardDark', 'standardLight'];
   const allowedLocales: LocaleVariants[] = ['ru-RU'];
 
@@ -127,8 +133,14 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       graphqlSubscriptions,
     },
     REDUX: {
-      theme: allowedThemes.includes(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
-      locale: allowedLocales.includes(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
+      theme:
+        cookies.theme && allowedThemes.includes(cookies.theme)
+          ? cookies.theme
+          : reduxDefaultState.theme,
+      locale:
+        cookies.locale && allowedLocales.includes(cookies.locale)
+          ? cookies.locale
+          : reduxDefaultState.locale,
     },
   };
 
