@@ -11,17 +11,15 @@ import { renderToString } from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-import { Provider as ReduxProvider } from 'react-redux';
 import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
 import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import dotenv from 'dotenv';
 import type { Redis } from 'ioredis';
 
-import App from '~/containers/App';
+import RootRouter from '~/routes/RootRouter';
 import Fallback from '~/components/both/ErrorBoundary/Fallback';
 import relayFetch from '~/server/relay-fetch';
-import createReduxStore from '~/redux/store';
-import reduxDefaultState from '~/redux/defaultState';
+import relayStoreRecords from '~/relay/default-store-records.json';
 import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 
 interface Props extends AppConfigProduction {
@@ -31,8 +29,9 @@ interface Props extends AppConfigProduction {
 }
 
 interface Cookies {
-  theme?: ThemeVariants;
-  locale?: LocaleVariants;
+  theme?: unknown;
+  locale?: unknown;
+  fontSize?: unknown;
 }
 
 type RenderHTMLPayload = {
@@ -63,6 +62,25 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       }
     });
 
+  // Fill the relay store
+  if (typeof cookies.theme === 'string') {
+    if (['standardLight', 'standardDark'].includes(cookies.theme)) {
+      relayStoreRecords['client:root:localStore'].theme = cookies.theme;
+    }
+  }
+
+  if (typeof cookies.locale === 'string') {
+    if (['ru_RU'].includes(cookies.locale)) {
+      relayStoreRecords['client:root:localStore'].locale = cookies.locale;
+    }
+  }
+
+  if (typeof cookies.fontSize === 'string') {
+    if (['small', 'normal', 'medium', 'large'].includes(cookies.fontSize)) {
+      relayStoreRecords['client:root:localStore'].fontSize = cookies.fontSize;
+    }
+  }
+
   // Generate uniqu cache key
   // Key contain URL and the cookies
   // Do not use all cookies. Only needable
@@ -72,6 +90,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       JSON.stringify({
         path: url,
         theme: cookies.theme,
+        fontSize: cookies.fontSize,
         locale: cookies.locale,
       }),
     )
@@ -96,8 +115,8 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
 
   // Configure Relay
   const relayNework = Network.create(relayFetch({ graphqlEndpoint, graphqlSubscriptions }));
-  const relayStore = new Store(new RecordSource());
-  const environment = new Environment({
+  const relayStore = new Store(new RecordSource(relayStoreRecords));
+  const relayEnvironment = new Environment({
     network: relayNework,
     store: relayStore,
     isServer: true,
@@ -106,7 +125,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   let statusCode = 404;
 
   // Fill Relay store by fetching request
-  await fetchQuery<TemplateRenderQuery>(environment, query, {
+  await fetchQuery<TemplateRenderQuery>(relayEnvironment, query, {
     path: String(url),
   })
     .toPromise()
@@ -120,33 +139,16 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       statusCode = 500;
     });
 
-  // Extract relay store as JSON to inject this data in HTML page
-  const relayStoreRecords = environment.getStore().getSource().toJSON();
-  const allowedThemes: ThemeVariants[] = ['standardDark', 'standardLight'];
-  const allowedLocales: LocaleVariants[] = ['ru-RU'];
-
-  // Fill the redux store
   const preloadedStates: PreloadedStates = {
     RELAY: {
-      store: relayStoreRecords,
+      store: relayEnvironment.getStore().getSource().toJSON(),
       graphqlEndpoint,
       graphqlSubscriptions,
-    },
-    REDUX: {
-      theme:
-        cookies.theme && allowedThemes.includes(cookies.theme)
-          ? cookies.theme
-          : reduxDefaultState.theme,
-      locale:
-        cookies.locale && allowedLocales.includes(cookies.locale)
-          ? cookies.locale
-          : reduxDefaultState.locale,
     },
   };
 
   const sheet = new ServerStyleSheet();
   const preloadedStatesBase64 = Buffer.from(JSON.stringify(preloadedStates)).toString('base64');
-  const reduxStore = createReduxStore(preloadedStates.REDUX);
   const webExtractor = new ChunkExtractor({
     statsFile: path.resolve(__dirname, './public/loadable-stats.json'),
     entrypoints: ['app'],
@@ -161,11 +163,9 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     webExtractor.collectChunks(
       <StyleSheetManager sheet={sheet.instance}>
         <StaticRouter location={String(url)}>
-          <ReduxProvider store={reduxStore}>
-            <RelayEnvironmentProvider environment={environment}>
-              {statusCode === 500 ? <Fallback /> : <App />}
-            </RelayEnvironmentProvider>
-          </ReduxProvider>
+          <RelayEnvironmentProvider environment={relayEnvironment}>
+            {statusCode === 500 ? <Fallback /> : <RootRouter />}
+          </RelayEnvironmentProvider>
         </StaticRouter>
       </StyleSheetManager>,
     ),

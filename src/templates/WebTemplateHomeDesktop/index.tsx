@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
-import AppMenu from '~/components/both/AppMenu';
+import Header from '~/components/both/Header';
 import Slider from '~/components/desktop/Slider';
 import H1 from '~/components/both/Typography/H1';
 import RenderDraftjs from '~/components/both/RenderDraftjs';
@@ -71,7 +71,7 @@ const WebTemplateHomeDesktop: React.FC<Props> = props => {
       </Helmet>
       <GlobalStyles />
       <Container>
-        <AppMenu />
+        <Header />
         <Content>
           <H1>{h1}</H1>
           <Slider slides={slider.slides} />

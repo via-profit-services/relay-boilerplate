@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "@via-profit-services/eslint-config/react"
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "json": "always",
+        "jpeg": "always",
+        "png": "always",
+        "svg": "always",
+        "ttf": "always",
+        "graphql": "always"
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "table",
+          "groupEnd",
+          "groupCollapsed",
+          "error",
+          "warn",
+          "debug"
+        ]
+      }
+    ]
+  }
+}

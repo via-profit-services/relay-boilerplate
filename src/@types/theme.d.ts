@@ -2,22 +2,18 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    fontSize: number;
+    fontSize: Record<'small' | 'normal' | 'medium' | 'large', number>;
     zIndex: {
-      appBar: number;
-      mobileMenu: number;
+      header: number;
+      mainDrawer: number;
       modal: number;
-      terms: number;
+    };
+    grid: {
+      frameGutter: number;
     };
     colors: {
       defaultBackground: string;
       defaultText: string;
-    };
-    grid: {
-      desktop: {
-        safeFrame: number;
-        gutter: number;
-      };
     };
   }
 }

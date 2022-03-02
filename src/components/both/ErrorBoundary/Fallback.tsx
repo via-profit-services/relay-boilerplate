@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const ErrorBoundary: React.FC = () => (
+const Fallback: React.FC = () => (
   <>
     <GlobalStyles />
     <Container>
@@ -28,4 +28,4 @@ const ErrorBoundary: React.FC = () => (
   </>
 );
 
-export default ErrorBoundary;
+export default Fallback;

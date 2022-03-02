@@ -1,0 +1,16 @@
+{
+  "client:root": {
+    "__id": "client:root",
+    "__typename": "__Root",
+    "localStore": {
+      "__ref": "client:root:localStore"
+    }
+  },
+  "client:root:localStore": {
+    "__id": "client:root:localStore",
+    "__typename": "LocalStore",
+    "theme": "standardDark",
+    "fontSize": "normal",
+    "locale": "ru_RU"
+  }
+}

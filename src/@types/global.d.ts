@@ -38,7 +38,6 @@ declare interface AppConfigProduction {
 }
 
 declare interface PreloadedStates {
-  REDUX: ReduxState;
   RELAY: {
     graphqlEndpoint: string;
     graphqlSubscriptions: string;

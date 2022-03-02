@@ -3,6 +3,7 @@ import path from 'node:path';
 import dotenv from 'dotenv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration, DefinePlugin, ProgressPlugin, HotModuleReplacementPlugin } from 'webpack';
+import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -14,6 +15,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import 'webpack-dev-server';
 
 import webpackBaseConfig from './webpack-config-base';
+import relayStoreRecords from '../src/relay/default-store-records.json';
 
 dotenv.config();
 const isDev = process.env.NODE_ENV === 'development';
@@ -31,6 +33,16 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
   },
   optimization: {
     minimize: !isDev,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          compress: {
+            drop_console: !isDev,
+          },
+        },
+      }),
+    ],
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
@@ -89,6 +101,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
                     RELAY: {
                       graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
                       graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
+                      store: relayStoreRecords,
                     },
                   }),
                 ).toString('base64'),

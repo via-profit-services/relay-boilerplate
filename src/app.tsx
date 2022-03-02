@@ -1,19 +1,15 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider as ReduxProvider } from 'react-redux';
 import loadable, { loadableReady } from '@loadable/component';
 import { RelayEnvironmentProvider } from 'react-relay';
 import { Environment, Network, Store, RecordSource } from 'relay-runtime';
-import Cookies from 'js-cookie';
 
-import relayFetch from '~/relay/relay-fetch';
-import relaySubscribe from '~/relay/relay-subscribe';
-import createReduxStore from '~/redux/store';
-import reduxDefaultState from '~/redux/defaultState';
+import relayFetch from '~/relay/utils/relay-fetch';
+import relaySubscribe from '~/relay/utils/relay-subscribe';
 import ErrorBoundary from '~/components/both/ErrorBoundary';
 
-const App = loadable(() => import('~/containers/App/index'));
+const RootRouter = loadable(() => import('~/routes/RootRouter'));
 
 const bootstrap = async () => {
   // parse preloaded states from base64 string
@@ -33,41 +29,26 @@ const bootstrap = async () => {
     ),
   ) as Partial<PreloadedStates>;
 
-  const allowedThemes: ThemeVariants[] = ['standardLight', 'standardDark'];
-  const allowedLocales: LocaleVariants[] = ['ru-RU'];
-  const theme = (Cookies.get('theme') || '') as ThemeVariants;
-  const locale = (Cookies.get('locale') || '') as LocaleVariants;
-
-  const reduxState: ReduxState = {
-    ...reduxDefaultState,
-    ...preloadedStates.REDUX,
-    theme: allowedThemes.includes(theme) ? theme : reduxDefaultState.theme,
-    locale: allowedLocales.includes(locale) ? locale : reduxDefaultState.locale,
-  };
-
-  const reduxStore = createReduxStore(reduxState);
   const relayStore = new Store(new RecordSource(preloadedStates.RELAY?.store));
   const relayNetwork = Network.create(
     relayFetch(preloadedStates.RELAY?.graphqlEndpoint || ''),
     relaySubscribe(preloadedStates.RELAY?.graphqlSubscriptions || ''),
   );
-  const rootElement = document.getElementById('app');
-  const environment = new Environment({
+  const relayEnvironment = new Environment({
     isServer: false,
     store: relayStore,
     network: relayNetwork,
   });
 
+  const rootElement = document.getElementById('app');
   const AppData = (
-    <BrowserRouter>
-      <ReduxProvider store={reduxStore}>
-        <RelayEnvironmentProvider environment={environment}>
-          <ErrorBoundary>
-            <App />
-          </ErrorBoundary>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <RelayEnvironmentProvider environment={relayEnvironment}>
+          <RootRouter />
         </RelayEnvironmentProvider>
-      </ReduxProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 
   await loadableReady();

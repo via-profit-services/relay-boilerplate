@@ -6,11 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  position: sticky;
-  top: 0;
-  background: #b9baf9;
-  padding: 20px;
-  box-shadow: 0 5px 12px #0a011252;
+  flex: 1;
 `;
 
 const StyledLink = styled(Link)`
@@ -18,7 +14,7 @@ const StyledLink = styled(Link)`
   color: #000;
 `;
 
-const AppMenu: React.FC = () => (
+const HeaderMenubar: React.FC = () => (
   <Container>
     <StyledLink to="/">Home page</StyledLink>
     <StyledLink to="/about">About</StyledLink>
@@ -28,4 +24,4 @@ const AppMenu: React.FC = () => (
   </Container>
 );
 
-export default AppMenu;
+export default HeaderMenubar;

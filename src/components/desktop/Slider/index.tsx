@@ -45,8 +45,8 @@ const Slider: React.FC<SliderProps> = props => {
         selectedItem={activeSlide}
         onChange={index => setActiveSlide(index)}
       >
-        {slides.map((slideProps, index) => (
-          <Slide {...slideProps} key={index.toString()} />
+        {slides.map(slideProps => (
+          <Slide {...slideProps} key={slideProps.id} />
         ))}
       </Carousel>
 
