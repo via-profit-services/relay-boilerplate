@@ -58,6 +58,9 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
         relay: {
           test: /[\\/]node_modules[\\/](relay|react-relay|relay-runtime)[\\/]$/,
         },
+        redux: {
+          test: /[\\/]node_modules[\\/](redux|react-redux|reselect)[\\/]$/,
+        },
       },
     },
   },

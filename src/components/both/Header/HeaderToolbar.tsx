@@ -1,21 +1,8 @@
 import * as React from 'react';
-import { graphql, useLazyLoadQuery, useRelayEnvironment, commitLocalUpdate } from 'react-relay';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
-
-import query, { HeaderToolbarQuery, FontSize } from '~/relay/artifacts/HeaderToolbarQuery.graphql';
-
-graphql`
-  query HeaderToolbarQuery {
-    ... on Query {
-      __typename
-      localStore {
-        fontSize
-        theme
-      }
-    }
-  }
-`;
+import { useSelector, useDispatch } from 'react-redux';
+import { createSelector } from 'reselect';
 
 const Container = styled.div`
   display: flex;
@@ -27,37 +14,49 @@ const Btn = styled.button<{ $active?: boolean }>`
   background: ${props => (props.$active ? 'orange' : 'white')};
 `;
 
+const selector = createSelector(
+  (store: ReduxStore) => store.ui.fontSize,
+  (store: ReduxStore) => store.ui.theme,
+  (fontSize, theme) => ({ fontSize, theme }),
+);
+
 const HeaderToolbar: React.FC = () => {
-  const { localStore } = useLazyLoadQuery<HeaderToolbarQuery>(query, {});
-  const environment = useRelayEnvironment();
+  const { theme, fontSize } = useSelector(selector);
+  const dispatch = useDispatch<ReduxDispatch>();
+
   const setFontSize = (fontSizeValue: FontSize) => () => {
-    commitLocalUpdate(environment, store => {
-      store.get('client:root:localStore')?.setValue(fontSizeValue, 'fontSize');
-      Cookies.set('fontSize', fontSizeValue);
+    Cookies.set('fontSize', fontSizeValue);
+    dispatch({
+      type: 'setUI',
+      payload: {
+        fontSize: fontSizeValue,
+      },
     });
   };
 
   const switchTheme = () => {
-    commitLocalUpdate(environment, store => {
-      const themeValue = localStore.theme === 'standardLight' ? 'standardDark' : 'standardLight';
-
-      store.get('client:root:localStore')?.setValue(themeValue, 'theme');
-      Cookies.set('theme', themeValue);
+    const themeValue = theme === 'standardLight' ? 'standardDark' : 'standardLight';
+    Cookies.set('theme', themeValue);
+    dispatch({
+      type: 'setUI',
+      payload: {
+        theme: themeValue,
+      },
     });
   };
 
   return (
     <Container>
-      <Btn $active={localStore.fontSize === 'small'} onClick={setFontSize('small')}>
+      <Btn $active={fontSize === 'small'} onClick={setFontSize('small')}>
         small
       </Btn>
-      <Btn $active={localStore.fontSize === 'normal'} onClick={setFontSize('normal')}>
+      <Btn $active={fontSize === 'normal'} onClick={setFontSize('normal')}>
         normal
       </Btn>
-      <Btn $active={localStore.fontSize === 'medium'} onClick={setFontSize('medium')}>
+      <Btn $active={fontSize === 'medium'} onClick={setFontSize('medium')}>
         medium
       </Btn>
-      <Btn onClick={() => switchTheme()}>Theme: {localStore.theme}</Btn>
+      <Btn onClick={() => switchTheme()}>Theme: {theme}</Btn>
     </Container>
   );
 };

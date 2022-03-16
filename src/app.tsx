@@ -4,7 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import loadable, { loadableReady } from '@loadable/component';
 import { RelayEnvironmentProvider } from 'react-relay';
 import { Environment, Network, Store, RecordSource } from 'relay-runtime';
+import { Provider as ReduxProvider } from 'react-redux';
 
+import reduxDefaultState from '~/redux/defaultState';
+import createReduxStore from '~/redux/store';
 import relayFetch from '~/relay/utils/relay-fetch';
 import relaySubscribe from '~/relay/utils/relay-subscribe';
 import ErrorBoundary from '~/components/both/ErrorBoundary';
@@ -29,6 +32,11 @@ const bootstrap = async () => {
     ),
   ) as Partial<PreloadedStates>;
 
+  const reduxStore = createReduxStore({
+    ...reduxDefaultState,
+    ...preloadedStates.REDUX?.store,
+  });
+
   const relayStore = new Store(new RecordSource(preloadedStates.RELAY?.store));
   const relayNetwork = Network.create(
     relayFetch(preloadedStates.RELAY?.graphqlEndpoint || ''),
@@ -44,9 +52,11 @@ const bootstrap = async () => {
   const AppData = (
     <ErrorBoundary>
       <BrowserRouter>
-        <RelayEnvironmentProvider environment={relayEnvironment}>
-          <RootRouter />
-        </RelayEnvironmentProvider>
+        <ReduxProvider store={reduxStore}>
+          <RelayEnvironmentProvider environment={relayEnvironment}>
+            <RootRouter />
+          </RelayEnvironmentProvider>
+        </ReduxProvider>
       </BrowserRouter>
     </ErrorBoundary>
   );

@@ -3,12 +3,10 @@ import { usePreloadedQuery, PreloadedQuery, graphql } from 'react-relay';
 import loadable from '@loadable/component';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { IntlProvider } from 'react-intl';
+import { useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
-import query, {
-  TemplateRenderQuery,
-  LocaleName,
-  ThemeName,
-} from '~/relay/artifacts/TemplateRenderQuery.graphql';
+import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 import LoadingIndicator from '~/components/both/LoadingIndicator';
 import translationsruRU from '~/translations/ru-RU.json';
 import themeStandardLight from '~/themes/standardLight';
@@ -17,11 +15,6 @@ import GlobalStyles from '~/containers/WebPage/GlobalStyles';
 
 graphql`
   query TemplateRenderQuery($path: String!) {
-    localStore {
-      locale
-      fontSize
-      theme
-    }
     webpages {
       resolvePage(path: $path) {
         id
@@ -65,25 +58,33 @@ const WebTemplateContactDesktop = loadable(
   },
 );
 
-const localeMap: Record<Exclude<LocaleName, '%future added value'>, Record<string, string>> = {
-  ru_RU: translationsruRU,
+const localeMap: Record<LocaleName, Record<string, string>> = {
+  'ru-RU': translationsruRU,
 };
 
-const themesMap: Record<Exclude<ThemeName, '%future added value'>, DefaultTheme> = {
+const themesMap: Record<ThemeName, DefaultTheme> = {
   standardLight: themeStandardLight,
   standardDark: themeStandardDark,
 };
 
+const selector = createSelector(
+  (store: ReduxStore) => store.ui.theme,
+  (store: ReduxStore) => store.ui.locale,
+  (store: ReduxStore) => store.ui.fontSize,
+  (theme, locale, fontSize) => ({ theme, locale, fontSize }),
+);
+
 const TemplateRender: React.FC<Props> = props => {
   const { preloadedQuery } = props;
-  const { webpages, localStore } = usePreloadedQuery<TemplateRenderQuery>(query, preloadedQuery);
+  const state = useSelector(selector);
+  const { webpages } = usePreloadedQuery<TemplateRenderQuery>(query, preloadedQuery);
   const { template } = webpages.resolvePage;
 
-  const messages = localeMap[localStore.locale] || localeMap.ru_RU;
-  const locale = localStore.locale in localeMap ? localStore.locale : 'ru_RU';
+  const messages = localeMap[state.locale] || localeMap['ru-RU'];
+  const locale = state.locale in localeMap ? state.locale : 'ru-RU';
   const theme = React.useMemo(
-    () => themesMap[localStore.theme] || themesMap.standardLight,
-    [localStore.theme],
+    () => themesMap[state.theme] || themesMap.standardLight,
+    [state.theme],
   );
 
   const renderTemplate = React.useCallback(() => {
@@ -106,9 +107,9 @@ const TemplateRender: React.FC<Props> = props => {
   }, [template]);
 
   return (
-    <IntlProvider locale={locale.replace('_', '-')} messages={messages}>
+    <IntlProvider locale={locale} messages={messages}>
       <ThemeProvider theme={theme}>
-        <GlobalStyles fontSize={localStore.fontSize} />
+        <GlobalStyles fontSize={state.fontSize} />
         {renderTemplate()}
       </ThemeProvider>
     </IntlProvider>

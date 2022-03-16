@@ -6,9 +6,17 @@
     "module": "commonjs", //commonjs destroys 'dynamic imports' which is used for code splitting
     "noImplicitAny": false,
     "preserveConstEnums": true,
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "jsx": "react", // process JSX
-    "lib": ["dom", "es5", "es6", "es7", "es2017"],
+    "lib": [
+      "dom",
+      "es5",
+      "es6",
+      "es7",
+      "es2017"
+    ],
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
     "esModuleInterop": true,
     "allowJs": true, // include js files
@@ -18,7 +26,10 @@
     "forceConsistentCasingInFileNames": true,
     // "importHelpers": true, // importing helper functions from tslib
     // "noEmitHelpers": true, // disable emitting inline helper functions
-    "types": ["node", "webpack-env"],
+    "types": [
+      "node",
+      "webpack-env"
+    ],
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
@@ -33,9 +44,16 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "paths": {
-      "~/*": ["./*"]
+      "~/*": [
+        "./*"
+      ]
     },
   },
-  "include": ["src/**/*", "src/@types/*.d.ts"],
-  "exclude": ["node_modules/**/*"]
+  "include": [
+    "src/**/*",
+    "src/@types/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules/**/*"
+  ]
 }

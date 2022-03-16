@@ -43,4 +43,7 @@ declare interface PreloadedStates {
     graphqlSubscriptions: string;
     store: Record<string, any>;
   };
+  REDUX: {
+    store: ReduxStore;
+  };
 }
