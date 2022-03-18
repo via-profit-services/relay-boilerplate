@@ -30,7 +30,7 @@ declare interface AppConfigProduction {
   graphqlSubscriptions: string;
   serverHostname: string;
   serverPort: number;
-  htmlCacheExp: number;
+  redisCacheExp: number;
   redisHost: string;
   redisPort: number;
   redisPassword: string;

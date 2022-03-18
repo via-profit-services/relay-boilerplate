@@ -29,32 +29,11 @@ const webpackBaseConfig: Configuration = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(eot|otf|ttf|woff|woff2)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'public/fonts/[contenthash].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(svg|gif)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'public/images/[contenthash].[ext]',
-            },
-          },
-        ],
+        test: /\.(png|jpg|jpeg|webp|mp4|webm|svg|gif|eot|otf|ttf|woff|woff2)$/,
+        type: 'asset',
       },
       {
         test: /\.(png|jpg|jpeg|webp)$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: ImageMinimizerPlugin.loader,
@@ -62,32 +41,18 @@ const webpackBaseConfig: Configuration = {
               minimizer: {
                 implementation: ImageMinimizerPlugin.imageminMinify,
                 options: {
+                  type: 'asset',
                   plugins: [
-                    ['imagemin-webp', { quality: 25 }],
-                    ['imagemin-mozjpeg', { quality: 25 }],
-                    ['imagemin-pngquant', { quality: [0.6, 0.8] }],
+                    ['jpegtran', { progressive: true }],
+                    ['mozjpeg', { quality: 90 }],
+                    ['optipng', { optimizationLevel: 5 }],
+                    ['pngquant', { quality: [0.6, 0.8] }],
                   ],
                 },
               },
             },
           },
         ],
-      },
-      {
-        test: /\.html$/,
-        use: 'html-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(mp4|webm)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 0,
-            name: 'public/video/[contenthash].[ext]',
-          },
-        },
       },
     ],
   },

@@ -28,7 +28,7 @@ import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuer
 interface Props extends AppConfigProduction {
   readonly req: http.IncomingMessage;
   readonly res: http.ServerResponse;
-  readonly redis: Redis;
+  readonly redis: Redis | null;
 }
 
 interface Cookies {
@@ -45,7 +45,7 @@ type RenderHTMLPayload = {
 dotenv.config();
 
 const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
-  const { req, graphqlEndpoint, graphqlSubscriptions, htmlCacheExp, redis } = props;
+  const { req, graphqlEndpoint, graphqlSubscriptions, redisCacheExp, redis } = props;
   const { url, headers } = req;
 
   // Parsing cookies
@@ -97,7 +97,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     )
     .digest('hex');
 
-  if (htmlCacheExp > 0) {
+  if (redis && redisCacheExp > 0) {
     // Try to get cache from Redis by user cache key
     const cachedHTMLData = await redis.get(`cache:${cacheKey}`);
     if (cachedHTMLData) {
@@ -221,12 +221,12 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   });
 
   // Save already renderer HTML into the Redis cache
-  if (htmlCacheExp > 0) {
+  if (redis && redisCacheExp > 0) {
     const cacheData = JSON.stringify({
       statusCode,
       html,
     });
-    await redis.set(`cache:${cacheKey}`, cacheData, 'EX', htmlCacheExp);
+    await redis.set(`cache:${cacheKey}`, cacheData, 'EX', redisCacheExp);
   }
 
   return {

@@ -16,18 +16,19 @@ const webpackServerConfig: Configuration = merge(webpackBaseConfig, {
   entry: {
     index: path.resolve(__dirname, '../src/server/index.ts'),
   },
+  output: {
+    path: isDev ? path.join(__dirname, '../build') : path.join(__dirname, '../dist'),
+    publicPath: '/',
+    filename: '[name].js',
+    chunkFilename: 'server/js/[name].chunk.[chunkhash].js',
+    assetModuleFilename: 'public/asset/[contenthash][ext]',
+  },
   optimization: {
     minimize: !isDev,
   },
   node: {
     __filename: true,
     __dirname: false,
-  },
-  output: {
-    path: isDev ? path.join(__dirname, '../build') : path.join(__dirname, '../dist'),
-    publicPath: '/',
-    filename: '[name].js',
-    chunkFilename: 'server/js/[name].chunk.[chunkhash].js',
   },
   externals: isDev ? [nodeExternals()] : [],
   plugins: [

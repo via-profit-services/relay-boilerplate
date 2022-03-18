@@ -15,7 +15,7 @@ const envNames = [
   'GRAPHQL_ENDPOINT',
   'SERVER_PORT',
   'SERVER_HOSTNAME',
-  'HTML_CACHE_EXP',
+  'REDIS_CACHE_EXP',
   'REDIS_HOST',
   'REDIS_PORT',
   'REDIS_PASSWORD',
@@ -42,19 +42,22 @@ const appConfig: AppConfigProduction = {
   graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT || '',
   serverHostname: process.env.SERVER_HOSTNAME || '',
   serverPort: Number(process.env.SERVER_PORT),
-  htmlCacheExp: Number(process.env.HTML_CACHE_EXP),
+  redisCacheExp: Number(process.env.REDIS_CACHE_EXP),
   redisHost: process.env.REDIS_HOST || '',
   redisPassword: process.env.REDIS_PASSWORD || '',
   redisPort: Number(process.env.REDIS_PORT),
   redisDatabase: Number(process.env.REDIS_DB),
 };
 const server = http.createServer();
-const redis = new IORedis({
-  host: appConfig.redisHost,
-  port: appConfig.redisPort,
-  password: appConfig.redisPassword,
-  db: appConfig.redisDatabase,
-});
+const redis =
+  appConfig.redisCacheExp > 0
+    ? new IORedis({
+        host: appConfig.redisHost,
+        port: appConfig.redisPort,
+        password: appConfig.redisPassword,
+        db: appConfig.redisDatabase,
+      })
+    : null;
 
 server.on('request', async (req, res) => {
   const { url, method } = req;
@@ -199,6 +202,12 @@ server.on('request', async (req, res) => {
 
     return;
   }
+
+  /**
+   * Otherwise Route
+   */
+  res.statusCode = 200;
+  res.end();
 });
 
 // Start the http server to serve HTML page
