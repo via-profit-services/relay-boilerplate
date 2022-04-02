@@ -19,22 +19,22 @@ const routes = async (props: Props) => {
   const requestUrl = url || '';
   const requestMethod = method || '';
 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Allow', 'GET, POST, HEAD, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, HEAD, OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Authorization, Content-Type, Accept, Content-Length',
+  );
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader(
+    'Content-Aecurity-Policy',
+    "default-src 'self' 'unsafe-inline' ws: wss: http: https: data: blob:",
+  );
+
   switch (true) {
     case ['OPTIONS'].includes(requestMethod):
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Allow', 'GET, POST, HEAD, OPTIONS');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, HEAD, OPTIONS');
-      res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Authorization, Content-Type, Accept, Content-Length',
-      );
-      res.setHeader('Access-Control-Allow-Credentials', 'true');
-      res.setHeader(
-        'Content-Aecurity-Policy',
-        "default-src 'self' 'unsafe-inline' ws: wss: http: https: data: blob:",
-      );
-
-      return void 0;
+      return res.end();
 
     case ['PUT', 'PATCH', 'TRACE', 'DELETE'].includes(requestMethod):
       res.statusCode = 405;
