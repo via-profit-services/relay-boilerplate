@@ -16,6 +16,7 @@ import 'webpack-dev-server';
 
 import webpackBaseConfig from './webpack-config-base';
 import relayStoreRecords from '../src/relay/default-store-records.json';
+import { version } from '../package.json';
 
 dotenv.config();
 const isDev = process.env.NODE_ENV === 'development';
@@ -76,6 +77,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
     }) as any,
     new DefinePlugin({
       SC_DISABLE_SPEEDY: process.env.SC_DISABLE_SPEEDY === 'true', // Set as true to disable CSSOM for Yandex Webvisor
+      'process.env.APP_VERSION': JSON.stringify(version),
     }),
     new MiniCssExtractPlugin({
       filename: 'public/css/[contenthash].css',
