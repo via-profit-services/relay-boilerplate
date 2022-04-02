@@ -5,6 +5,8 @@ import { loadableReady } from '@loadable/component';
 import { RelayEnvironmentProvider } from 'react-relay';
 import { Environment, Network, Store, RecordSource } from 'relay-runtime';
 import { Provider as ReduxProvider } from 'react-redux';
+import createCache from '@emotion/cache';
+import { CacheProvider as CSSCacheProvider } from '@emotion/react';
 
 import reduxDefaultState from '~/redux/defaultState';
 import createReduxStore from '~/redux/store';
@@ -57,14 +59,16 @@ const bootstrap = async () => {
   if (!rootElement) {
     throw new Error('Root element with id #app not found');
   }
-
+  const cssCache = createCache({ key: 'app' });
   const AppData = (
     <ReduxProvider store={reduxStore}>
-      <BrowserRouter>
-        <RelayEnvironmentProvider environment={relayEnvironment}>
-          <RootRouter />
-        </RelayEnvironmentProvider>
-      </BrowserRouter>
+      <RelayEnvironmentProvider environment={relayEnvironment}>
+        <BrowserRouter>
+          <CSSCacheProvider value={cssCache}>
+            <RootRouter />
+          </CSSCacheProvider>
+        </BrowserRouter>
+      </RelayEnvironmentProvider>
     </ReduxProvider>
   );
 

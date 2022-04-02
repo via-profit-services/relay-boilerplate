@@ -13,6 +13,7 @@ import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router-dom/server';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
+import { CacheProvider as CSSCacheProvider } from '@emotion/react';
 import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
 import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import { Provider as ReduxProvider } from 'react-redux';
@@ -184,11 +185,13 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const htmlContent = renderToString(
     webExtractor.collectChunks(
       <ReduxProvider store={reduxStore}>
-        <StaticRouter location={String(url)}>
-          <RelayEnvironmentProvider environment={relayEnvironment}>
-            <RootRouter />
-          </RelayEnvironmentProvider>
-        </StaticRouter>
+        <RelayEnvironmentProvider environment={relayEnvironment}>
+          <StaticRouter location={String(url)}>
+            <CSSCacheProvider value={cssCache}>
+              <RootRouter />
+            </CSSCacheProvider>
+          </StaticRouter>
+        </RelayEnvironmentProvider>
       </ReduxProvider>,
     ),
   );
