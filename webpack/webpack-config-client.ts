@@ -30,7 +30,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
     publicPath: '/',
     filename: 'public/js/[name][contenthash].js',
     chunkFilename: 'public/js/[name][chunkhash].js',
-    assetModuleFilename: 'public/asset/[contenthash][ext]',
+    assetModuleFilename: 'public/assets/[contenthash][ext]',
   },
   optimization: {
     minimize: !isDev,
