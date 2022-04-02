@@ -28,13 +28,12 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
   output: {
     path: isDev ? path.join(__dirname, '../build') : path.join(__dirname, '../dist'),
     publicPath: '/',
-    filename: 'public/js/[contenthash].js',
-    chunkFilename: 'public/js/[chunkhash].js',
+    filename: 'public/js/[name][contenthash].js',
+    chunkFilename: 'public/js/[name][chunkhash].js',
     assetModuleFilename: 'public/asset/[contenthash][ext]',
   },
   optimization: {
-    // minimize: !isDev,
-    minimize: false,
+    minimize: !isDev,
     minimizer: [
       new TerserPlugin({
         parallel: true,

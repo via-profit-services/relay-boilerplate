@@ -11,7 +11,6 @@ import { ChunkExtractor } from '@loadable/server';
 import { renderToString } from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router-dom/server';
-import { CacheProvider as CSSCacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
@@ -184,15 +183,13 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   // this case «React» will fail with an error
   const htmlContent = renderToString(
     webExtractor.collectChunks(
-      <CSSCacheProvider value={cssCache}>
+      <ReduxProvider store={reduxStore}>
         <StaticRouter location={String(url)}>
-          <ReduxProvider store={reduxStore}>
-            <RelayEnvironmentProvider environment={relayEnvironment}>
-              <RootRouter />
-            </RelayEnvironmentProvider>
-          </ReduxProvider>
+          <RelayEnvironmentProvider environment={relayEnvironment}>
+            <RootRouter />
+          </RelayEnvironmentProvider>
         </StaticRouter>
-      </CSSCacheProvider>,
+      </ReduxProvider>,
     ),
   );
   const helmet = Helmet.renderStatic();
@@ -224,6 +221,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       styleTags: webExtractor.getStyleTags(),
     },
     htmlContent,
+    // htmlContent: renderToString(<Te />),
   });
 
   // Save already renderer HTML into the Redis cache
