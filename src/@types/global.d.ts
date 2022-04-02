@@ -13,12 +13,22 @@ declare module '*.png' {
   export default content;
 }
 
+declare module '*.ico' {
+  const content: string;
+  export default content;
+}
+
 declare module '*!raw' {
   const content: string | any;
   export default content;
 }
 
 declare module '*.json' {
+  const value: any;
+  export default value;
+}
+
+declare module '*.txt' {
   const value: any;
   export default value;
 }

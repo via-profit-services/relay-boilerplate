@@ -1,6 +1,6 @@
-import { DefaultTheme } from 'styled-components';
+import { Theme } from '@emotion/react';
 
-const standardLight: DefaultTheme = {
+const standardLight: Theme = {
   fontSize: {
     small: 14,
     normal: 16,

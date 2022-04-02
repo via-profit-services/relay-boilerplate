@@ -1,8 +1,8 @@
-import { DefaultTheme } from 'styled-components';
+import { Theme } from '@emotion/react';
 
 import standardLight from './standardLight';
 
-const standardDark: DefaultTheme = {
+const standardDark: Theme = {
   ...standardLight,
   colors: {
     ...standardLight.colors,

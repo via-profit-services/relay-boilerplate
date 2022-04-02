@@ -11,15 +11,7 @@ const babelConfig = {
     '@babel/plugin-proposal-nullish-coalescing-operator',
     '@babel/plugin-proposal-optional-chaining',
     'babel-plugin-relay',
-    [
-      'babel-plugin-styled-components',
-      {
-        minify: process.env.NODE_ENV !== 'development',
-        displayName: process.env.NODE_ENV === 'development',
-        pure: true,
-        ssr: true,
-      },
-    ],
+    '@emotion/babel-plugin',
     [
       '@babel/plugin-transform-typescript',
       {

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
+import { Global, css, useTheme } from '@emotion/react';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
-import Header from '~/components/both/Header';
-import Slider from '~/components/desktop/Slider';
-import H1 from '~/components/both/Typography/H1';
-import RenderDraftjs from '~/components/both/RenderDraftjs';
+import Header from '~/components/Header';
+import MainSliderBlock from '~/components/MainSliderBlock';
+import H1 from '~/components/Typography/H1';
+import RenderDraftjs from '~/components/RenderDraftjs';
 import fragment, {
   WebTemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateHomeDesktopFragment.graphql';
@@ -48,16 +49,9 @@ const Content = styled.div`
   flex: 1;
 `;
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    margin: 0;
-    background-color: ${({ theme }) => theme.colors.defaultBackground};
-    color: ${({ theme }) => theme.colors.defaultText};
-  }
-`;
-
 const WebTemplateHomeDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
+  const theme = useTheme();
   const { h1, content, page, slider } = useFragment<WebTemplateHomeDesktopFragment$key>(
     fragment,
     fragmentRef,
@@ -69,12 +63,20 @@ const WebTemplateHomeDesktop: React.FC<Props> = props => {
         <title>{page.meta.title}</title>
         <meta name="description" content={page.meta.description} />
       </Helmet>
-      <GlobalStyles />
+      <Global
+        styles={css`
+          body {
+            margin: 0;
+            background-color: ${theme.colors.defaultBackground};
+            color: ${theme.colors.defaultText};
+          }
+        `}
+      />
       <Container>
         <Header />
         <Content>
           <H1>{h1}</H1>
-          <Slider slides={slider.slides} />
+          <MainSliderBlock {...slider} />
           <RenderDraftjs {...content} />
         </Content>
       </Container>

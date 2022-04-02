@@ -1,7 +1,7 @@
-import 'styled-components';
+import '@emotion/react';
 
-declare module 'styled-components' {
-  export interface DefaultTheme {
+declare module '@emotion/react' {
+  export interface Theme {
     fontSize: Record<'small' | 'normal' | 'medium' | 'large', number>;
     zIndex: {
       header: number;

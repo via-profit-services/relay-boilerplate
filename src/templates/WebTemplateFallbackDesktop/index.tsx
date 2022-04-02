@@ -1,10 +1,11 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
+import { Global, css, useTheme } from '@emotion/react';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
-import Header from '~/components/both/Header';
-import RenderDraftjs from '~/components/both/RenderDraftjs';
+import Header from '~/components/Header';
+import RenderDraftjs from '~/components/RenderDraftjs';
 import fragment, {
   WebTemplateFallbackDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateFallbackDesktopFragment.graphql';
@@ -39,16 +40,9 @@ const Content = styled.div`
   flex: 1;
 `;
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    margin: 0;
-    background-color: ${({ theme }) => theme.colors.defaultBackground};
-    color: ${({ theme }) => theme.colors.defaultText};
-  }
-`;
-
 const WebTemplateFallbackDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
+  const theme = useTheme();
   const { content, page } = useFragment<WebTemplateFallbackDesktopFragment$key>(
     fragment,
     fragmentRef,
@@ -60,7 +54,15 @@ const WebTemplateFallbackDesktop: React.FC<Props> = props => {
         <title>{page.meta.title}</title>
         <meta name="description" content={page.meta.description} />
       </Helmet>
-      <GlobalStyles />
+      <Global
+        styles={css`
+          body {
+            margin: 0;
+            background-color: ${theme.colors.defaultBackground};
+            color: ${theme.colors.defaultText};
+          }
+        `}
+      />
       <Container>
         <Header />
         <Content>

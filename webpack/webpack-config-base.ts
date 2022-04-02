@@ -29,6 +29,28 @@ const webpackBaseConfig: Configuration = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
+        test: /favicon\.(png|ico)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'public/assets/favicon.[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /robots\.txt$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'public/assets/robots.txt',
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpg|jpeg|webp|mp4|webm|svg|gif|eot|otf|ttf|woff|woff2)$/,
         type: 'asset',
       },

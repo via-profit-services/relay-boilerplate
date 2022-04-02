@@ -33,7 +33,8 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
     assetModuleFilename: 'public/asset/[contenthash][ext]',
   },
   optimization: {
-    minimize: !isDev,
+    // minimize: !isDev,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         parallel: true,
@@ -93,7 +94,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
           new ReactRefreshWebpackPlugin(),
           new HtmlWebpackPlugin({
             templateContent: Mustache.render(
-              fs.readFileSync(path.resolve(__dirname, '../assets/index.mustache'), {
+              fs.readFileSync(path.resolve(__dirname, '../src/assets/index.mustache'), {
                 encoding: 'utf8',
               }),
               {
@@ -119,9 +120,12 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
         [
           new HtmlWebpackPlugin({
             excludeChunks: ['app'], // exclude main entypoint
-            templateContent: fs.readFileSync(path.resolve(__dirname, '../assets/index.mustache'), {
-              encoding: 'utf8',
-            }),
+            templateContent: fs.readFileSync(
+              path.resolve(__dirname, '../src/assets/index.mustache'),
+              {
+                encoding: 'utf8',
+              },
+            ),
             filename: path.resolve(__dirname, '../dist/server/index.mustache'),
             minify: {
               caseSensitive: true,

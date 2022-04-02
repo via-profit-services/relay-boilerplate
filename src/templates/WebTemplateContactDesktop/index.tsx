@@ -1,11 +1,12 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
+import { Global, css, useTheme } from '@emotion/react';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
-import Header from '~/components/both/Header';
-import H1 from '~/components/both/Typography/H1';
-import Paragraph from '~/components/both/Typography/Paragraph';
+import Header from '~/components/Header';
+import H1 from '~/components/Typography/H1';
+import Paragraph from '~/components/Typography/Paragraph';
 import fragment, {
   WebTemplateContactDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateContactDesktopFragment.graphql';
@@ -40,16 +41,9 @@ const Content = styled.div`
   flex: 1;
 `;
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    margin: 0;
-    background-color: ${({ theme }) => theme.colors.defaultBackground};
-    color: ${({ theme }) => theme.colors.defaultText};
-  }
-`;
-
 const WebTemplateContactDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
+  const theme = useTheme();
   const { h1, address, page } = useFragment<WebTemplateContactDesktopFragment$key>(
     fragment,
     fragmentRef,
@@ -61,7 +55,15 @@ const WebTemplateContactDesktop: React.FC<Props> = props => {
         <title>{page.meta.title}</title>
         <meta name="description" content={page.meta.description} />
       </Helmet>
-      <GlobalStyles />
+      <Global
+        styles={css`
+          body {
+            margin: 0;
+            background-color: ${theme.colors.defaultBackground};
+            color: ${theme.colors.defaultText};
+          }
+        `}
+      />
       <Container>
         <Header />
         <Content>

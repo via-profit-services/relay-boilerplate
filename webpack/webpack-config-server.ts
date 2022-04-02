@@ -21,10 +21,11 @@ const webpackServerConfig: Configuration = merge(webpackBaseConfig, {
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: 'server/js/[name].chunk.[chunkhash].js',
-    assetModuleFilename: 'public/asset/[contenthash][ext]',
+    assetModuleFilename: 'public/assets/[contenthash][ext]',
   },
   optimization: {
-    minimize: !isDev,
+    // minimize: !isDev,
+    minimize: false,
   },
   node: {
     __filename: true,

@@ -12,6 +12,8 @@
         "png": "always",
         "svg": "always",
         "ttf": "always",
+        "ico": "always",
+        "txt": "always",
         "graphql": "always"
       }
     ],
