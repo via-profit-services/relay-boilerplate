@@ -1,9 +1,8 @@
 const defaultState: ReduxStore = {
-  ui: {
-    theme: 'standardLight',
-    fontSize: 'normal',
-    locale: 'ru-RU',
-  },
+  theme: 'standardLight',
+  fontSize: 'normal',
+  locale: 'ru-RU',
+  deviceMode: 'desktop',
 };
 
 export default defaultState;

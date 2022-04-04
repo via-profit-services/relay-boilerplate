@@ -69,10 +69,11 @@ const themesMap: Record<ThemeName, Theme> = {
 };
 
 const selector = createSelector(
-  (store: ReduxStore) => store.ui.theme,
-  (store: ReduxStore) => store.ui.locale,
-  (store: ReduxStore) => store.ui.fontSize,
-  (theme, locale, fontSize) => ({ theme, locale, fontSize }),
+  (store: ReduxStore) => store.theme,
+  (store: ReduxStore) => store.locale,
+  (store: ReduxStore) => store.fontSize,
+  (store: ReduxStore) => store.deviceMode,
+  (theme, locale, fontSize, deviceMode) => ({ theme, locale, fontSize, deviceMode }),
 );
 
 const TemplateRenderLazy: React.FC = () => {

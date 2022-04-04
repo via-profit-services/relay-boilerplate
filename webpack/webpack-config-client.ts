@@ -2,11 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import dotenv from 'dotenv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { Configuration, DefinePlugin, ProgressPlugin, HotModuleReplacementPlugin } from 'webpack';
+import { Configuration, HotModuleReplacementPlugin } from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { merge } from 'webpack-merge';
 import LoadablePlugin from '@loadable/webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
@@ -16,12 +15,10 @@ import 'webpack-dev-server';
 
 import webpackBaseConfig from './webpack-config-base';
 import relayStoreRecords from '../src/relay/default-store-records.json';
-import { version } from '../package.json';
 
 dotenv.config();
 const isDev = process.env.NODE_ENV === 'development';
 const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
-  mode: isDev ? 'development' : 'production',
   target: 'web',
   entry: {
     app: path.resolve(__dirname, '../src/app.tsx'),
@@ -34,7 +31,6 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
     assetModuleFilename: 'public/assets/[contenthash][ext]',
   },
   optimization: {
-    minimize: !isDev,
     minimizer: [
       new TerserPlugin({
         parallel: true,
@@ -71,18 +67,9 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
      * Development and production plugins
      */
     new HotModuleReplacementPlugin(),
-    new ProgressPlugin(),
     new LoadablePlugin({
       filename: '/public/loadable-stats.json',
     }) as any,
-    new DefinePlugin({
-      SC_DISABLE_SPEEDY: process.env.SC_DISABLE_SPEEDY === 'true', // Set as true to disable CSSOM for Yandex Webvisor
-      'process.env.APP_VERSION': JSON.stringify(version),
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'public/css/[contenthash].css',
-      chunkFilename: 'public/css/[contenthash].css',
-    }),
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.ANALYZE ? 'server' : 'disabled',
       openAnalyzer: true,
@@ -109,6 +96,7 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
                       graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
                       store: relayStoreRecords,
                     },
+                    REDUX: {},
                   }),
                 ).toString('base64'),
               },
