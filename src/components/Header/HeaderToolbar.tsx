@@ -15,8 +15,8 @@ const Btn = styled.button<{ $active?: boolean }>`
 `;
 
 const selector = createSelector(
-  (store: ReduxStore) => store.ui.fontSize,
-  (store: ReduxStore) => store.ui.theme,
+  (store: ReduxStore) => store.fontSize,
+  (store: ReduxStore) => store.theme,
   (fontSize, theme) => ({ fontSize, theme }),
 );
 
@@ -27,10 +27,8 @@ const HeaderToolbar: React.FC = () => {
   const setFontSize = (fontSizeValue: FontSize) => () => {
     Cookies.set('fontSize', fontSizeValue);
     dispatch({
-      type: 'setUI',
-      payload: {
-        fontSize: fontSizeValue,
-      },
+      type: 'setFontSize',
+      payload: fontSizeValue,
     });
   };
 
@@ -38,10 +36,8 @@ const HeaderToolbar: React.FC = () => {
     const themeValue = theme === 'standardLight' ? 'standardDark' : 'standardLight';
     Cookies.set('theme', themeValue);
     dispatch({
-      type: 'setUI',
-      payload: {
-        theme: themeValue,
-      },
+      type: 'setTheme',
+      payload: themeValue,
     });
   };
 

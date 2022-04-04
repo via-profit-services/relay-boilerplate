@@ -52,10 +52,10 @@ const staticFilesRoute = (props: Props) => {
   res.setHeader('cache-control', `max-age=${86400 * 30}`); // 30 days
   res.statusCode = 200;
 
-  if (acceptEncoding.includes('br') && fs.existsSync(filename + '.br')) {
-    res.setHeader('content-encoding', 'br');
+  if (acceptEncoding.includes('gzip') && fs.existsSync(filename + '.gz')) {
+    res.setHeader('content-encoding', 'gzip');
     if (method === 'GET') {
-      return fs.createReadStream(filename + '.br').pipe(res);
+      return fs.createReadStream(filename + '.gz').pipe(res);
     }
 
     return res.end();

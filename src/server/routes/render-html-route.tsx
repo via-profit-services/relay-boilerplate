@@ -46,6 +46,24 @@ type RenderHTMLPayload = {
   statusCode: number;
 };
 
+const getDeviceMode = (req: http.IncomingMessage): DeviceMode => {
+  const { headers } = req;
+  const userAgent = headers?.['user-agent'] || '';
+
+  switch (true) {
+    case /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(userAgent):
+      return 'tablet';
+
+    case /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      userAgent,
+    ):
+      return 'mobile';
+
+    default:
+      return 'desktop';
+  }
+};
+
 // Render function
 // Not a route
 const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
@@ -101,6 +119,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     .update(JSON.stringify(cacheKeyPayload))
     .digest('hex');
 
+  const deviceMode = getDeviceMode(req);
   const cssCache = createCache({ key: 'app' });
   const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cssCache);
 
@@ -121,8 +140,6 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     }
   }
 
-  const defaultUIVars = reduxDefaultState.ui;
-
   // Configure Relay
   const relayNework = Network.create(relayFetch({ graphqlEndpoint, graphqlSubscriptions }));
   const relayStore = new Store(new RecordSource(relayStoreRecords));
@@ -141,12 +158,10 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
     REDUX: {
       store: {
         ...reduxDefaultState,
-        ui: {
-          ...defaultUIVars,
-          theme: isValidTheme(cookies.theme) ? cookies.theme : defaultUIVars.theme,
-          locale: isValidLocale(cookies.locale) ? cookies.locale : defaultUIVars.locale,
-          fontSize: isValidFontSize(cookies.fontSize) ? cookies.fontSize : defaultUIVars.fontSize,
-        },
+        theme: isValidTheme(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
+        locale: isValidLocale(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
+        fontSize: isValidFontSize(cookies.fontSize) ? cookies.fontSize : reduxDefaultState.fontSize,
+        deviceMode,
       },
     },
   };
@@ -224,7 +239,6 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       styleTags: webExtractor.getStyleTags(),
     },
     htmlContent,
-    // htmlContent: renderToString(<Te />),
   });
 
   // Save already renderer HTML into the Redis cache
@@ -254,10 +268,10 @@ const renderHTMLRoute = async (props: Props) => {
   res.statusCode = statusCode;
   res.setHeader('content-type', 'text/html; charset=UTF-8');
 
-  if (acceptEncoding.includes('br')) {
-    res.setHeader('content-encoding', 'br');
+  if (acceptEncoding.includes('gzip')) {
+    res.setHeader('content-encoding', 'gzip');
     if (method === 'GET') {
-      return stream.pipe(zlib.createBrotliCompress()).pipe(res);
+      return stream.pipe(zlib.createGzip()).pipe(res);
     }
 
     return res.end();

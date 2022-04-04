@@ -17,6 +17,10 @@ const webpackBaseConfig: Configuration = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|jpeg|webp|mp4|webm|svg|gif|eot|otf|ttf|woff|woff2)$/,
+        type: 'asset',
+      },
+      {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: [
@@ -56,10 +60,6 @@ const webpackBaseConfig: Configuration = {
             },
           },
         ],
-      },
-      {
-        test: /\.(png|jpg|jpeg|webp|mp4|webm|svg|gif|eot|otf|ttf|woff|woff2)$/,
-        type: 'asset',
       },
     ],
   },
