@@ -2132,9 +2132,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pmmmwh/react-refresh-webpack-plugin@github:pmmmwh/react-refresh-webpack-plugin":
-  version: 0.5.4
-  resolution: "@pmmmwh/react-refresh-webpack-plugin@https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6"
+"@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.5":
+  version: 0.5.5
+  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.5"
   dependencies:
     ansi-html-community: ^0.0.8
     common-path-prefix: ^3.0.0
@@ -2167,7 +2167,7 @@ __metadata:
       optional: true
     webpack-plugin-serve:
       optional: true
-  checksum: c4c0ef30ea35c34c3f0c7b14c8467711dd6c777132db64a869021bef4485098d589075f2f56f66fc8dbda89b28ebc2699c6c2963843ab6ab1d6001f654a213d5
+  checksum: 9914430fc3c5bb6a907cc94faaf6232ee7fdcc8b631a33d3541ae1273f46cdd719eca87932755abf8433c9297666484ed6707c568a131a7a0f55bb442b0e6243
   languageName: node
   linkType: hard
 
@@ -10321,12 +10321,12 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "prettier@npm:2.5.1"
+"prettier@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "prettier@npm:2.6.2"
   bin:
     prettier: bin-prettier.js
-  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
+  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
   languageName: node
   linkType: hard
 
@@ -11063,7 +11063,7 @@ fsevents@~2.3.2:
     "@loadable/component": ^5.15.2
     "@loadable/server": ^5.15.2
     "@loadable/webpack-plugin": ^5.15.2
-    "@pmmmwh/react-refresh-webpack-plugin": "github:pmmmwh/react-refresh-webpack-plugin"
+    "@pmmmwh/react-refresh-webpack-plugin": ^0.5.5
     "@types/compression": ^1.7.2
     "@types/draft-js": ^0.11.9
     "@types/ioredis": ^4.28.10
@@ -11142,7 +11142,7 @@ fsevents@~2.3.2:
     nodemon: ^2.0.15
     nodemon-webpack-plugin: ^4.7.1
     npm-run-all: ^4.1.5
-    prettier: ^2.5.1
+    prettier: ^2.6.2
     react: ^18.0.0
     react-dom: ^18.0.0
     react-error-boundary: ^3.1.4

@@ -57,7 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@loadable/component", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/server", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
-            ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6"],\
+            ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.5"],\
             ["@types/compression", "npm:1.7.2"],\
             ["@types/draft-js", "npm:0.11.9"],\
             ["@types/ioredis", "npm:4.28.10"],\
@@ -136,7 +136,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemon", "npm:2.0.15"],\
             ["nodemon-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:4.7.1"],\
             ["npm-run-all", "npm:4.1.5"],\
-            ["prettier", "npm:2.5.1"],\
+            ["prettier", "npm:2.6.2"],\
             ["react", "npm:18.0.0"],\
             ["react-dom", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:18.0.0"],\
             ["react-error-boundary", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.1.4"],\
@@ -3502,17 +3502,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@pmmmwh/react-refresh-webpack-plugin", [\
-        ["https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6", {\
-          "packageLocation": "./.yarn/cache/@pmmmwh-react-refresh-webpack-plugin-https-d3eed538d3-c4c0ef30ea.zip/node_modules/@pmmmwh/react-refresh-webpack-plugin/",\
+        ["npm:0.5.5", {\
+          "packageLocation": "./.yarn/cache/@pmmmwh-react-refresh-webpack-plugin-npm-0.5.5-80be68d789-9914430fc3.zip/node_modules/@pmmmwh/react-refresh-webpack-plugin/",\
           "packageDependencies": [\
-            ["@pmmmwh/react-refresh-webpack-plugin", "https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6"]\
+            ["@pmmmwh/react-refresh-webpack-plugin", "npm:0.5.5"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6", {\
-          "packageLocation": "./.yarn/__virtual__/@pmmmwh-react-refresh-webpack-plugin-virtual-48b0fa9295/0/cache/@pmmmwh-react-refresh-webpack-plugin-https-d3eed538d3-c4c0ef30ea.zip/node_modules/@pmmmwh/react-refresh-webpack-plugin/",\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.5", {\
+          "packageLocation": "./.yarn/__virtual__/@pmmmwh-react-refresh-webpack-plugin-virtual-faaf31060c/0/cache/@pmmmwh-react-refresh-webpack-plugin-npm-0.5.5-80be68d789-9914430fc3.zip/node_modules/@pmmmwh/react-refresh-webpack-plugin/",\
           "packageDependencies": [\
-            ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6"],\
+            ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.5"],\
             ["@types/react-refresh", null],\
             ["@types/sockjs-client", null],\
             ["@types/type-fest", null],\
@@ -8201,7 +8201,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", null],\
             ["eslint", "npm:8.10.0"],\
             ["eslint-config-prettier", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:8.4.0"],\
-            ["prettier", "npm:2.5.1"],\
+            ["prettier", "npm:2.6.2"],\
             ["prettier-linter-helpers", "npm:1.0.0"]\
           ],\
           "packagePeers": [\
@@ -13333,10 +13333,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prettier", [\
-        ["npm:2.5.1", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-2.5.1-58b195b509-21b9408476.zip/node_modules/prettier/",\
+        ["npm:2.6.2", {\
+          "packageLocation": "./.yarn/cache/prettier-npm-2.6.2-05918420da-48d08dde8e.zip/node_modules/prettier/",\
           "packageDependencies": [\
-            ["prettier", "npm:2.5.1"]\
+            ["prettier", "npm:2.6.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14382,7 +14382,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@loadable/component", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/server", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
-            ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#https://github.com/pmmmwh/react-refresh-webpack-plugin.git#commit=dff1577055a0ba5be94b6eb20a84cae8d8a0d0e6"],\
+            ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.5"],\
             ["@types/compression", "npm:1.7.2"],\
             ["@types/draft-js", "npm:0.11.9"],\
             ["@types/ioredis", "npm:4.28.10"],\
@@ -14461,7 +14461,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemon", "npm:2.0.15"],\
             ["nodemon-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:4.7.1"],\
             ["npm-run-all", "npm:4.1.5"],\
-            ["prettier", "npm:2.5.1"],\
+            ["prettier", "npm:2.6.2"],\
             ["react", "npm:18.0.0"],\
             ["react-dom", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:18.0.0"],\
             ["react-error-boundary", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.1.4"],\
