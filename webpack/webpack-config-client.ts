@@ -92,11 +92,14 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
                 preloadedStatesBase64: Buffer.from(
                   JSON.stringify({
                     RELAY: {
-                      graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
-                      graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
                       store: relayStoreRecords,
                     },
-                    REDUX: {},
+                    REDUX: {
+                      store: {
+                        graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
+                        graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
+                      },
+                    },
                   }),
                 ).toString('base64'),
               },

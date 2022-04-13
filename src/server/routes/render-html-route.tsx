@@ -14,7 +14,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { CacheProvider as CSSCacheProvider } from '@emotion/react';
-import { fetchQuery, RelayEnvironmentProvider } from 'react-relay';
+import { fetchQuery } from 'react-relay';
 import { Network, Store, RecordSource, Environment } from 'relay-runtime';
 import { Provider as ReduxProvider } from 'react-redux';
 import dotenv from 'dotenv';
@@ -24,6 +24,7 @@ import RootRouter from '~/routes/RootRouter';
 import relayFetch from '~/server/relay-fetch';
 import reduxDefaultState from '~/redux/defaultState';
 import createReduxStore from '~/redux/store';
+import RelayProvider from '~/providers/RelayProvider';
 import relayStoreRecords from '~/relay/default-store-records.json';
 import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
 
@@ -152,8 +153,6 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const preloadedStates: PreloadedStates = {
     RELAY: {
       store: relayEnvironment.getStore().getSource().toJSON(),
-      graphqlEndpoint,
-      graphqlSubscriptions,
     },
     REDUX: {
       store: {
@@ -162,6 +161,8 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
         locale: isValidLocale(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
         fontSize: isValidFontSize(cookies.fontSize) ? cookies.fontSize : reduxDefaultState.fontSize,
         deviceMode,
+        graphqlEndpoint,
+        graphqlSubscriptions,
       },
     },
   };
@@ -200,13 +201,13 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const htmlContent = renderToString(
     webExtractor.collectChunks(
       <ReduxProvider store={reduxStore}>
-        <RelayEnvironmentProvider environment={relayEnvironment}>
+        <RelayProvider storeRecords={preloadedStates.RELAY.store}>
           <StaticRouter location={String(url)}>
             <CSSCacheProvider value={cssCache}>
               <RootRouter />
             </CSSCacheProvider>
           </StaticRouter>
-        </RelayEnvironmentProvider>
+        </RelayProvider>
       </ReduxProvider>,
     ),
   );

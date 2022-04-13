@@ -65,7 +65,6 @@ input BetweenTime {
 
 """GraphQL Connection spec. interface"""
 interface Connection {
-  totalCount: Int!
   pageInfo: PageInfo!
   edges: [Edge]!
 }
@@ -110,8 +109,10 @@ type Query {
   authentification: AuthentificationQuery!
   clients: ClientsQuery!
   deals: DealsQuery!
+  files: FilesQuery!
   funnels: FunnelsQuery!
   me: Me!
+  users: UsersQuery!
   version: String!
   webpages: WebPagesQuery!
 }
@@ -133,11 +134,21 @@ type TokenVerificationSuccess {
 """Access token payload"""
 type AccessTokenPayload {
   id: ID!
+  auid: ID!
   uuid: ID!
   exp: Int!
   iss: String
-  roles: [String!]!
+  roles: [AccountRole!]!
+  privileges: [String!]!
   type: TokenType!
+}
+
+enum AccountRole {
+  DEVELOPER
+  ADMINISTRATOR
+  VIEWER
+  OPTIMIZATOR
+  COPYWRITER
 }
 
 enum TokenType {
@@ -184,7 +195,6 @@ type Person implements Node {
 }
 
 type ClientsConnection implements Connection {
-  totalCount: Int!
   pageInfo: PageInfo!
   edges: [ClientEdge!]!
 }
@@ -264,7 +274,6 @@ type Funnel implements Node {
 }
 
 type FunnelStepsConnection implements Connection {
-  totalCount: Int!
   pageInfo: PageInfo!
   edges: [FunnelStepsEdge!]!
 }
@@ -299,7 +308,6 @@ enum FunnelStepsOrderField {
 }
 
 type DealsConnection implements Connection {
-  totalCount: Int!
   pageInfo: PageInfo!
   edges: [DealEdge!]!
 }
@@ -332,13 +340,91 @@ input DealsFilter {
   id: [ID!]
 }
 
+type FilesQuery {
+  file(id: ID!): File
+}
+
+type File implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  owner: ID!
+  mimeType: String!
+  name: String!
+  type: FileType!
+  description: String
+  pseudoPath: String
+  meta: JSON
+  access: FileAccess!
+  url: URL!
+  transform(resize: ImageTransformResize, cover: ImageTransformCover, contain: ImageTransformContain, crop: ImageTransformCrop, blur: Int, greyscale: Boolean, format: ImageTransformFormat): TransformedFile
+}
+
+enum FileType {
+  AVATAR
+  MEDIA
+  DOCUMENT
+}
+
+type FileAccess {
+  read: [AccountRole!]
+  write: [AccountRole!]
+  del: [AccountRole!]
+}
+
+type TransformedFile implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  owner: ID!
+  mimeType: String!
+  type: FileType!
+  description: String!
+  meta: JSON!
+  access: FileAccess!
+  url: URL!
+  reference: File!
+}
+
+input ImageTransformResize {
+  w: Int!
+  h: Int!
+}
+
+input ImageTransformCover {
+  w: Int!
+  h: Int!
+}
+
+input ImageTransformContain {
+  w: Int!
+  h: Int!
+}
+
+input ImageTransformCrop {
+  w: Int!
+  h: Int!
+  x: Int!
+  y: Int!
+}
+
+input ImageTransformFormat {
+  type: ImageTransformFormatType!
+  quality: Int!
+}
+
+enum ImageTransformFormatType {
+  PNG
+  JPEG
+  WEBP
+}
+
 type FunnelsQuery {
   funnel(id: ID!): Funnel
   list(first: Int, last: Int, after: String, before: String, orderBy: [FunnelsOrderBy!], search: [FunnelsFilterSearch!], filter: FunnelsFilter): FunnelsConnection!
 }
 
 type FunnelsConnection implements Connection {
-  totalCount: Int!
   pageInfo: PageInfo!
   edges: [FunnelEdge!]!
 }
@@ -377,7 +463,19 @@ type User implements Node {
   name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  avatar: File
+  files(first: Int, last: Int, after: String, before: String, account: [ID!], type: [FileType!], id: [ID!]): FilesConnection!
   account: Account
+}
+
+type FilesConnection implements Connection {
+  pageInfo: PageInfo!
+  edges: [FileEdge!]!
+}
+
+type FileEdge implements Edge {
+  cursor: String!
+  node: File!
 }
 
 type Account {
@@ -385,9 +483,11 @@ type Account {
   login: String!
   password: String!
   status: AccountStatus!
-  roles: [AccountRole!]!
+  privileges: [String!]!
   createdAt: DateTime!
   updatedAt: DateTime!
+  roles: [AccountRole!]!
+  user: User
 }
 
 enum AccountStatus {
@@ -395,10 +495,39 @@ enum AccountStatus {
   FORBIDDEN
 }
 
-enum AccountRole {
-  DEVELOPER
-  ADMINISTRATOR
-  VIEWER
+type UsersQuery {
+  list(first: Int, last: Int, after: String, before: String, search: [UsersSearch!], orderBy: [UserOrderBy!], account: [ID!], id: [ID!]): UsersConnection!
+  user(id: ID!): User
+}
+
+type UsersConnection implements Connection {
+  pageInfo: PageInfo!
+  edges: [UsersEdge!]!
+}
+
+type UsersEdge implements Edge {
+  cursor: String!
+  node: User!
+}
+
+input UsersSearch {
+  field: UserSearchField!
+  query: String!
+}
+
+enum UserSearchField {
+  NAME
+}
+
+input UserOrderBy {
+  field: UserOrderField!
+  direction: OrderDirection!
+}
+
+enum UserOrderField {
+  NAME
+  CREATED_AT
+  UPDATED_AT
 }
 
 type WebPagesQuery {
@@ -502,6 +631,7 @@ type WebTemplateContact implements Node {
 
 type Mutation {
   authentification: AuthentificationMutation!
+  users: UsersMutation!
 }
 
 type AuthentificationMutation {
@@ -541,16 +671,38 @@ type RefreshToken {
 """Refresh token payload"""
 type RefreshTokenPayload {
   id: ID!
+  auid: ID!
   uuid: ID!
   exp: Int!
   iss: String
-  roles: [String!]!
   type: TokenType!
+  associated: AccessTokenPayload!
 }
 
 type TokenRegistrationError implements Error {
   name: String!
   msg: String!
+}
+
+type UsersMutation {
+  update(id: ID!, input: UserUpdateInput!): UserUpdateResponse!
+}
+
+union UserUpdateResponse = UserUpdateSuccess | UserUpdateError
+
+type UserUpdateSuccess {
+  user: User!
+  query: Query!
+}
+
+type UserUpdateError implements Error {
+  name: String!
+  msg: String!
+}
+
+input UserUpdateInput {
+  name: String
+  avatar: FileUpload
 }
 
 type Subscription {

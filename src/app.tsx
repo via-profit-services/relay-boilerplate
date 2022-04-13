@@ -2,17 +2,14 @@ import * as React from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { loadableReady } from '@loadable/component';
-import { RelayEnvironmentProvider } from 'react-relay';
-import { Environment, Network, Store, RecordSource } from 'relay-runtime';
 import { Provider as ReduxProvider } from 'react-redux';
 import createCache from '@emotion/cache';
 import { CacheProvider as CSSCacheProvider } from '@emotion/react';
 
 import reduxDefaultState from '~/redux/defaultState';
 import createReduxStore from '~/redux/store';
-import relayFetch from '~/relay/utils/relay-fetch';
-import relaySubscribe from '~/relay/utils/relay-subscribe';
 import RootRouter from '~/routes/RootRouter';
+import RelayProvider from '~/providers/RelayProvider';
 
 const bootstrap = async () => {
   // parse preloaded states from base64 string
@@ -39,20 +36,31 @@ const bootstrap = async () => {
     console.error(err);
   }
 
+  // Parse the local storage and fill the tokens into redux store
+  let accessToken: AccessToken | null =
+    preloadedStates?.REDUX?.store?.accessToken || reduxDefaultState.accessToken;
+  let refreshToken: RefreshToken | null =
+    preloadedStates?.REDUX?.store?.refreshToken || reduxDefaultState.refreshToken;
+  try {
+    const plainAuthData = JSON.parse(window.localStorage.getItem('authorization') || '{}');
+    if (
+      typeof plainAuthData === 'object' &&
+      typeof plainAuthData?.accessToken === 'object' &&
+      typeof plainAuthData?.refreshToken === 'object'
+    ) {
+      accessToken = plainAuthData.accessToken as AccessToken;
+      refreshToken = plainAuthData.refreshToken as RefreshToken;
+    }
+  } catch (err) {
+    console.error('Failed to parse local storage');
+    console.error(err);
+  }
+
   const reduxStore = createReduxStore({
     ...reduxDefaultState,
     ...preloadedStates.REDUX?.store,
-  });
-
-  const relayStore = new Store(new RecordSource(preloadedStates.RELAY?.store));
-  const relayNetwork = Network.create(
-    relayFetch(preloadedStates.RELAY?.graphqlEndpoint || ''),
-    relaySubscribe(preloadedStates.RELAY?.graphqlSubscriptions || ''),
-  );
-  const relayEnvironment = new Environment({
-    isServer: false,
-    store: relayStore,
-    network: relayNetwork,
+    accessToken,
+    refreshToken,
   });
 
   const rootElement = document.getElementById('app');
@@ -62,13 +70,13 @@ const bootstrap = async () => {
   const cssCache = createCache({ key: 'app' });
   const AppData = (
     <ReduxProvider store={reduxStore}>
-      <RelayEnvironmentProvider environment={relayEnvironment}>
+      <RelayProvider storeRecords={preloadedStates?.RELAY?.store}>
         <BrowserRouter>
           <CSSCacheProvider value={cssCache}>
             <RootRouter />
           </CSSCacheProvider>
         </BrowserRouter>
-      </RelayEnvironmentProvider>
+      </RelayProvider>
     </ReduxProvider>
   );
 
