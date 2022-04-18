@@ -8,7 +8,7 @@ import { createSelector } from 'reselect';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
 
-import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
+import query, { WebPageQuery } from '~/relay/artifacts/WebPageQuery.graphql';
 import LoadingIndicator from '~/components/LoadingIndicator';
 import translationsruRU from '~/translations/ru-RU.json';
 import themeStandardLight from '~/themes/standardLight';
@@ -19,9 +19,9 @@ import faviconIco from '~/assets/favicon.ico';
 import '~/assets/robots.txt';
 
 graphql`
-  query TemplateRenderQuery($path: String!) {
+  query WebPageQuery($path: String!) {
     webpages {
-      resolvePage(path: $path) {
+      resolve(path: $path) {
         id
         statusCode
         availability
@@ -31,6 +31,45 @@ graphql`
           ...WebTemplateFallbackDesktopFragment
           ...WebTemplateSecondDesktopFragment
           ...WebTemplateContactDesktopFragment
+        }
+      }
+    }
+  }
+`;
+
+graphql`
+  fragment WebPageMainMenuFragment on WebPageMenu {
+    id
+    items {
+      id
+      url
+      name
+      target
+      page {
+        id
+        name
+        path
+      }
+      childs {
+        id
+        url
+        name
+        target
+        page {
+          id
+          name
+          path
+        }
+        childs {
+          id
+          url
+          name
+          target
+          page {
+            id
+            name
+            path
+          }
         }
       }
     }
@@ -76,11 +115,11 @@ const selector = createSelector(
   (theme, locale, fontSize, deviceMode) => ({ theme, locale, fontSize, deviceMode }),
 );
 
-const TemplateRenderLazy: React.FC = () => {
+const WebPage: React.FC = () => {
   const { pathname } = useLocation();
   const state = useSelector(selector);
-  const { webpages } = useLazyLoadQuery<TemplateRenderQuery>(query, { path: pathname });
-  const { template } = webpages.resolvePage;
+  const { webpages } = useLazyLoadQuery<WebPageQuery>(query, { path: pathname });
+  const { template } = webpages.resolve;
 
   const messages = localeMap[state.locale] || localeMap['ru-RU'];
   const locale = state.locale in localeMap ? state.locale : 'ru-RU';
@@ -125,4 +164,4 @@ const TemplateRenderLazy: React.FC = () => {
   );
 };
 
-export default TemplateRenderLazy;
+export default WebPage;

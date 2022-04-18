@@ -2,7 +2,8 @@ declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV?: 'development' | string;
     GRAPHQL_ENDPOINT?: string;
-    GRAPHQL_SUBSCRIPTION_ENDPOINT?: string;
+    GRAPHQL_SUBSCRIPTION?: string;
+    GRAPHQL_PERSISTENS?: string;
     SERVER_PORT?: string;
     SERVER_HOSTNAME?: string;
     REDIS_CACHE_EXP?: string;

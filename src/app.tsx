@@ -38,9 +38,9 @@ const bootstrap = async () => {
 
   // Parse the local storage and fill the tokens into redux store
   let accessToken: AccessToken | null =
-    preloadedStates?.REDUX?.store?.accessToken || reduxDefaultState.accessToken;
+    preloadedStates?.REDUX?.accessToken || reduxDefaultState.accessToken;
   let refreshToken: RefreshToken | null =
-    preloadedStates?.REDUX?.store?.refreshToken || reduxDefaultState.refreshToken;
+    preloadedStates?.REDUX?.refreshToken || reduxDefaultState.refreshToken;
   try {
     const plainAuthData = JSON.parse(window.localStorage.getItem('authorization') || '{}');
     if (
@@ -58,7 +58,7 @@ const bootstrap = async () => {
 
   const reduxStore = createReduxStore({
     ...reduxDefaultState,
-    ...preloadedStates.REDUX?.store,
+    ...preloadedStates.REDUX,
     accessToken,
     refreshToken,
   });
@@ -70,7 +70,7 @@ const bootstrap = async () => {
   const cssCache = createCache({ key: 'app' });
   const AppData = (
     <ReduxProvider store={reduxStore}>
-      <RelayProvider storeRecords={preloadedStates?.RELAY?.store}>
+      <RelayProvider storeRecords={preloadedStates?.RELAY}>
         <BrowserRouter>
           <CSSCacheProvider value={cssCache}>
             <RootRouter />

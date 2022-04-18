@@ -11,6 +11,9 @@ import RenderDraftjs from '~/components/RenderDraftjs';
 import fragment, {
   WebTemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateHomeDesktopFragment.graphql';
+import menuFragment, {
+  WebPageMainMenuFragment$key,
+} from '~/relay/artifacts/WebPageMainMenuFragment.graphql';
 
 type Props = {
   fragmentRef: WebTemplateHomeDesktopFragment$key;
@@ -22,6 +25,9 @@ graphql`
     id
     h1
     content
+    mainMenu {
+      ...WebPageMainMenuFragment
+    }
     slider {
       slides {
         id
@@ -52,10 +58,11 @@ const Content = styled.div`
 const WebTemplateHomeDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { h1, content, page, slider } = useFragment<WebTemplateHomeDesktopFragment$key>(
+  const { h1, content, page, slider, mainMenu } = useFragment<WebTemplateHomeDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
+  const menu = useFragment<WebPageMainMenuFragment$key>(menuFragment, mainMenu);
 
   return (
     <>
@@ -73,11 +80,11 @@ const WebTemplateHomeDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        <Header />
+        {menu && <Header menu={menu} />}
         <Content>
-          <H1>{h1}</H1>
-          <MainSliderBlock {...slider} />
-          <RenderDraftjs {...content} />
+          {h1 && <H1>{h1}</H1>}
+          {slider && <MainSliderBlock {...slider} />}
+          {content && <RenderDraftjs {...content} />}
         </Content>
       </Container>
     </>

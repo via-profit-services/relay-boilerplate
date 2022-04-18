@@ -14,7 +14,6 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import 'webpack-dev-server';
 
 import webpackBaseConfig from './webpack-config-base';
-import relayStoreRecords from '../src/relay/default-store-records.json';
 
 dotenv.config();
 const isDev = process.env.NODE_ENV === 'development';
@@ -91,14 +90,10 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
                  */
                 preloadedStatesBase64: Buffer.from(
                   JSON.stringify({
-                    RELAY: {
-                      store: relayStoreRecords,
-                    },
+                    RELAY: {},
                     REDUX: {
-                      store: {
-                        graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
-                        graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT,
-                      },
+                      graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
+                      graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION,
                     },
                   }),
                 ).toString('base64'),

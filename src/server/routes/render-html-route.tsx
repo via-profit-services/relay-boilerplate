@@ -25,8 +25,7 @@ import relayFetch from '~/server/relay-fetch';
 import reduxDefaultState from '~/redux/defaultState';
 import createReduxStore from '~/redux/store';
 import RelayProvider from '~/providers/RelayProvider';
-import relayStoreRecords from '~/relay/default-store-records.json';
-import query, { TemplateRenderQuery } from '~/relay/artifacts/TemplateRenderQuery.graphql';
+import query, { WebPageQuery } from '~/relay/artifacts/WebPageQuery.graphql';
 
 interface Props extends AppConfigProduction {
   readonly req: http.IncomingMessage;
@@ -143,7 +142,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
 
   // Configure Relay
   const relayNework = Network.create(relayFetch({ graphqlEndpoint, graphqlSubscriptions }));
-  const relayStore = new Store(new RecordSource(relayStoreRecords));
+  const relayStore = new Store(new RecordSource());
   const relayEnvironment = new Environment({
     network: relayNework,
     store: relayStore,
@@ -151,35 +150,31 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   });
 
   const preloadedStates: PreloadedStates = {
-    RELAY: {
-      store: relayEnvironment.getStore().getSource().toJSON(),
-    },
+    RELAY: relayEnvironment.getStore().getSource().toJSON(),
     REDUX: {
-      store: {
-        ...reduxDefaultState,
-        theme: isValidTheme(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
-        locale: isValidLocale(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
-        fontSize: isValidFontSize(cookies.fontSize) ? cookies.fontSize : reduxDefaultState.fontSize,
-        deviceMode,
-        graphqlEndpoint,
-        graphqlSubscriptions,
-      },
+      ...reduxDefaultState,
+      theme: isValidTheme(cookies.theme) ? cookies.theme : reduxDefaultState.theme,
+      locale: isValidLocale(cookies.locale) ? cookies.locale : reduxDefaultState.locale,
+      fontSize: isValidFontSize(cookies.fontSize) ? cookies.fontSize : reduxDefaultState.fontSize,
+      deviceMode,
+      graphqlEndpoint,
+      graphqlSubscriptions,
     },
   };
 
-  const reduxStore = createReduxStore(preloadedStates.REDUX.store);
+  const reduxStore = createReduxStore(preloadedStates.REDUX);
 
   let statusCode = 404;
 
   // Fill Relay store by fetching request
-  await fetchQuery<TemplateRenderQuery>(relayEnvironment, query, {
+  await fetchQuery<WebPageQuery>(relayEnvironment, query, {
     path: String(url),
   })
     .toPromise()
     .then(resp => {
       if (resp) {
-        statusCode = resp?.webpages.resolvePage.statusCode;
-        preloadedStates.RELAY.store = relayEnvironment.getStore().getSource().toJSON();
+        statusCode = resp?.webpages.resolve.statusCode;
+        preloadedStates.RELAY = relayEnvironment.getStore().getSource().toJSON();
       }
     })
     .catch(err => {
@@ -201,7 +196,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   const htmlContent = renderToString(
     webExtractor.collectChunks(
       <ReduxProvider store={reduxStore}>
-        <RelayProvider storeRecords={preloadedStates.RELAY.store}>
+        <RelayProvider storeRecords={preloadedStates.RELAY}>
           <StaticRouter location={String(url)}>
             <CSSCacheProvider value={cssCache}>
               <RootRouter />

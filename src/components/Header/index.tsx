@@ -1,8 +1,12 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 
-import HeaderMenubar from '~/components/Header/HeaderMenubar';
+import HeaderMenubar, { MenuBarProps } from '~/components/Header/HeaderMenubar';
 import HeaderToolbar from '~/components/Header/HeaderToolbar';
+
+export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  readonly menu: MenuBarProps['menu'];
+}
 
 const Container = styled.header`
   z-index: ${({ theme }) => theme.zIndex.header};
@@ -27,15 +31,17 @@ const Inner = styled.div`
   margin: 0 auto;
 `;
 
-type Props = React.HTMLAttributes<HTMLDivElement>;
+const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (props, ref) => {
+  const { menu, ...otherProps } = props;
 
-const Header: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (props, ref) => (
-  <Container {...props} ref={ref}>
-    <Inner>
-      <HeaderMenubar />
-      <HeaderToolbar />
-    </Inner>
-  </Container>
-);
+  return (
+    <Container {...otherProps} ref={ref}>
+      <Inner>
+        <HeaderMenubar menu={menu} />
+        <HeaderToolbar />
+      </Inner>
+    </Container>
+  );
+};
 
 export default React.forwardRef(Header);

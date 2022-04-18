@@ -10,6 +10,9 @@ import Paragraph from '~/components/Typography/Paragraph';
 import fragment, {
   WebTemplateContactDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateContactDesktopFragment.graphql';
+import menuFragment, {
+  WebPageMainMenuFragment$key,
+} from '~/relay/artifacts/WebPageMainMenuFragment.graphql';
 
 type Props = {
   fragmentRef: WebTemplateContactDesktopFragment$key;
@@ -20,6 +23,9 @@ graphql`
     __typename
     h1
     address
+    mainMenu {
+      ...WebPageMainMenuFragment
+    }
     page {
       meta {
         locale
@@ -44,10 +50,11 @@ const Content = styled.div`
 const WebTemplateContactDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { h1, address, page } = useFragment<WebTemplateContactDesktopFragment$key>(
+  const { h1, address, page, mainMenu } = useFragment<WebTemplateContactDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
+  const menu = useFragment<WebPageMainMenuFragment$key>(menuFragment, mainMenu);
 
   return (
     <>
@@ -65,7 +72,7 @@ const WebTemplateContactDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        <Header />
+        {menu && <Header menu={menu} />}
         <Content>
           <H1>{h1}</H1>
           <Paragraph>{address}</Paragraph>

@@ -12,29 +12,6 @@
     },
     "author": "Via Profit",
     "license": "MIT",
-    "relay": {
-        "src": "./src",
-        "artifactDirectory": "./src/relay/artifacts",
-        "schema": "./src/relay/schema.graphql",
-        "customScalars": {
-            "DateTime": "string",
-            "Date": "string",
-            "Time": "string",
-            "EmailAddress": "string",
-            "URL": "string",
-            "Money": "number",
-            "JSON": "any",
-            "JSONObject": "any",
-            "FileUpload": "File",
-            "Void": "null"
-        },
-        "language": "typescript",
-        "exclude": [
-            "**/node_modules/**",
-            "**/__mocks__/**",
-            "**/artifacts/**"
-        ]
-    },
     "scripts": {
         "start": "yarn start:client:dev",
         "start:dist": "yarn build:dist && node ./dist/index.js",

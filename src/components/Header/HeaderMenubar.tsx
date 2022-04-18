@@ -14,14 +14,39 @@ const StyledLink = styled(Link)`
   color: #000;
 `;
 
-const HeaderMenubar: React.FC = () => (
-  <Container>
-    <StyledLink to="/">Home page</StyledLink>
-    <StyledLink to="/about">About</StyledLink>
-    <StyledLink to="/info">Information</StyledLink>
-    <StyledLink to="/contact">Contact</StyledLink>
-    <StyledLink to="/not-found">Not found</StyledLink>
-  </Container>
-);
+export interface MenuBarProps {
+  readonly menu: {
+    readonly id: string;
+    readonly items: ReadonlyArray<MenuBarItem> | null;
+  };
+}
+
+export interface MenuBarItem {
+  readonly id: string;
+  readonly target: 'BLANK' | 'SELF' | '%future added value';
+  readonly url: string | null;
+  readonly name: string | null;
+  readonly childs: ReadonlyArray<MenuBarItem> | null;
+  readonly page: {
+    readonly id: string;
+    readonly name: string | null;
+    readonly path: string | null;
+  } | null;
+}
+
+const HeaderMenubar: React.FC<MenuBarProps> = props => {
+  const { menu } = props;
+  const { items } = menu;
+
+  return (
+    <Container>
+      {items?.map(item => (
+        <StyledLink key={item.id} to={item.url || item.page?.path || '/'}>
+          {item.name || item.page?.name}
+        </StyledLink>
+      ))}
+    </Container>
+  );
+};
 
 export default HeaderMenubar;

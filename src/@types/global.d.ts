@@ -48,10 +48,6 @@ declare interface AppConfigProduction {
 }
 
 declare interface PreloadedStates {
-  RELAY: {
-    store: Record<string, any>;
-  };
-  REDUX: {
-    store: ReduxStore;
-  };
+  RELAY: Record<string, any>;
+  REDUX: ReduxStore;
 }

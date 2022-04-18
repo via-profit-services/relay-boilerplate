@@ -4,8 +4,6 @@ import { GraphQLError } from 'graphql';
 import { FetchFunction, Observable } from 'relay-runtime';
 import { createClient, NextMessage, Message } from 'graphql-ws';
 
-import persistedQueries from '~/relay/persisted-queries.json';
-
 type UseRelay = () => {
   relayFetch: FetchFunction;
   relaySubscribe: Subscribe;
@@ -266,10 +264,14 @@ const useRelay: UseRelay = () => {
 
         return client.subscribe(
           {
-            query:
-              operation.id && !operation.text ? persistedQueries[operation.id] : operation.text,
             operationName: operation.name,
+            query: operation.id || operation.text,
             variables,
+            extensions: operation.id
+              ? {
+                  persistedQuery: operation.id,
+                }
+              : null,
           },
           {
             ...sink,

@@ -5,8 +5,7 @@ const http = require('node:http');
 const dotenv = require('dotenv');
 const { URL } = require('url');
 const { buildClientSchema, getIntrospectionQuery, printSchema } = require('graphql/utilities');
-
-const { relay } = require('../package.json');
+const relayConfig = require('../relay.config');
 
 dotenv.config();
 
@@ -17,43 +16,47 @@ const downloadSchema = async () => {
     }
 
     const url = new URL(process.env.GRAPHQL_ENDPOINT);
-    const request = http.request({
-      host: url.hostname,
-      port: Number(url.port),
-      path: url.pathname,
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }, socket => {
-      const payload = [];
-      socket.on('data', buffer => {
-        payload.push(buffer);
-      })
-      socket.on('end', () => {
-        const { data, errors } = JSON.parse(Buffer.concat(payload));
+    const request = http.request(
+      {
+        host: url.hostname,
+        port: Number(url.port),
+        path: url.pathname,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+      socket => {
+        const payload = [];
+        socket.on('data', buffer => {
+          payload.push(buffer);
+        });
+        socket.on('end', () => {
+          const { data, errors } = JSON.parse(Buffer.concat(payload));
 
-        if (errors) {
-          reject(errors);
-        }
+          if (errors) {
+            reject(errors);
+          }
 
-        resolve(data);
-      })
-    });
+          resolve(data);
+        });
+      },
+    );
 
-    request.write(JSON.stringify({
-      query: getIntrospectionQuery()
-    }))
+    request.write(
+      JSON.stringify({
+        query: getIntrospectionQuery(),
+      }),
+    );
 
     request.end();
-  })
-
+  });
 };
 
 downloadSchema()
   .then(data => {
     const sdl = printSchema(buildClientSchema(data));
-    fs.writeFileSync(path.resolve(relay.schema), sdl);
+    fs.writeFileSync(path.resolve(relayConfig.schema), sdl);
     console.log('Schema downloaded successfully');
     process.exit(0);
   })

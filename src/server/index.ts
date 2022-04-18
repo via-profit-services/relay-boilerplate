@@ -9,7 +9,7 @@ import routes from '~/server/routes';
 const envConfigFilename = path.resolve(process.cwd(), '.env');
 
 const envNames = [
-  'GRAPHQL_SUBSCRIPTION_ENDPOINT',
+  'GRAPHQL_SUBSCRIPTION',
   'GRAPHQL_ENDPOINT',
   'SERVER_PORT',
   'SERVER_HOSTNAME',
@@ -37,7 +37,7 @@ envNames.map(envName => {
 
 const appConfig: AppConfigProduction = {
   graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || '',
-  graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT || '',
+  graphqlSubscriptions: process.env.GRAPHQL_SUBSCRIPTION || '',
   serverHostname: process.env.SERVER_HOSTNAME || '',
   serverPort: Number(process.env.SERVER_PORT),
   redisCacheExp: Number(process.env.REDIS_CACHE_EXP),

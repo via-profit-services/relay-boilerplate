@@ -10,6 +10,9 @@ import RenderDraftjs from '~/components/RenderDraftjs';
 import fragment, {
   WebTemplateSecondDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateSecondDesktopFragment.graphql';
+import menuFragment, {
+  WebPageMainMenuFragment$key,
+} from '~/relay/artifacts/WebPageMainMenuFragment.graphql';
 
 type Props = {
   fragmentRef: WebTemplateSecondDesktopFragment$key;
@@ -20,6 +23,9 @@ graphql`
     __typename
     h1
     content
+    mainMenu {
+      ...WebPageMainMenuFragment
+    }
     page {
       meta {
         locale
@@ -44,10 +50,11 @@ const Content = styled.div`
 const WebTemplateSecondDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { content, h1, page } = useFragment<WebTemplateSecondDesktopFragment$key>(
+  const { content, h1, page, mainMenu } = useFragment<WebTemplateSecondDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
+  const menu = useFragment<WebPageMainMenuFragment$key>(menuFragment, mainMenu);
 
   return (
     <>
@@ -65,7 +72,7 @@ const WebTemplateSecondDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        <Header />
+        {menu && <Header menu={menu} />}
         <Content>
           <H1>{h1}</H1>
           <RenderDraftjs {...content} />

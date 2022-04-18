@@ -64,7 +64,7 @@ const WebTemplateFallbackDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        <Header />
+        {/* <Header /> */}
         <Content>
           <RenderDraftjs {...content} />
         </Content>
