@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 
-import IconChevronLeft from '~/components/Icons/IconChevronLeft';
-import IconChevronRight from '~/components/Icons/IconChevronRight';
+import IconLeft from '~/components/Icons/IconChevronLeftCircle';
+import IconRight from '~/components/Icons/IconChevronRightCircle';
 
 export type Direction = 'prev' | 'next';
 
@@ -35,8 +35,8 @@ const SliderControlRef: React.ForwardRefRenderFunction<HTMLButtonElement, Slider
 
   return (
     <Container direction={direction} ref={ref} {...otherProps}>
-      {direction === 'prev' && <IconChevronLeft />}
-      {direction === 'next' && <IconChevronRight />}
+      {direction === 'prev' && <IconLeft />}
+      {direction === 'next' && <IconRight />}
     </Container>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable import/max-dependencies */
 import * as React from 'react';
 import { useLazyLoadQuery, graphql } from 'react-relay';
 import loadable from '@loadable/component';
@@ -31,45 +32,6 @@ graphql`
           ...WebTemplateFallbackDesktopFragment
           ...WebTemplateSecondDesktopFragment
           ...WebTemplateContactDesktopFragment
-        }
-      }
-    }
-  }
-`;
-
-graphql`
-  fragment WebPageMainMenuFragment on WebPageMenu {
-    id
-    items {
-      id
-      url
-      name
-      target
-      page {
-        id
-        name
-        path
-      }
-      childs {
-        id
-        url
-        name
-        target
-        page {
-          id
-          name
-          path
-        }
-        childs {
-          id
-          url
-          name
-          target
-          page {
-            id
-            name
-            path
-          }
         }
       }
     }

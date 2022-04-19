@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 
-import HeaderMenubar, { MenuBarProps } from '~/components/Header/HeaderMenubar';
+import HeaderMenu, { HeaderMenuProps } from '~/components/HeaderMenu';
 import HeaderToolbar from '~/components/Header/HeaderToolbar';
 
-export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  readonly menu: MenuBarProps['menu'];
+export interface HeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
+  readonly fragmentRef: HeaderMenuProps['fragmentRef'] | null;
 }
 
 const Container = styled.header`
@@ -14,7 +14,6 @@ const Container = styled.header`
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   position: sticky;
   height: 3rem;
-  overflow-y: hidden;
   top: 0;
   display: flex;
   align-items: center;
@@ -32,12 +31,12 @@ const Inner = styled.div`
 `;
 
 const Header: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (props, ref) => {
-  const { menu, ...otherProps } = props;
+  const { fragmentRef, ...otherProps } = props;
 
   return (
     <Container {...otherProps} ref={ref}>
       <Inner>
-        <HeaderMenubar menu={menu} />
+        {fragmentRef && <HeaderMenu fragmentRef={fragmentRef} />}
         <HeaderToolbar />
       </Inner>
     </Container>

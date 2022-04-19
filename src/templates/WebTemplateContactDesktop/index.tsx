@@ -5,14 +5,11 @@ import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
 import Header from '~/components/Header';
-import H1 from '~/components/Typography/H1';
+import PageTitle from '~/components/PageTitle';
 import Paragraph from '~/components/Typography/Paragraph';
 import fragment, {
   WebTemplateContactDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateContactDesktopFragment.graphql';
-import menuFragment, {
-  WebPageMainMenuFragment$key,
-} from '~/relay/artifacts/WebPageMainMenuFragment.graphql';
 
 type Props = {
   fragmentRef: WebTemplateContactDesktopFragment$key;
@@ -21,12 +18,13 @@ type Props = {
 graphql`
   fragment WebTemplateContactDesktopFragment on WebTemplateContact {
     __typename
+    menuFragment: mainMenu {
+      ...HeaderMenuFragment
+    }
     h1
     address
-    mainMenu {
-      ...WebPageMainMenuFragment
-    }
     page {
+      id
       meta {
         locale
         title
@@ -50,11 +48,10 @@ const Content = styled.div`
 const WebTemplateContactDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { h1, address, page, mainMenu } = useFragment<WebTemplateContactDesktopFragment$key>(
+  const { h1, address, page, menuFragment } = useFragment<WebTemplateContactDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
-  const menu = useFragment<WebPageMainMenuFragment$key>(menuFragment, mainMenu);
 
   return (
     <>
@@ -72,9 +69,9 @@ const WebTemplateContactDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        {menu && <Header menu={menu} />}
+        <Header fragmentRef={menuFragment} />
         <Content>
-          <H1>{h1}</H1>
+          <PageTitle>{h1}</PageTitle>
           <Paragraph>{address}</Paragraph>
         </Content>
       </Container>

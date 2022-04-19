@@ -6,14 +6,11 @@ import { Helmet } from 'react-helmet';
 
 import Header from '~/components/Header';
 import MainSliderBlock from '~/components/MainSliderBlock';
-import H1 from '~/components/Typography/H1';
+import PageTitle from '~/components/PageTitle';
 import RenderDraftjs from '~/components/RenderDraftjs';
 import fragment, {
   WebTemplateHomeDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateHomeDesktopFragment.graphql';
-import menuFragment, {
-  WebPageMainMenuFragment$key,
-} from '~/relay/artifacts/WebPageMainMenuFragment.graphql';
 
 type Props = {
   fragmentRef: WebTemplateHomeDesktopFragment$key;
@@ -22,12 +19,12 @@ type Props = {
 graphql`
   fragment WebTemplateHomeDesktopFragment on WebTemplateHome {
     __typename
+    menuFragment: mainMenu {
+      ...HeaderMenuFragment
+    }
     id
     h1
     content
-    mainMenu {
-      ...WebPageMainMenuFragment
-    }
     slider {
       slides {
         id
@@ -35,6 +32,7 @@ graphql`
       }
     }
     page {
+      id
       meta {
         locale
         title
@@ -58,11 +56,8 @@ const Content = styled.div`
 const WebTemplateHomeDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { h1, content, page, slider, mainMenu } = useFragment<WebTemplateHomeDesktopFragment$key>(
-    fragment,
-    fragmentRef,
-  );
-  const menu = useFragment<WebPageMainMenuFragment$key>(menuFragment, mainMenu);
+  const { h1, content, page, slider, menuFragment } =
+    useFragment<WebTemplateHomeDesktopFragment$key>(fragment, fragmentRef);
 
   return (
     <>
@@ -80,9 +75,9 @@ const WebTemplateHomeDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        {menu && <Header menu={menu} />}
+        <Header fragmentRef={menuFragment} />
         <Content>
-          {h1 && <H1>{h1}</H1>}
+          <PageTitle>{h1}</PageTitle>
           {slider && <MainSliderBlock {...slider} />}
           {content && <RenderDraftjs {...content} />}
         </Content>

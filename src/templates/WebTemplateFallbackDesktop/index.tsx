@@ -17,6 +17,9 @@ type Props = {
 graphql`
   fragment WebTemplateFallbackDesktopFragment on WebTemplateFallback {
     __typename
+    menuFragment: mainMenu {
+      ...HeaderMenuFragment
+    }
     id
     content
     page {
@@ -43,7 +46,7 @@ const Content = styled.div`
 const WebTemplateFallbackDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { content, page } = useFragment<WebTemplateFallbackDesktopFragment$key>(
+  const { content, page, menuFragment } = useFragment<WebTemplateFallbackDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
@@ -64,7 +67,7 @@ const WebTemplateFallbackDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        {/* <Header /> */}
+        <Header fragmentRef={menuFragment} />
         <Content>
           <RenderDraftjs {...content} />
         </Content>

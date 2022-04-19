@@ -645,6 +645,7 @@ type HomePageSliderSlide {
 
 type WebTemplateFallback implements Node {
   id: ID!
+  mainMenu: WebPageMenu
   content: JSON
   page: WebPage!
 }

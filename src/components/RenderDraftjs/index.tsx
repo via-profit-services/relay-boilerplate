@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
 import * as React from 'react';
 import Redraft, { RawDraftContentState } from 'redraft';
@@ -31,22 +32,17 @@ const renderDraftJs = (rawData: RawDraftContentState): React.ReactNode =>
     },
     blocks: {
       UNSTYLED: children =>
-        children.map((child, index) => <Paragraph key={index.toString()}>{child}</Paragraph>),
-      HEADER_ONE: children =>
-        children.map((child, index) => <H1 key={index.toString()}>{child}</H1>),
-      HEADER_TWO: children =>
-        children.map((child, index) => <H2 key={index.toString()}>{child}</H2>),
-      HEADER_THREE: children =>
-        children.map((child, index) => <H3 key={index.toString()}>{child}</H3>),
-      HEADER_FOUR: children =>
-        children.map((child, index) => <H4 key={index.toString()}>{child}</H4>),
-      HEADER_FIVE: children =>
-        children.map((child, index) => <H5 key={index.toString()}>{child}</H5>),
+        children.map((child, index) => <Paragraph key={index}>{child}</Paragraph>),
+      HEADER_ONE: children => children.map((child, index) => <H1 key={index}>{child}</H1>),
+      HEADER_TWO: children => children.map((child, index) => <H2 key={index}>{child}</H2>),
+      HEADER_THREE: children => children.map((child, index) => <H3 key={index}>{child}</H3>),
+      HEADER_FOUR: children => children.map((child, index) => <H4 key={index}>{child}</H4>),
+      HEADER_FIVE: children => children.map((child, index) => <H5 key={index}>{child}</H5>),
       // or depth for nested lists
       UNORDERED_LIST_ITEM: (children, { depth, keys }) => (
         <Ul key={keys[keys.length - 1]} className={`ul-level-${depth}`}>
           {children.map((child, index) => (
-            <Li key={index.toString()}>{child}</Li>
+            <Li key={index}>{child}</Li>
           ))}
         </Ul>
       ),
@@ -62,6 +58,10 @@ const renderDraftJs = (rawData: RawDraftContentState): React.ReactNode =>
 
 const RenderDraftjs: React.FC<Props> = props => {
   const { blocks, entityMap } = props;
+
+  if (typeof blocks === 'undefined' || typeof entityMap === 'undefined') {
+    return null;
+  }
 
   return <>{renderDraftJs({ blocks, entityMap })}</>;
 };

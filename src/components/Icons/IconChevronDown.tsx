@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const IconChevronRight: React.ForwardRefRenderFunction<
+const IconChevronDown: React.ForwardRefRenderFunction<
   SVGSVGElement,
   React.SVGProps<SVGSVGElement>
 > = (props, ref) => (
@@ -18,9 +18,9 @@ const IconChevronRight: React.ForwardRefRenderFunction<
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={48}
-      d="m184 112 144 144-144 144"
+      d="m112 184 144 144 144-144"
     />
   </svg>
 );
 
-export default React.forwardRef(IconChevronRight);
+export default React.forwardRef(IconChevronDown);

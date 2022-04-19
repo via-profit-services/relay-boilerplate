@@ -5,14 +5,11 @@ import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
 import Header from '~/components/Header';
-import H1 from '~/components/Typography/H1';
+import PageTitle from '~/components/PageTitle';
 import RenderDraftjs from '~/components/RenderDraftjs';
 import fragment, {
   WebTemplateSecondDesktopFragment$key,
 } from '~/relay/artifacts/WebTemplateSecondDesktopFragment.graphql';
-import menuFragment, {
-  WebPageMainMenuFragment$key,
-} from '~/relay/artifacts/WebPageMainMenuFragment.graphql';
 
 type Props = {
   fragmentRef: WebTemplateSecondDesktopFragment$key;
@@ -21,12 +18,13 @@ type Props = {
 graphql`
   fragment WebTemplateSecondDesktopFragment on WebTemplateSecond {
     __typename
+    menuFragment: mainMenu {
+      ...HeaderMenuFragment
+    }
     h1
     content
-    mainMenu {
-      ...WebPageMainMenuFragment
-    }
     page {
+      id
       meta {
         locale
         title
@@ -50,11 +48,10 @@ const Content = styled.div`
 const WebTemplateSecondDesktop: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { content, h1, page, mainMenu } = useFragment<WebTemplateSecondDesktopFragment$key>(
+  const { content, h1, page, menuFragment } = useFragment<WebTemplateSecondDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
-  const menu = useFragment<WebPageMainMenuFragment$key>(menuFragment, mainMenu);
 
   return (
     <>
@@ -72,9 +69,9 @@ const WebTemplateSecondDesktop: React.FC<Props> = props => {
         `}
       />
       <Container>
-        {menu && <Header menu={menu} />}
+        <Header fragmentRef={menuFragment} />
         <Content>
-          <H1>{h1}</H1>
+          <PageTitle>{h1}</PageTitle>
           <RenderDraftjs {...content} />
         </Content>
       </Container>

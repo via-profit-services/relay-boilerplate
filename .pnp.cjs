@@ -58,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@loadable/server", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.5"],\
+            ["@popperjs/core", "npm:2.11.5"],\
             ["@types/compression", "npm:1.7.2"],\
             ["@types/draft-js", "npm:0.11.9"],\
             ["@types/ioredis", "npm:4.28.10"],\
@@ -145,6 +146,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-intl", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.24.8"],\
             ["react-is", "npm:18.0.0"],\
             ["react-modal", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.14.4"],\
+            ["react-popper", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.2.5"],\
             ["react-redux", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:7.2.8"],\
             ["react-refresh", "npm:0.12.0"],\
             ["react-relay", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:13.2.0"],\
@@ -3561,6 +3563,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@polka-url-npm-1.0.0-next.21-02342f3d90-c7654046d3.zip/node_modules/@polka/url/",\
           "packageDependencies": [\
             ["@polka/url", "npm:1.0.0-next.21"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@popperjs/core", [\
+        ["npm:2.11.5", {\
+          "packageLocation": "./.yarn/cache/@popperjs-core-npm-2.11.5-a338f16bd4-fd7f9dca3f.zip/node_modules/@popperjs/core/",\
+          "packageDependencies": [\
+            ["@popperjs/core", "npm:2.11.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13780,6 +13791,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-popper", [\
+        ["npm:2.2.5", {\
+          "packageLocation": "./.yarn/cache/react-popper-npm-2.2.5-6e86e4bf1e-915fcf08e1.zip/node_modules/react-popper/",\
+          "packageDependencies": [\
+            ["react-popper", "npm:2.2.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.2.5", {\
+          "packageLocation": "./.yarn/__virtual__/react-popper-virtual-aacf45db11/0/cache/react-popper-npm-2.2.5-6e86e4bf1e-915fcf08e1.zip/node_modules/react-popper/",\
+          "packageDependencies": [\
+            ["react-popper", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.2.5"],\
+            ["@popperjs/core", "npm:2.11.5"],\
+            ["@types/popperjs__core", null],\
+            ["@types/react", "npm:17.0.43"],\
+            ["react", "npm:18.0.0"],\
+            ["react-fast-compare", "npm:3.2.0"],\
+            ["warning", "npm:4.0.3"]\
+          ],\
+          "packagePeers": [\
+            "@popperjs/core",\
+            "@types/popperjs__core",\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-redux", [\
         ["npm:7.2.8", {\
           "packageLocation": "./.yarn/cache/react-redux-npm-7.2.8-096f36457b-ecf1933e91.zip/node_modules/react-redux/",\
@@ -14383,6 +14422,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@loadable/server", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.5.5"],\
+            ["@popperjs/core", "npm:2.11.5"],\
             ["@types/compression", "npm:1.7.2"],\
             ["@types/draft-js", "npm:0.11.9"],\
             ["@types/ioredis", "npm:4.28.10"],\
@@ -14470,6 +14510,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-intl", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.24.8"],\
             ["react-is", "npm:18.0.0"],\
             ["react-modal", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:3.14.4"],\
+            ["react-popper", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.2.5"],\
             ["react-redux", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:7.2.8"],\
             ["react-refresh", "npm:0.12.0"],\
             ["react-relay", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:13.2.0"],\
