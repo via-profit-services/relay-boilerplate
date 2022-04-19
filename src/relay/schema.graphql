@@ -619,7 +619,7 @@ type WebPageMenuItem implements Node {
   url: URL
   name: String
   parent: WebPageMenuItem
-  menu: WebPageMenu!
+  menu: WebPageMenu
   page: WebPage
   childs: [WebPageMenuItem!]
 }
@@ -645,6 +645,7 @@ type HomePageSliderSlide {
 
 type WebTemplateFallback implements Node {
   id: ID!
+  h1: String
   mainMenu: WebPageMenu
   content: JSON
   page: WebPage!

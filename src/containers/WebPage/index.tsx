@@ -28,9 +28,17 @@ graphql`
         availability
         template {
           __typename
+        }
+        templateHome: template {
           ...WebTemplateHomeDesktopFragment
+        }
+        templateFallback: template {
           ...WebTemplateFallbackDesktopFragment
+        }
+        templateSecond: template {
           ...WebTemplateSecondDesktopFragment
+        }
+        templateContact: template {
           ...WebTemplateContactDesktopFragment
         }
       }
@@ -81,7 +89,8 @@ const WebPage: React.FC = () => {
   const { pathname } = useLocation();
   const state = useSelector(selector);
   const { webpages } = useLazyLoadQuery<WebPageQuery>(query, { path: pathname });
-  const { template } = webpages.resolve;
+  const { template, templateContact, templateFallback, templateHome, templateSecond } =
+    webpages.resolve;
 
   const messages = localeMap[state.locale] || localeMap['ru-RU'];
   const locale = state.locale in localeMap ? state.locale : 'ru-RU';
@@ -93,21 +102,21 @@ const WebPage: React.FC = () => {
   const renderTemplate = React.useCallback(() => {
     switch (template.__typename) {
       case 'WebTemplateHome':
-        return <WebTemplateHomeDesktop fragmentRef={template} />;
+        return <WebTemplateHomeDesktop fragmentRef={templateHome} />;
 
       case 'WebTemplateSecond':
-        return <WebTemplateSecondDesktop fragmentRef={template} />;
+        return <WebTemplateSecondDesktop fragmentRef={templateSecond} />;
 
       case 'WebTemplateFallback':
-        return <WebTemplateFallbackDesktop fragmentRef={template} />;
+        return <WebTemplateFallbackDesktop fragmentRef={templateFallback} />;
 
       case 'WebTemplateContact':
-        return <WebTemplateContactDesktop fragmentRef={template} />;
+        return <WebTemplateContactDesktop fragmentRef={templateContact} />;
 
       default:
         return null;
     }
-  }, [template]);
+  }, [template.__typename, templateContact, templateFallback, templateHome, templateSecond]);
 
   return (
     <>
