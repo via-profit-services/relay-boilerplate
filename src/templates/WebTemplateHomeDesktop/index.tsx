@@ -16,32 +16,6 @@ type Props = {
   fragmentRef: WebTemplateHomeDesktopFragment$key;
 };
 
-graphql`
-  fragment WebTemplateHomeDesktopFragment on WebTemplateHome {
-    __typename
-    menuFragment: mainMenu {
-      ...HeaderMenuFragment
-    }
-    id
-    h1
-    content
-    slider {
-      slides {
-        id
-        image
-      }
-    }
-    page {
-      id
-      meta {
-        locale
-        title
-        description
-      }
-    }
-  }
-`;
-
 const Container = styled.div`
   display: flex;
   flex-flow: column;
@@ -87,3 +61,29 @@ const WebTemplateHomeDesktop: React.FC<Props> = props => {
 };
 
 export default WebTemplateHomeDesktop;
+
+graphql`
+  fragment WebTemplateHomeDesktopFragment on WebTemplateHome {
+    __typename
+    menuFragment: mainMenu {
+      ...HeaderMenuFragment
+    }
+    id
+    h1
+    content
+    slider {
+      slides {
+        id
+        image
+      }
+    }
+    page {
+      id
+      meta {
+        locale
+        title
+        description
+      }
+    }
+  }
+`;

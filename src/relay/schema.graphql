@@ -166,7 +166,7 @@ type TokenVerificationError implements Error {
 
 type ClientsQuery {
   client(id: ID!): Client
-  list(first: Int, last: Int, after: String, before: String, orderBy: [ClientsOrderBy!], search: [ClientsFilterSearch!], filter: ClientsFilter): ClientsConnection!
+  list(first: Int, last: Int, after: String, before: String, id: [ID!], status: [ClientStatus!], orderBy: [ClientsOrderBy!], search: [ClientsFilterSearch!]): ClientsConnection!
 }
 
 type Client implements Node {
@@ -176,7 +176,7 @@ type Client implements Node {
   name: String!
   comment: String
   status: ClientStatus!
-  persons: [Person!]!
+  persons: [Person!]
 }
 
 enum ClientStatus {
@@ -220,11 +220,7 @@ input ClientsFilterSearch {
 
 enum ClientsFilterSearchField {
   NAME
-}
-
-input ClientsFilter {
-  status: [ClientStatus!]
-  id: [ID!]
+  COMMENT
 }
 
 type DealsQuery {
