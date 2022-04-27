@@ -35,26 +35,6 @@ const createReducer = (initialState: ReduxStore = defaultState) => {
         return newState;
       }
 
-      case 'setTokens': {
-        const { accessToken, refreshToken } = action.payload;
-        const newState: ReduxStore = {
-          ...state,
-          accessToken,
-          refreshToken,
-        };
-
-        return newState;
-      }
-      case 'resetTokens': {
-        const newState: ReduxStore = {
-          ...state,
-          accessToken: null,
-          refreshToken: null,
-        };
-
-        return newState;
-      }
-
       default:
         return state;
     }

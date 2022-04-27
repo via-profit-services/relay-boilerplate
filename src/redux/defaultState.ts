@@ -3,10 +3,8 @@ const defaultState: ReduxStore = {
   fontSize: 'normal',
   locale: 'ru-RU',
   deviceMode: 'desktop',
-  accessToken: null,
-  refreshToken: null,
-  graphqlEndpoint: 'http://localhost/graphql',
-  graphqlSubscriptions: 'ws://localhost/subscriptions',
+  graphqlEndpoint: null,
+  graphqlSubscriptions: null,
 };
 
 export default defaultState;
