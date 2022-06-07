@@ -182,7 +182,17 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       statusCode = 500;
     });
 
-  const preloadedStatesBase64 = Buffer.from(JSON.stringify(preloadedStates)).toString('base64');
+  const preloadedStatesBase64 = Buffer.from(
+    JSON.stringify({
+      REDUX: preloadedStates.REDUX,
+      /**
+       * Uncomment the line below to prevent a graphql query after the first rendering of the page.
+       * This means it will be placed in the body of the page in the form of a Base64 string.
+       * This significantly increases the volume of content
+       */
+      // RELAY: preloadedStates.RELAY,
+    }),
+  ).toString('base64');
   const webExtractor = new ChunkExtractor({
     statsFile: path.resolve(__dirname, './public/loadable-stats.json'),
     entrypoints: ['app'],

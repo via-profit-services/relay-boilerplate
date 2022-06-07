@@ -36,31 +36,9 @@ const bootstrap = async () => {
     console.error(err);
   }
 
-  // Parse the local storage and fill the tokens into redux store
-  let accessToken: AccessToken | null =
-    preloadedStates?.REDUX?.accessToken || reduxDefaultState.accessToken;
-  let refreshToken: RefreshToken | null =
-    preloadedStates?.REDUX?.refreshToken || reduxDefaultState.refreshToken;
-  try {
-    const plainAuthData = JSON.parse(window.localStorage.getItem('authorization') || '{}');
-    if (
-      typeof plainAuthData === 'object' &&
-      typeof plainAuthData?.accessToken === 'object' &&
-      typeof plainAuthData?.refreshToken === 'object'
-    ) {
-      accessToken = plainAuthData.accessToken as AccessToken;
-      refreshToken = plainAuthData.refreshToken as RefreshToken;
-    }
-  } catch (err) {
-    console.error('Failed to parse local storage');
-    console.error(err);
-  }
-
   const reduxStore = createReduxStore({
     ...reduxDefaultState,
     ...preloadedStates.REDUX,
-    accessToken,
-    refreshToken,
   });
 
   const rootElement = document.getElementById('app');
