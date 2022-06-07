@@ -344,11 +344,17 @@ type File implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+
+  """File owner ID"""
   owner: ID!
   mimeType: String!
+
+  """File display name"""
   name: String!
-  type: FileType!
   description: String
+
+  """File type: Avatar; Document, ...etc."""
+  type: FileType!
   pseudoPath: String
   meta: JSON
   access: FileAccess!
@@ -530,7 +536,7 @@ type WebPagesQuery {
   list(first: Int, last: Int, after: String, before: String, search: [WebPagesSearch!], orderBy: [WebPageOrderBy!], account: [ID!], id: [ID!]): WebPagesConnection!
   menu(first: Int, last: Int, after: String, before: String, search: [WebPageMenuSearch!], orderBy: [WebPageMenuOrderBy!], id: [ID!]): WebPagesMenuConnection!
   menuItems(first: Int, last: Int, after: String, before: String, search: [WebPageMenuItemSearch!], orderBy: [WebPageMenuItemOrderBy!], menu: [ID!], pid: [ID!], page: [ID!], id: [ID!]): WebPagesMenuItemConnection!
-  resolve(path: String!): WebPage!
+  resolve(path: String, id: ID): WebPage!
 }
 
 type WebPagesConnection implements Connection {
@@ -547,6 +553,7 @@ type WebPage implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  template: String!
 
   """Page address. Not to be confused with the URL"""
   path: String!
@@ -558,8 +565,8 @@ type WebPage implements Node {
   statusCode: Int!
   availability: WebPageAvailability!
   parent: WebPage
+  contentBlocks: [WebPageContentBlock!]
   childs: [WebPage!]
-  template: WebTemplate!
 }
 
 """Web page meta data"""
@@ -586,80 +593,43 @@ enum WebPageAvailability {
   UNAVAILABLE
 }
 
-union WebTemplate = WebTemplateHome | WebTemplateFallback | WebTemplateSecond | WebTemplateContact
+union WebPageContentBlock = WebPageContentBlockString | WebPageContentBlockSlider | WebPageContentBlockJSON
 
-type WebTemplateHome implements Node {
+type WebPageContentBlockString implements Node {
   id: ID!
-  mainMenu: WebPageMenu
-  h1: String
-  content: JSON
-  slider: WebPageSlider
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  content: String!
   page: WebPage!
 }
 
-type WebPageMenu implements Node {
+type WebPageContentBlockSlider implements Node {
   id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  items: [WebPageMenuItem!]
+  content: WebPageContentBlockSliderContent!
+  page: WebPage!
 }
 
-type WebPageMenuItem implements Node {
-  id: ID!
-  order: Int!
-  visible: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  target: WebPageWindowTarget!
-  url: URL
-  name: String
-  parent: WebPageMenuItem
-  menu: WebPageMenu
-  page: WebPage
-  childs: [WebPageMenuItem!]
-}
-
-enum WebPageWindowTarget {
-  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
-  SELF
-
-  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
-  BLANK
-}
-
-type WebPageSlider {
-  slides: [HomePageSliderSlide!]!
+type WebPageContentBlockSliderContent {
   autoplay: Boolean!
   delay: Int!
+  title: String!
+  slides: [WebPageContentBlockSliderContentSlide!]!
 }
 
-type HomePageSliderSlide {
-  id: ID!
-  image: URL!
+type WebPageContentBlockSliderContentSlide {
+  image: File!
 }
 
-type WebTemplateFallback implements Node {
+type WebPageContentBlockJSON implements Node {
   id: ID!
-  h1: String
-  mainMenu: WebPageMenu
-  content: JSON
-  page: WebPage!
-}
-
-type WebTemplateSecond implements Node {
-  h1: String
-  content: JSON
-  mainMenu: WebPageMenu
-  id: ID!
-  page: WebPage!
-}
-
-type WebTemplateContact implements Node {
-  h1: String
-  address: String
-  id: ID!
-  mainMenu: WebPageMenu
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  content: JSON!
   page: WebPage!
 }
 
@@ -692,6 +662,37 @@ type WebPagesMenuConnection implements Connection {
 type WebPageMenuEdge implements Edge {
   cursor: String!
   node: WebPageMenu!
+}
+
+type WebPageMenu implements Node {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  items: [WebPageMenuItem!]
+}
+
+type WebPageMenuItem implements Node {
+  id: ID!
+  order: Int!
+  visible: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  target: WebPageWindowTarget!
+  url: URL
+  name: String
+  parent: WebPageMenuItem
+  menu: WebPageMenu
+  page: WebPage
+  childs: [WebPageMenuItem!]
+}
+
+enum WebPageWindowTarget {
+  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
+  SELF
+
+  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
+  BLANK
 }
 
 input WebPageMenuSearch {

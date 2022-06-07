@@ -22,7 +22,8 @@ const webpackServerConfig: Configuration = merge(webpackBaseConfig, {
     assetModuleFilename: 'public/assets/[contenthash][ext]',
   },
   optimization: {
-    minimize: !isDev,
+    // minimize: !isDev,
+    minimize: false,
   },
   node: {
     __filename: true,

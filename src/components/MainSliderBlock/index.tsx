@@ -32,7 +32,7 @@ const MainSliderBlock: React.ForwardRefRenderFunction<HTMLDivElement, MainSlider
         beforeChange={(_oldIndex, newIndex) => setActiveIndex(newIndex)}
       >
         {slides.map(slideProps => (
-          <Slide key={slideProps.id} {...slideProps} />
+          <Slide key={slideProps.image.id} {...slideProps} />
         ))}
       </Slider>
       <SliderBullets

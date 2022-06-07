@@ -178,7 +178,7 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
       }
     })
     .catch(err => {
-      console.error(err);
+      console.error('Unknown Error', err);
       statusCode = 500;
     });
 

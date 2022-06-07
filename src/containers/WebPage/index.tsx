@@ -26,47 +26,21 @@ graphql`
         id
         statusCode
         availability
-        template {
-          __typename
-        }
-        templateHome: template {
-          ...WebTemplateHomeDesktopFragment
-        }
-        templateFallback: template {
-          ...WebTemplateFallbackDesktopFragment
-        }
-        templateSecond: template {
-          ...WebTemplateSecondDesktopFragment
-        }
-        templateContact: template {
-          ...WebTemplateContactDesktopFragment
-        }
+        template
+        ...TemplateHomeDesktopFragment
+        ...TemplateSecondDesktopFragment
       }
     }
   }
 `;
 
-const WebTemplateHomeDesktop = loadable(() => import('~/templates/WebTemplateHomeDesktop/index'), {
+const TemplateHomeDesktop = loadable(() => import('~/templates/TemplateHomeDesktop/index'), {
   fallback: <LoadingIndicator />,
 });
-const WebTemplateFallbackDesktop = loadable(
-  () => import('~/templates/WebTemplateFallbackDesktop/index'),
-  {
-    fallback: <LoadingIndicator />,
-  },
-);
-const WebTemplateSecondDesktop = loadable(
-  () => import('~/templates/WebTemplateSecondDesktop/index'),
-  {
-    fallback: <LoadingIndicator />,
-  },
-);
-const WebTemplateContactDesktop = loadable(
-  () => import('~/templates/WebTemplateContactDesktop/index'),
-  {
-    fallback: <LoadingIndicator />,
-  },
-);
+
+const TemplateSecondDesktop = loadable(() => import('~/templates/TemplateSecondDesktop/index'), {
+  fallback: <LoadingIndicator />,
+});
 
 const localeMap: Record<LocaleName, Record<string, string>> = {
   'ru-RU': translationsruRU,
@@ -89,8 +63,7 @@ const WebPage: React.FC = () => {
   const { pathname } = useLocation();
   const state = useSelector(selector);
   const { webpages } = useLazyLoadQuery<WebPageQuery>(query, { path: pathname });
-  const { template, templateContact, templateFallback, templateHome, templateSecond } =
-    webpages.resolve;
+  const { template, ...fragmentRef } = webpages.resolve;
 
   const messages = localeMap[state.locale] || localeMap['ru-RU'];
   const locale = state.locale in localeMap ? state.locale : 'ru-RU';
@@ -100,23 +73,14 @@ const WebPage: React.FC = () => {
   );
 
   const renderTemplate = React.useCallback(() => {
-    switch (template.__typename) {
-      case 'WebTemplateHome':
-        return <WebTemplateHomeDesktop fragmentRef={templateHome} />;
-
-      case 'WebTemplateSecond':
-        return <WebTemplateSecondDesktop fragmentRef={templateSecond} />;
-
-      case 'WebTemplateFallback':
-        return <WebTemplateFallbackDesktop fragmentRef={templateFallback} />;
-
-      case 'WebTemplateContact':
-        return <WebTemplateContactDesktop fragmentRef={templateContact} />;
+    switch (template) {
+      case 'Home':
+        return <TemplateHomeDesktop fragmentRef={fragmentRef} />;
 
       default:
-        return null;
+        return <TemplateSecondDesktop fragmentRef={fragmentRef} />;
     }
-  }, [template.__typename, templateContact, templateFallback, templateHome, templateSecond]);
+  }, [fragmentRef, template]);
 
   return (
     <>

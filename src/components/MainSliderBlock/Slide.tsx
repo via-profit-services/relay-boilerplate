@@ -4,8 +4,10 @@ import styled from '@emotion/styled';
 import ImageBlock from '~/components/ImageBlock';
 
 export interface SlideProps {
-  readonly id: string;
-  readonly image: string;
+  readonly image: {
+    readonly id: string;
+    readonly url: string;
+  };
 }
 
 const Container = styled.div`
@@ -21,12 +23,12 @@ const Image = styled(ImageBlock)`
 `;
 
 const Slide: React.FC<SlideProps> = props => {
-  const { id, image } = props;
+  const { image } = props;
 
   return (
     <>
-      <Container id={id}>
-        <Image image={image} />
+      <Container id={image.id}>
+        <Image image={image.url} />
       </Container>
     </>
   );

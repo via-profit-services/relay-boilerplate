@@ -4,9 +4,10 @@ import http from 'node:http';
 import { URL } from 'node:url';
 import { FetchFunction } from 'relay-runtime';
 
-type Props = { graphqlEndpoint: string; graphqlSubscriptions: string };
-
-type FetchFunctionFactory = (props: Props) => FetchFunction;
+type FetchFunctionFactory = (props: {
+  graphqlEndpoint: string;
+  graphqlSubscriptions: string;
+}) => FetchFunction;
 
 const fetchFunctionFactory: FetchFunctionFactory = props => {
   const { graphqlEndpoint } = props;
@@ -27,7 +28,7 @@ const fetchFunctionFactory: FetchFunctionFactory = props => {
           path: pathname,
           headers: {
             'Content-Type': 'application/json',
-            'Accept-Encoding': 'br',
+            'Accept-Encoding': 'gzip',
           },
         },
         response => {
@@ -35,9 +36,6 @@ const fetchFunctionFactory: FetchFunctionFactory = props => {
           const buffers: Buffer[] = [];
           let resp: stream.Transform | http.IncomingMessage;
           switch (contentEncoding) {
-            case 'br':
-              resp = response.pipe(zlib.createBrotliDecompress());
-              break;
             case 'gzip':
               resp = response.pipe(zlib.createGunzip());
               break;
