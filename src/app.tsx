@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { loadableReady } from '@loadable/component';
+import loadable, { loadableReady } from '@loadable/component';
 import { Provider as ReduxProvider } from 'react-redux';
 import createCache from '@emotion/cache';
 import { CacheProvider as CSSCacheProvider } from '@emotion/react';
@@ -10,6 +10,7 @@ import reduxDefaultState from '~/redux/defaultState';
 import createReduxStore from '~/redux/store';
 import RootRouter from '~/routes/RootRouter';
 import RelayProvider from '~/providers/RelayProvider';
+// const RelayProvider = loadable(() => import('~/providers/RelayProvider'));
 
 const bootstrap = async () => {
   // parse preloaded states from base64 string

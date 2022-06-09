@@ -9,19 +9,19 @@ import { createSelector } from 'reselect';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
 
-import query, { WebPageQuery } from '~/relay/artifacts/WebPageQuery.graphql';
+import query, { PageQuery } from '~/relay/artifacts/PageQuery.graphql';
 import LoadingIndicator from '~/components/LoadingIndicator';
 import translationsruRU from '~/translations/ru-RU.json';
 import themeStandardLight from '~/themes/standardLight';
 import themeStandardDark from '~/themes/standardDark';
-import GlobalStyles from '~/containers/WebPage/GlobalStyles';
+import GlobalStyles from '~/containers/Page/GlobalStyles';
 import faviconPng from '~/assets/favicon.png';
 import faviconIco from '~/assets/favicon.ico';
 import '~/assets/robots.txt';
 
 graphql`
-  query WebPageQuery($path: String!) {
-    webpages {
+  query PageQuery($path: String!) {
+    pages {
       resolve(path: $path) {
         id
         statusCode
@@ -59,12 +59,11 @@ const selector = createSelector(
   (theme, locale, fontSize, deviceMode) => ({ theme, locale, fontSize, deviceMode }),
 );
 
-const WebPage: React.FC = () => {
+const Page: React.FC = () => {
   const { pathname } = useLocation();
   const state = useSelector(selector);
-  const { webpages } = useLazyLoadQuery<WebPageQuery>(query, { path: pathname });
-  const { template, ...fragmentRef } = webpages.resolve;
-
+  const { pages } = useLazyLoadQuery<PageQuery>(query, { path: pathname });
+  const { template, ...fragmentRef } = pages.resolve;
   const messages = localeMap[state.locale] || localeMap['ru-RU'];
   const locale = state.locale in localeMap ? state.locale : 'ru-RU';
   const theme = React.useMemo(
@@ -99,4 +98,4 @@ const WebPage: React.FC = () => {
   );
 };
 
-export default WebPage;
+export default Page;

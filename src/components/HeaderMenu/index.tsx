@@ -44,7 +44,7 @@ const HeaderMenu: React.ForwardRefRenderFunction<HTMLUListElement, HeaderMenuPro
 export default React.forwardRef(HeaderMenu);
 
 graphql`
-  fragment HeaderMenuFragment on WebPageMenu {
+  fragment HeaderMenuFragment on PageMenu {
     id
     items {
       id

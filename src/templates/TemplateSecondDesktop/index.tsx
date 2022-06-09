@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Global, css, useTheme } from '@emotion/react';
 import { graphql, useFragment } from 'react-relay';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 // import Header from '~/components/Header';
 import PageTitle from '~/components/PageTitle';
@@ -28,34 +29,24 @@ const Content = styled.div`
   flex: 1;
 `;
 
-type ContentBlockString = Exclude<
-  NonNullable<TemplateSecondDesktopFragment$data['cbString']>[0],
-  {
-    readonly __typename: '%other';
-  }
->;
-
-type ContentBlockJSON = Exclude<
-  NonNullable<TemplateSecondDesktopFragment$data['cbJSON']>[0],
-  {
-    readonly __typename: '%other';
-  }
->;
-
-type ContentMap = {
-  readonly h1?: ContentBlockString;
-  readonly content?: ContentBlockJSON;
-};
-
 const TemplateSecondDesktopFragment: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { meta, ...contentBlocksRecords } = useFragment<TemplateSecondDesktopFragment$key>(
+  const { meta, contentBlocks } = useFragment<TemplateSecondDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
 
-  const { h1, content } = parseContentBlocks<ContentMap>(contentBlocksRecords);
+  const contentMap = React.useMemo(
+    () => ({
+      h1: contentBlocks?.find(({ name }) => name === 'h1')?.content?.plainContent,
+      content: contentBlocks?.find(({ name }) => name === 'content')?.content?.lexicalContent,
+    }),
+    [contentBlocks],
+  );
+  const { h1, content } = contentMap;
+
+  // const { h1, content } = parseContentBlocks<ContentMap>(contentBlocksRecords);
 
   return (
     <>
@@ -75,8 +66,11 @@ const TemplateSecondDesktopFragment: React.FC<Props> = props => {
       <Container>
         {/* <Header fragmentRef={menuFragment} /> */}
         <Content>
-          {h1 && <PageTitle>{h1.content}</PageTitle>}
-          {content && <RenderDraftjs {...content.content} />}
+          {h1 && <PageTitle>{h1}</PageTitle>}
+          {content && <>Cusom content here: {JSON.stringify(content)}</>}
+          <br />
+          <br />
+          <Link to="/">To home</Link>
         </Content>
       </Container>
     </>
@@ -86,42 +80,23 @@ const TemplateSecondDesktopFragment: React.FC<Props> = props => {
 export default TemplateSecondDesktopFragment;
 
 graphql`
-  fragment TemplateSecondDesktopFragment on WebPage {
+  fragment TemplateSecondDesktopFragment on Page {
     id
     meta {
       locale
       title
       description
     }
-    cbString: contentBlocks {
-      ... on WebPageContentBlockString {
-        __typename
-        id
-        name
-        content
-      }
-    }
-    cbJSON: contentBlocks {
-      ... on WebPageContentBlockJSON {
-        __typename
-        id
-        name
-        content
-      }
-    }
-    cbSlider: contentBlocks {
-      ... on WebPageContentBlockSlider {
-        __typename
-        name
-        content {
-          autoplay
-          delay
-          slides {
-            image {
-              id
-              url
-            }
-          }
+    contentBlocks {
+      id
+      name
+      type
+      content {
+        ... on PageContentBlockContentString {
+          plainContent: value
+        }
+        ... on PageContentBlockContentLexical {
+          lexicalContent: value
         }
       }
     }

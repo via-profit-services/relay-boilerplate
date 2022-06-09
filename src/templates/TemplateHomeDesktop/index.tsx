@@ -14,6 +14,7 @@ import fragment, {
   TemplateHomeDesktopFragment$data,
 } from '~/relay/artifacts/TemplateHomeDesktopFragment.graphql';
 import parseContentBlocks from '~/utils/parseContentBlocks';
+import RenderLexical from '~/components/RenderLexical';
 
 type Props = {
   fragmentRef: TemplateHomeDesktopFragment$key;
@@ -30,42 +31,22 @@ const Content = styled.div`
   flex: 1;
 `;
 
-type ContentBlockString = Exclude<
-  NonNullable<TemplateHomeDesktopFragment$data['cbString']>[0],
-  {
-    readonly __typename: '%other';
-  }
->;
-
-type ContentBlockJSON = Exclude<
-  NonNullable<TemplateHomeDesktopFragment$data['cbJSON']>[0],
-  {
-    readonly __typename: '%other';
-  }
->;
-
-type ContentBlockSlider = Exclude<
-  NonNullable<TemplateHomeDesktopFragment$data['cbSlider']>[0],
-  {
-    readonly __typename: '%other';
-  }
->;
-
-type ContentMap = {
-  readonly h1?: ContentBlockString;
-  readonly content?: ContentBlockJSON;
-  readonly slider?: ContentBlockSlider;
-};
-
 const TemplateHomeDesktopFragment: React.FC<Props> = props => {
   const { fragmentRef } = props;
   const theme = useTheme();
-  const { meta, ...contentBlocksRecords } = useFragment<TemplateHomeDesktopFragment$key>(
+  const { meta, contentBlocks } = useFragment<TemplateHomeDesktopFragment$key>(
     fragment,
     fragmentRef,
   );
 
-  const { slider, h1, content } = parseContentBlocks<ContentMap>(contentBlocksRecords);
+  const contentMap = React.useMemo(
+    () => ({
+      h1: contentBlocks?.find(({ name }) => name === 'h1')?.content?.plainContent,
+      content: contentBlocks?.find(({ name }) => name === 'content')?.content?.lexicalContent,
+    }),
+    [contentBlocks],
+  );
+  const { h1, content } = contentMap;
 
   return (
     <>
@@ -85,9 +66,12 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
       <Container>
         {/* <Header fragmentRef={menuFragment} /> */}
         <Content>
-          {h1 && <PageTitle>{h1.content}</PageTitle>}
-          {slider && <MainSliderBlock {...slider.content} />}
-          {content && <RenderDraftjs {...content.content} />}
+          {/* <RenderLexical /> */}
+          {h1 && <PageTitle>{h1}</PageTitle>}
+          {/* {slider && <MainSliderBlock {...slider.content} />} */}
+          {content && <>Cusom content here: {JSON.stringify(content)}</>}
+          <br />
+          <br />
           <Link to="/about">To about</Link>
         </Content>
       </Container>
@@ -98,42 +82,23 @@ const TemplateHomeDesktopFragment: React.FC<Props> = props => {
 export default TemplateHomeDesktopFragment;
 
 graphql`
-  fragment TemplateHomeDesktopFragment on WebPage {
+  fragment TemplateHomeDesktopFragment on Page {
     id
     meta {
       locale
       title
       description
     }
-    cbString: contentBlocks {
-      ... on WebPageContentBlockString {
-        __typename
-        id
-        name
-        content
-      }
-    }
-    cbJSON: contentBlocks {
-      ... on WebPageContentBlockJSON {
-        __typename
-        id
-        name
-        content
-      }
-    }
-    cbSlider: contentBlocks {
-      ... on WebPageContentBlockSlider {
-        __typename
-        name
-        content {
-          autoplay
-          delay
-          slides {
-            image {
-              id
-              url
-            }
-          }
+    contentBlocks {
+      id
+      name
+      type
+      content {
+        ... on PageContentBlockContentString {
+          plainContent: value
+        }
+        ... on PageContentBlockContentLexical {
+          lexicalContent: value
         }
       }
     }

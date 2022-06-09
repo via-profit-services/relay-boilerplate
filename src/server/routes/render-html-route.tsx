@@ -25,7 +25,7 @@ import relayFetch from '~/server/relay-fetch';
 import reduxDefaultState from '~/redux/defaultState';
 import createReduxStore from '~/redux/store';
 import RelayProvider from '~/providers/RelayProvider';
-import query, { WebPageQuery } from '~/relay/artifacts/WebPageQuery.graphql';
+import query, { PageQuery } from '~/relay/artifacts/PageQuery.graphql';
 
 interface Props extends AppConfigProduction {
   readonly req: http.IncomingMessage;
@@ -167,13 +167,13 @@ const renderHTML = async (props: Props): Promise<RenderHTMLPayload> => {
   let statusCode = 404;
 
   // Fill Relay store by fetching request
-  await fetchQuery<WebPageQuery>(relayEnvironment, query, {
+  await fetchQuery<PageQuery>(relayEnvironment, query, {
     path: String(url),
   })
     .toPromise()
     .then(resp => {
       if (resp) {
-        statusCode = resp?.webpages.resolve.statusCode;
+        statusCode = resp?.pages.resolve.statusCode;
         preloadedStates.RELAY = relayEnvironment.getStore().getSource().toJSON();
       }
     })

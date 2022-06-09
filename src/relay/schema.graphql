@@ -112,9 +112,9 @@ type Query {
   files: FilesQuery!
   funnels: FunnelsQuery!
   me: Me!
+  pages: PagesQuery!
   users: UsersQuery!
   version: String!
-  webpages: WebPagesQuery!
 }
 
 type AuthentificationQuery {
@@ -359,7 +359,7 @@ type File implements Node {
   meta: JSON
   access: FileAccess!
   url: URL!
-  transform(resize: ImageTransformResize, cover: ImageTransformCover, contain: ImageTransformContain, crop: ImageTransformCrop, blur: Int, greyscale: Boolean, format: ImageTransformFormat): TransformedFile
+  transform(resize: ImageTransformResize, cover: ImageTransformCover, contain: ImageTransformContain, crop: ImageTransformCrop, blur: Int, greyscale: Boolean, format: ImageTransformFormat, circle: Boolean): TransformedFile
 }
 
 enum FileType {
@@ -418,7 +418,6 @@ input ImageTransformFormat {
 enum ImageTransformFormatType {
   PNG
   JPEG
-  WEBP
 }
 
 type FunnelsQuery {
@@ -497,6 +496,204 @@ enum AccountStatus {
   FORBIDDEN
 }
 
+type PagesQuery {
+  list(first: Int, last: Int, after: String, before: String, search: [PagesSearch!], orderBy: [PageOrderBy!], account: [ID!], id: [ID!]): PagesConnection!
+  menu(first: Int, last: Int, after: String, before: String, search: [PageMenuSearch!], orderBy: [PageMenuOrderBy!], id: [ID!]): PagesMenuConnection!
+  menuItems(first: Int, last: Int, after: String, before: String, search: [PageMenuItemSearch!], orderBy: [PageMenuItemOrderBy!], menu: [ID!], pid: [ID!], page: [ID!], id: [ID!]): PagesMenuItemConnection!
+  resolve(path: String, id: ID): Page!
+}
+
+type PagesConnection implements Connection {
+  pageInfo: PageInfo!
+  edges: [PageEdge!]!
+}
+
+type PageEdge implements Edge {
+  cursor: String!
+  node: Page!
+}
+
+type Page implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  template: String!
+
+  """Page address. Not to be confused with the URL"""
+  path: String!
+
+  """The page name is not shown anywhere except the admin panel"""
+  name: String!
+  order: Int!
+  meta: PageMeta!
+  statusCode: Int!
+  availability: PageAvailability!
+  parent: Page
+  contentBlocks: [PageContentBlock!]
+  childs: [Page!]
+}
+
+"""Web page meta data"""
+type PageMeta {
+  id: ID!
+
+  """Web page locale and the HTML attribute <html lang="...">"""
+  locale: String!
+
+  """Meta tag <title>...</title>"""
+  title: String!
+
+  """Meta tag <meta name="description" content="...">"""
+  description: String!
+
+  """Meta tag <meta name="keywords" content="...">"""
+  keywords: String! @deprecated(reason: "Google and other search engines no longer consider the keywords meta tag")
+  page: Page!
+}
+
+"""Page UNAVAILABLE eq 404 error status"""
+enum PageAvailability {
+  AVAILABLE
+  UNAVAILABLE
+}
+
+type PageContentBlock implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  content: PageContentBlockContent!
+  type: PageContentBlockType!
+  page: Page!
+}
+
+union PageContentBlockContent = PageContentBlockContentLexical | PageContentBlockContentString
+
+type PageContentBlockContentLexical {
+  value: JSONObject!
+}
+
+type PageContentBlockContentString {
+  value: String!
+}
+
+enum PageContentBlockType {
+  STRING
+  JSON
+}
+
+input PagesSearch {
+  field: PageSearchField!
+  query: String!
+}
+
+enum PageSearchField {
+  NAME
+}
+
+input PageOrderBy {
+  field: PageOrderField!
+  direction: OrderDirection!
+}
+
+enum PageOrderField {
+  ORDER
+  NAME
+  CREATED_AT
+  UPDATED_AT
+}
+
+type PagesMenuConnection implements Connection {
+  pageInfo: PageInfo!
+  edges: [PageMenuEdge!]!
+}
+
+type PageMenuEdge implements Edge {
+  cursor: String!
+  node: PageMenu!
+}
+
+type PageMenu implements Node {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  items: [PageMenuItem!]
+}
+
+type PageMenuItem implements Node {
+  id: ID!
+  order: Int!
+  visible: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  target: PageWindowTarget!
+  url: URL
+  name: String
+  parent: PageMenuItem
+  menu: PageMenu
+  page: Page
+  childs: [PageMenuItem!]
+}
+
+enum PageWindowTarget {
+  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
+  SELF
+
+  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
+  BLANK
+}
+
+input PageMenuSearch {
+  field: PageMenuSearchField!
+  query: String!
+}
+
+enum PageMenuSearchField {
+  NAME
+}
+
+input PageMenuOrderBy {
+  field: PageMenuOrderField!
+  direction: OrderDirection!
+}
+
+enum PageMenuOrderField {
+  ORDER
+  CREATED_AT
+  UPDATED_AT
+}
+
+type PagesMenuItemConnection implements Connection {
+  pageInfo: PageInfo!
+  edges: [PageMenuItemEdge!]!
+}
+
+type PageMenuItemEdge implements Edge {
+  cursor: String!
+  node: PageMenuItem!
+}
+
+input PageMenuItemSearch {
+  field: PageMenuItemSearchField!
+  query: String!
+}
+
+enum PageMenuItemSearchField {
+  NAME
+}
+
+input PageMenuItemOrderBy {
+  field: PageMenuItemOrderField!
+  direction: OrderDirection!
+}
+
+enum PageMenuItemOrderField {
+  ORDER
+  CREATED_AT
+  UPDATED_AT
+}
+
 type UsersQuery {
   list(first: Int, last: Int, after: String, before: String, search: [UsersSearch!], orderBy: [UserOrderBy!], account: [ID!], id: [ID!]): UsersConnection!
   user(id: ID!): User
@@ -528,219 +725,6 @@ input UserOrderBy {
 
 enum UserOrderField {
   NAME
-  CREATED_AT
-  UPDATED_AT
-}
-
-type WebPagesQuery {
-  list(first: Int, last: Int, after: String, before: String, search: [WebPagesSearch!], orderBy: [WebPageOrderBy!], account: [ID!], id: [ID!]): WebPagesConnection!
-  menu(first: Int, last: Int, after: String, before: String, search: [WebPageMenuSearch!], orderBy: [WebPageMenuOrderBy!], id: [ID!]): WebPagesMenuConnection!
-  menuItems(first: Int, last: Int, after: String, before: String, search: [WebPageMenuItemSearch!], orderBy: [WebPageMenuItemOrderBy!], menu: [ID!], pid: [ID!], page: [ID!], id: [ID!]): WebPagesMenuItemConnection!
-  resolve(path: String, id: ID): WebPage!
-}
-
-type WebPagesConnection implements Connection {
-  pageInfo: PageInfo!
-  edges: [WebPageEdge!]!
-}
-
-type WebPageEdge implements Edge {
-  cursor: String!
-  node: WebPage!
-}
-
-type WebPage implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  template: String!
-
-  """Page address. Not to be confused with the URL"""
-  path: String!
-
-  """The page name is not shown anywhere except the admin panel"""
-  name: String!
-  order: Int!
-  meta: WebPageMeta!
-  statusCode: Int!
-  availability: WebPageAvailability!
-  parent: WebPage
-  contentBlocks: [WebPageContentBlock!]
-  childs: [WebPage!]
-}
-
-"""Web page meta data"""
-type WebPageMeta {
-  id: ID!
-
-  """Web page locale and the HTML attribute <html lang="...">"""
-  locale: String!
-
-  """Meta tag <title>...</title>"""
-  title: String!
-
-  """Meta tag <meta name="description" content="...">"""
-  description: String!
-
-  """Meta tag <meta name="keywords" content="...">"""
-  keywords: String! @deprecated(reason: "Google and other search engines no longer consider the keywords meta tag")
-  page: WebPage!
-}
-
-"""Page UNAVAILABLE eq 404 error status"""
-enum WebPageAvailability {
-  AVAILABLE
-  UNAVAILABLE
-}
-
-union WebPageContentBlock = WebPageContentBlockString | WebPageContentBlockSlider | WebPageContentBlockJSON
-
-type WebPageContentBlockString implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String!
-  content: String!
-  page: WebPage!
-}
-
-type WebPageContentBlockSlider implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String!
-  content: WebPageContentBlockSliderContent!
-  page: WebPage!
-}
-
-type WebPageContentBlockSliderContent {
-  autoplay: Boolean!
-  delay: Int!
-  title: String!
-  slides: [WebPageContentBlockSliderContentSlide!]!
-}
-
-type WebPageContentBlockSliderContentSlide {
-  image: File!
-}
-
-type WebPageContentBlockJSON implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String!
-  content: JSON!
-  page: WebPage!
-}
-
-input WebPagesSearch {
-  field: WebPageSearchField!
-  query: String!
-}
-
-enum WebPageSearchField {
-  NAME
-}
-
-input WebPageOrderBy {
-  field: WebPageOrderField!
-  direction: OrderDirection!
-}
-
-enum WebPageOrderField {
-  ORDER
-  NAME
-  CREATED_AT
-  UPDATED_AT
-}
-
-type WebPagesMenuConnection implements Connection {
-  pageInfo: PageInfo!
-  edges: [WebPageMenuEdge!]!
-}
-
-type WebPageMenuEdge implements Edge {
-  cursor: String!
-  node: WebPageMenu!
-}
-
-type WebPageMenu implements Node {
-  id: ID!
-  name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  items: [WebPageMenuItem!]
-}
-
-type WebPageMenuItem implements Node {
-  id: ID!
-  order: Int!
-  visible: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  target: WebPageWindowTarget!
-  url: URL
-  name: String
-  parent: WebPageMenuItem
-  menu: WebPageMenu
-  page: WebPage
-  childs: [WebPageMenuItem!]
-}
-
-enum WebPageWindowTarget {
-  """Value for the «target» attribute, e.g.: <a target="_self"></a>"""
-  SELF
-
-  """Value for the «target» attribute, e.g.: <a target="_blank"></a>"""
-  BLANK
-}
-
-input WebPageMenuSearch {
-  field: WebPageMenuSearchField!
-  query: String!
-}
-
-enum WebPageMenuSearchField {
-  NAME
-}
-
-input WebPageMenuOrderBy {
-  field: WebPageMenuOrderField!
-  direction: OrderDirection!
-}
-
-enum WebPageMenuOrderField {
-  ORDER
-  CREATED_AT
-  UPDATED_AT
-}
-
-type WebPagesMenuItemConnection implements Connection {
-  pageInfo: PageInfo!
-  edges: [WebPageMenuItemEdge!]!
-}
-
-type WebPageMenuItemEdge implements Edge {
-  cursor: String!
-  node: WebPageMenuItem!
-}
-
-input WebPageMenuItemSearch {
-  field: WebPageMenuItemSearchField!
-  query: String!
-}
-
-enum WebPageMenuItemSearchField {
-  NAME
-}
-
-input WebPageMenuItemOrderBy {
-  field: WebPageMenuItemOrderField!
-  direction: OrderDirection!
-}
-
-enum WebPageMenuItemOrderField {
-  ORDER
   CREATED_AT
   UPDATED_AT
 }

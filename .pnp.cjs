@@ -53,6 +53,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:11.8.1"],\
             ["@formatjs/cli", "npm:4.8.3"],\
             ["@hookform/resolvers", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.8.8"],\
+            ["@lexical/clipboard", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/link", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/list", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/react", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/rich-text", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
             ["@loadable/babel-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.13.2"],\
             ["@loadable/component", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/server", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
@@ -129,6 +136,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ioredis", "npm:5.0.3"],\
             ["js-cookie", "npm:3.0.1"],\
             ["jsonwebtoken", "npm:8.5.1"],\
+            ["lexical", "npm:0.3.2"],\
             ["libphonenumber-js", "npm:1.9.50"],\
             ["mdi-react", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:8.3.1"],\
             ["mini-css-extract-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.5.3"],\
@@ -3339,6 +3347,544 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jridgewell/trace-mapping", "npm:0.3.4"],\
             ["@jridgewell/resolve-uri", "npm:3.0.4"],\
             ["@jridgewell/sourcemap-codec", "npm:1.4.10"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/clipboard", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-clipboard-npm-0.3.2-471af74a1d-a6776c0808.zip/node_modules/@lexical/clipboard/",\
+          "packageDependencies": [\
+            ["@lexical/clipboard", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-clipboard-virtual-46da5c8b8c/0/cache/@lexical-clipboard-npm-0.3.2-471af74a1d-a6776c0808.zip/node_modules/@lexical/clipboard/",\
+          "packageDependencies": [\
+            ["@lexical/clipboard", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/html", "virtual:46da5c8b8ceafcc503ff19fe3dc4813716c2204d3dec3d6aed4b5c572f0cf11eef254e9fa94cd8086659425ed726074dc380fabcdd684e9b488beec03e12341b#npm:0.3.2"],\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/code", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-code-npm-0.3.2-9dac4faee6-5609ed467d.zip/node_modules/@lexical/code/",\
+          "packageDependencies": [\
+            ["@lexical/code", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-code-virtual-6476a5bf46/0/cache/@lexical-code-npm-0.3.2-9dac4faee6-5609ed467d.zip/node_modules/@lexical/code/",\
+          "packageDependencies": [\
+            ["@lexical/code", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"],\
+            ["prismjs", "npm:1.28.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/dragon", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-dragon-npm-0.3.2-43d8ceb1d0-f4edd163f2.zip/node_modules/@lexical/dragon/",\
+          "packageDependencies": [\
+            ["@lexical/dragon", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-dragon-virtual-e7c0e767b0/0/cache/@lexical-dragon-npm-0.3.2-43d8ceb1d0-f4edd163f2.zip/node_modules/@lexical/dragon/",\
+          "packageDependencies": [\
+            ["@lexical/dragon", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/hashtag", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-hashtag-npm-0.3.2-63da7737c8-2dfe5c9ad2.zip/node_modules/@lexical/hashtag/",\
+          "packageDependencies": [\
+            ["@lexical/hashtag", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-hashtag-virtual-19030bc5c7/0/cache/@lexical-hashtag-npm-0.3.2-63da7737c8-2dfe5c9ad2.zip/node_modules/@lexical/hashtag/",\
+          "packageDependencies": [\
+            ["@lexical/hashtag", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/history", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-history-npm-0.3.2-3a5e56e810-62e8b41407.zip/node_modules/@lexical/history/",\
+          "packageDependencies": [\
+            ["@lexical/history", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-history-virtual-d7f1cf2b3b/0/cache/@lexical-history-npm-0.3.2-3a5e56e810-62e8b41407.zip/node_modules/@lexical/history/",\
+          "packageDependencies": [\
+            ["@lexical/history", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/html", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-html-npm-0.3.2-013c8c4bbb-d7d7661c47.zip/node_modules/@lexical/html/",\
+          "packageDependencies": [\
+            ["@lexical/html", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:46da5c8b8ceafcc503ff19fe3dc4813716c2204d3dec3d6aed4b5c572f0cf11eef254e9fa94cd8086659425ed726074dc380fabcdd684e9b488beec03e12341b#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-html-virtual-e90fccdf75/0/cache/@lexical-html-npm-0.3.2-013c8c4bbb-d7d7661c47.zip/node_modules/@lexical/html/",\
+          "packageDependencies": [\
+            ["@lexical/html", "virtual:46da5c8b8ceafcc503ff19fe3dc4813716c2204d3dec3d6aed4b5c572f0cf11eef254e9fa94cd8086659425ed726074dc380fabcdd684e9b488beec03e12341b#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/link", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-link-npm-0.3.2-c47d481b89-92b543199e.zip/node_modules/@lexical/link/",\
+          "packageDependencies": [\
+            ["@lexical/link", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-link-virtual-8f6750e181/0/cache/@lexical-link-npm-0.3.2-c47d481b89-92b543199e.zip/node_modules/@lexical/link/",\
+          "packageDependencies": [\
+            ["@lexical/link", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/list", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-list-npm-0.3.2-0aa48e43f5-26506b2544.zip/node_modules/@lexical/list/",\
+          "packageDependencies": [\
+            ["@lexical/list", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-list-virtual-bcb25272a1/0/cache/@lexical-list-npm-0.3.2-0aa48e43f5-26506b2544.zip/node_modules/@lexical/list/",\
+          "packageDependencies": [\
+            ["@lexical/list", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/mark", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-mark-npm-0.3.2-bead564548-18cd1a8632.zip/node_modules/@lexical/mark/",\
+          "packageDependencies": [\
+            ["@lexical/mark", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-mark-virtual-2341c416d0/0/cache/@lexical-mark-npm-0.3.2-bead564548-18cd1a8632.zip/node_modules/@lexical/mark/",\
+          "packageDependencies": [\
+            ["@lexical/mark", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/markdown", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-markdown-npm-0.3.2-e65f7c58a0-2f1d711ac3.zip/node_modules/@lexical/markdown/",\
+          "packageDependencies": [\
+            ["@lexical/markdown", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-markdown-virtual-04578661a3/0/cache/@lexical-markdown-npm-0.3.2-e65f7c58a0-2f1d711ac3.zip/node_modules/@lexical/markdown/",\
+          "packageDependencies": [\
+            ["@lexical/markdown", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/code", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/link", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/list", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/rich-text", "virtual:04578661a3f1ff0d71a245b147258e07a1141129ccf66bacbe2ae464fa504d73305e167d0af104fb3c715df80f4fa6560509d3f7a5909361cc497313dc60c714#npm:0.3.2"],\
+            ["@lexical/text", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/offset", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-offset-npm-0.3.2-3c259bd289-3f8e715872.zip/node_modules/@lexical/offset/",\
+          "packageDependencies": [\
+            ["@lexical/offset", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:a44ceee1e3c44816ee545e07f9eb25a224f96e237457c1cc6203cf3d4813a7329dfee7c8b152d50301902be30c507b7c5249673669e3b8c69083d4b5feb34fa1#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-offset-virtual-b988d56a03/0/cache/@lexical-offset-npm-0.3.2-3c259bd289-3f8e715872.zip/node_modules/@lexical/offset/",\
+          "packageDependencies": [\
+            ["@lexical/offset", "virtual:a44ceee1e3c44816ee545e07f9eb25a224f96e237457c1cc6203cf3d4813a7329dfee7c8b152d50301902be30c507b7c5249673669e3b8c69083d4b5feb34fa1#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/overflow", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-overflow-npm-0.3.2-8d952cabb5-6de95ece64.zip/node_modules/@lexical/overflow/",\
+          "packageDependencies": [\
+            ["@lexical/overflow", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-overflow-virtual-8106f5a7b4/0/cache/@lexical-overflow-npm-0.3.2-8d952cabb5-6de95ece64.zip/node_modules/@lexical/overflow/",\
+          "packageDependencies": [\
+            ["@lexical/overflow", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/plain-text", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-plain-text-npm-0.3.2-73c84d8a92-c7992d7eea.zip/node_modules/@lexical/plain-text/",\
+          "packageDependencies": [\
+            ["@lexical/plain-text", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-plain-text-virtual-2cdb5558b2/0/cache/@lexical-plain-text-npm-0.3.2-73c84d8a92-c7992d7eea.zip/node_modules/@lexical/plain-text/",\
+          "packageDependencies": [\
+            ["@lexical/plain-text", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/clipboard", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["@types/lexical__clipboard", null],\
+            ["@types/lexical__selection", null],\
+            ["@types/lexical__utils", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@lexical/clipboard",\
+            "@lexical/selection",\
+            "@lexical/utils",\
+            "@types/lexical",\
+            "@types/lexical__clipboard",\
+            "@types/lexical__selection",\
+            "@types/lexical__utils",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/react", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-react-npm-0.3.2-9995700b78-ba11d0d721.zip/node_modules/@lexical/react/",\
+          "packageDependencies": [\
+            ["@lexical/react", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-react-virtual-f939b79a4e/0/cache/@lexical-react-npm-0.3.2-9995700b78-ba11d0d721.zip/node_modules/@lexical/react/",\
+          "packageDependencies": [\
+            ["@lexical/react", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/clipboard", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/code", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/dragon", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/hashtag", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/history", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/link", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/list", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/mark", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/markdown", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/overflow", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/plain-text", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/rich-text", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/table", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/text", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/yjs", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["@types/react", "npm:17.0.43"],\
+            ["@types/react-dom", "npm:17.0.14"],\
+            ["lexical", "npm:0.3.2"],\
+            ["react", "npm:18.0.0"],\
+            ["react-dom", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:18.0.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "@types/react-dom",\
+            "@types/react",\
+            "lexical",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/rich-text", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-rich-text-npm-0.3.2-26dcf149f7-c69a1dca5f.zip/node_modules/@lexical/rich-text/",\
+          "packageDependencies": [\
+            ["@lexical/rich-text", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:04578661a3f1ff0d71a245b147258e07a1141129ccf66bacbe2ae464fa504d73305e167d0af104fb3c715df80f4fa6560509d3f7a5909361cc497313dc60c714#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-rich-text-virtual-3851e29695/0/cache/@lexical-rich-text-npm-0.3.2-26dcf149f7-c69a1dca5f.zip/node_modules/@lexical/rich-text/",\
+          "packageDependencies": [\
+            ["@lexical/rich-text", "virtual:04578661a3f1ff0d71a245b147258e07a1141129ccf66bacbe2ae464fa504d73305e167d0af104fb3c715df80f4fa6560509d3f7a5909361cc497313dc60c714#npm:0.3.2"],\
+            ["@lexical/clipboard", null],\
+            ["@lexical/selection", null],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["@types/lexical__clipboard", null],\
+            ["@types/lexical__selection", null],\
+            ["@types/lexical__utils", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@lexical/clipboard",\
+            "@lexical/selection",\
+            "@lexical/utils",\
+            "@types/lexical",\
+            "@types/lexical__clipboard",\
+            "@types/lexical__selection",\
+            "@types/lexical__utils",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-rich-text-virtual-04cdb3463e/0/cache/@lexical-rich-text-npm-0.3.2-26dcf149f7-c69a1dca5f.zip/node_modules/@lexical/rich-text/",\
+          "packageDependencies": [\
+            ["@lexical/rich-text", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/clipboard", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["@types/lexical__clipboard", null],\
+            ["@types/lexical__selection", null],\
+            ["@types/lexical__utils", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@lexical/clipboard",\
+            "@lexical/selection",\
+            "@lexical/utils",\
+            "@types/lexical",\
+            "@types/lexical__clipboard",\
+            "@types/lexical__selection",\
+            "@types/lexical__utils",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/selection", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-selection-npm-0.3.2-5856f9c08d-1a34b8a7bb.zip/node_modules/@lexical/selection/",\
+          "packageDependencies": [\
+            ["@lexical/selection", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-selection-virtual-3851b2a98f/0/cache/@lexical-selection-npm-0.3.2-5856f9c08d-1a34b8a7bb.zip/node_modules/@lexical/selection/",\
+          "packageDependencies": [\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/table", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-table-npm-0.3.2-e11f800988-b001885f46.zip/node_modules/@lexical/table/",\
+          "packageDependencies": [\
+            ["@lexical/table", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-table-virtual-3a58b2eccf/0/cache/@lexical-table-npm-0.3.2-e11f800988-b001885f46.zip/node_modules/@lexical/table/",\
+          "packageDependencies": [\
+            ["@lexical/table", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/text", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-text-npm-0.3.2-b7f18b769b-3203b1c9fa.zip/node_modules/@lexical/text/",\
+          "packageDependencies": [\
+            ["@lexical/text", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-text-virtual-681c00376b/0/cache/@lexical-text-npm-0.3.2-b7f18b769b-3203b1c9fa.zip/node_modules/@lexical/text/",\
+          "packageDependencies": [\
+            ["@lexical/text", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/utils", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-utils-npm-0.3.2-9db2fc2fb0-883c50970d.zip/node_modules/@lexical/utils/",\
+          "packageDependencies": [\
+            ["@lexical/utils", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-utils-virtual-6b8717e666/0/cache/@lexical-utils-npm-0.3.2-9db2fc2fb0-883c50970d.zip/node_modules/@lexical/utils/",\
+          "packageDependencies": [\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/list", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/table", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "lexical"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lexical/yjs", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@lexical-yjs-npm-0.3.2-12832318ee-f74e9e3662.zip/node_modules/@lexical/yjs/",\
+          "packageDependencies": [\
+            ["@lexical/yjs", "npm:0.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@lexical-yjs-virtual-a44ceee1e3/0/cache/@lexical-yjs-npm-0.3.2-12832318ee-f74e9e3662.zip/node_modules/@lexical/yjs/",\
+          "packageDependencies": [\
+            ["@lexical/yjs", "virtual:f939b79a4e70d63124d6188a19ffcfd53a65a8b0e4d19b83b72ea620d4c98869e907aeb8ea3f53cfe87a9bd1942eef06c70f88061db3eabad9371b543d029dfc#npm:0.3.2"],\
+            ["@lexical/offset", "virtual:a44ceee1e3c44816ee545e07f9eb25a224f96e237457c1cc6203cf3d4813a7329dfee7c8b152d50301902be30c507b7c5249673669e3b8c69083d4b5feb34fa1#npm:0.3.2"],\
+            ["@types/lexical", null],\
+            ["@types/yjs", null],\
+            ["lexical", "npm:0.3.2"],\
+            ["yjs", null]\
+          ],\
+          "packagePeers": [\
+            "@types/lexical",\
+            "@types/yjs",\
+            "lexical",\
+            "yjs"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -11237,6 +11783,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lexical", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/lexical-npm-0.3.2-aa766f2411-79169bdd55.zip/node_modules/lexical/",\
+          "packageDependencies": [\
+            ["lexical", "npm:0.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["libphonenumber-js", [\
         ["npm:1.9.50", {\
           "packageLocation": "./.yarn/cache/libphonenumber-js-npm-1.9.50-878a654901-ebb80c59b5.zip/node_modules/libphonenumber-js/",\
@@ -13373,6 +13928,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["prismjs", [\
+        ["npm:1.28.0", {\
+          "packageLocation": "./.yarn/cache/prismjs-npm-1.28.0-28f20a79ff-bde93fb2be.zip/node_modules/prismjs/",\
+          "packageDependencies": [\
+            ["prismjs", "npm:1.28.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["process-nextick-args", [\
         ["npm:2.0.1", {\
           "packageLocation": "./.yarn/cache/process-nextick-args-npm-2.0.1-b8d7971609-1d38588e52.zip/node_modules/process-nextick-args/",\
@@ -14417,6 +14981,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:11.8.1"],\
             ["@formatjs/cli", "npm:4.8.3"],\
             ["@hookform/resolvers", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.8.8"],\
+            ["@lexical/clipboard", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/link", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/list", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/react", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/rich-text", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/selection", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
+            ["@lexical/utils", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:0.3.2"],\
             ["@loadable/babel-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.13.2"],\
             ["@loadable/component", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
             ["@loadable/server", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:5.15.2"],\
@@ -14493,6 +15064,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ioredis", "npm:5.0.3"],\
             ["js-cookie", "npm:3.0.1"],\
             ["jsonwebtoken", "npm:8.5.1"],\
+            ["lexical", "npm:0.3.2"],\
             ["libphonenumber-js", "npm:1.9.50"],\
             ["mdi-react", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:8.3.1"],\
             ["mini-css-extract-plugin", "virtual:fb12488cb9f063f466acb32ad2c59369e1fd074b054282334956841995774b3a04d3f2c49cd4b5bcef2b6552a26d8f222e3b5ee37d4e0e30bf2734c3ee392940#npm:2.5.3"],\

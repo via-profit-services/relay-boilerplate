@@ -25,9 +25,9 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
   output: {
     path: isDev ? path.join(__dirname, '../build') : path.join(__dirname, '../dist'),
     publicPath: '/',
-    filename: 'public/js/[name][contenthash].js',
-    chunkFilename: 'public/js/[name][chunkhash].js',
-    assetModuleFilename: 'public/assets/[contenthash][ext]',
+    filename: 'public/js/[name]-[contenthash].js',
+    chunkFilename: 'public/js/[name]-[chunkhash].js',
+    assetModuleFilename: 'public/assets/[name]-[contenthash][ext]',
   },
   optimization: {
     minimizer: [
@@ -42,21 +42,16 @@ const webpackProdConfig: Configuration = merge(webpackBaseConfig, {
     ],
     splitChunks: {
       chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
       cacheGroups: {
-        react: {
-          test: /[\\/]node_modules[\\/](react|react-router|react-router-dom|react-dom)[\\/]/,
-        },
-        intl: {
-          test: /[\\/]node_modules[\\/]@formatjs[\\/]/,
-        },
-        icons: {
-          test: /[\\/]node_modules[\\/]mdi-react$/,
-        },
-        relay: {
-          test: /[\\/]node_modules[\\/](relay|react-relay|relay-runtime)[\\/]$/,
-        },
-        redux: {
-          test: /[\\/]node_modules[\\/](redux|react-redux|reselect)[\\/]$/,
+        default: {
+          test: /[\\/]node_modules[\\/]/,
+          name: (module: any) => {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+            return `vandor-${packageName}`;
+          },
         },
       },
     },
