@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import loadable, { loadableReady } from '@loadable/component';
+import { loadableReady } from '@loadable/component';
 import { Provider as ReduxProvider } from 'react-redux';
 import createCache from '@emotion/cache';
 import { CacheProvider as CSSCacheProvider } from '@emotion/react';
